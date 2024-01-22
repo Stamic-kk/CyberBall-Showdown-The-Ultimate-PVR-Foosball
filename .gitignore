@@ -54,3 +54,13 @@ dkms.conf
 
 # meta
 .metadata
+
+
+# binary
+build/
+
+#CMake files
+*/CMakeLists.txt.user
+*/CMakeFiles/
+*/CMakeCache.txt
+*/cmake_install.cmake

@@ -1,6 +1,9 @@
 {
     "files.associations": {
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "cstring": "cpp",
+        "vector": "cpp",
+        "filesystem": "cpp"
     },
     "cmake.sourceDirectory": "/home/li3975/S2023/SeniorDesign/nanoBrain"
 }

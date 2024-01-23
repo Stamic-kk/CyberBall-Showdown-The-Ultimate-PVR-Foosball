@@ -31,25 +31,28 @@ for i in range (0, 1):
 
     with vpi.Backend.CUDA:
         min_coords, max_coords = output.minmaxloc(min_capacity=100, max_capacity=100)
-    
-    with input.lock(), min_coords.lock(), max_coords.lock():
 
-        min_loc = tuple(min_coords.cpu()[0].astype(int)[::-1])
-        max_loc = tuple(max_coords.cpu()[0].astype(int)[::-1])
-        min_locs = min_coords.cpu()
+    with input.rlock_cpu() as in_data, min_coords.rlock_cpu() as min_data, max_coords.rlock_cpu() as max_data:
+        print(min_data.shape)
+        print(max_data.shape)
+        print(max_data)
+        min_loc = tuple(min_data[0].astype(int)[::-1])
+        max_loc = tuple(max_data[0].astype(int)[::-1])
+        min_locs = min_data
 
-    min_value = input.cpu()[min_loc]
-    max_value = input.cpu()[max_loc]
+    min_value = in_data[min_loc]
+    max_value = in_data[max_loc]
+
 
 
     print("--- %s seconds ---" % (time.time() - start_time))
 x = max_loc[1]
 y = max_loc[0]
 r = 20
-with output.lock():
+with output.rlock_cpu() as outData:
     
     # Image.fromarray(outData).save('tutorial_blurred_python.png')
-    outIm = Image.fromarray(output.cpu())
+    outIm = Image.fromarray(outData)
     draw = ImageDraw.Draw(outIm)
 
     draw.ellipse((x-r, y-r, x+r, y+r), fill=0)

@@ -28,7 +28,7 @@ cmake_minimum_required(VERSION 3.5)
 
 project(max_min_loc_example)
 
-find_package(vpi 3.0 REQUIRED)
+find_package(vpi REQUIRED)
 find_package(OpenCV REQUIRED)
 
 add_executable(${PROJECT_NAME}.out main.cpp)

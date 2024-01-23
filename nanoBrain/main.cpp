@@ -19,16 +19,19 @@
 #include <cstring> // for memset
 #include <iostream>
 #include <sstream>
+#include <time.h>
+
 
 int main(int argc, char**argv){
+    time_t start, end;
     cv::Mat cvImage = cv::imread(argv[1]);
     VPIImage inputBGR = NULL;
     VPIImage input = NULL;
 
     VPIStream stream;
     vpiStreamCreate(0, &stream);
-
-    vpiImageCreateWrapperOpenCVMat(cvImage, 0, &inputBGR);
+    start = clock();
+    vpiImageCreateOpenCVMatWrapper(cvImage, 0, &inputBGR);
     vpiImageCreate(cvImage.cols, cvImage.rows, VPI_IMAGE_FORMAT_U8, 0, &input);
     vpiSubmitConvertImageFormat(stream, VPI_BACKEND_CUDA, inputBGR, input, NULL);
 
@@ -37,25 +40,23 @@ int main(int argc, char**argv){
  
     int width, height;
     vpiImageGetSize(input, &width, &height);
- 
     VPIPayload payload;
     vpiCreateMinMaxLoc(VPI_BACKEND_CPU, width, height, format, &payload);
     VPIArray minCoords;
-    vpiArrayCreate(10000, VPI_ARRAY_TYPE_KEYPOINT_F32, 0, &minCoords);
+    vpiArrayCreate(10000, VPI_ARRAY_TYPE_KEYPOINT, 0, &minCoords);
  
     VPIArray maxCoords;
-    vpiArrayCreate(10000, VPI_ARRAY_TYPE_KEYPOINT_F32, 0, &maxCoords);
+    vpiArrayCreate(10000, VPI_ARRAY_TYPE_KEYPOINT, 0, &maxCoords);
 
     vpiSubmitMinMaxLoc(stream, VPI_BACKEND_CPU, payload, input, minCoords, maxCoords);
     vpiStreamSync(stream);
     VPIImageData inputImageData;
-    vpiImageLockData(input, VPI_LOCK_READ, VPI_IMAGE_BUFFER_HOST_PITCH_LINEAR, &inputImageData);
- 
+    vpiImageLock(input, VPI_LOCK_READ, &inputImageData);
     VPIArrayData minCoordsData, maxCoordsData;
-    vpiArrayLockData(minCoords, VPI_LOCK_READ, VPI_ARRAY_BUFFER_HOST_AOS, &minCoordsData);
-    vpiArrayLockData(maxCoords, VPI_LOCK_READ, VPI_ARRAY_BUFFER_HOST_AOS, &maxCoordsData);
-    VPIKeypointF32 *min_coords = (VPIKeypointF32 *)minCoordsData.buffer.aos.data;
-    VPIKeypointF32 *max_coords = (VPIKeypointF32 *)maxCoordsData.buffer.aos.data;
+    vpiArrayLock(minCoords, VPI_LOCK_READ, &minCoordsData);
+    vpiArrayLock(maxCoords, VPI_LOCK_READ, &maxCoordsData);
+    VPIKeypoint *min_coords = (VPIKeypoint *)minCoordsData.data;
+    VPIKeypoint *max_coords = (VPIKeypoint *)maxCoordsData.data; 
  
     int min_i = min_coords[0].y;
     int min_j = min_coords[0].x;
@@ -63,14 +64,16 @@ int main(int argc, char**argv){
     int max_i = max_coords[0].y;
     int max_j = max_coords[0].x;
 
+    end = clock();
+    std::cout << "Time taken by program is : " << double(end - start) / double(CLOCKS_PER_SEC) << " seconds" << std::endl;
     // Assuming that the input image is grayscale (only one plane).
-    assert(inputImageData.buffer.pitch.numPlanes == 1);
+        assert(inputImageData.numPlanes == 1);
  
-    void *imgData     = inputImageData.buffer.pitch.planes[0].data;
-    int imgPitchBytes = inputImageData.buffer.pitch.planes[0].pitchBytes;
+    void *imgData     = inputImageData.planes[0].data;
+    int imgPitchBytes = inputImageData.planes[0].pitchBytes;
  
     // Assuming that the plane has 8-bit unsigned int type.
-    assert(inputImageData.buffer.pitch.planes[0].pixelType == VPI_PIXEL_TYPE_U8);
+    assert(inputImageData.planes[0].pixelType == VPI_PIXEL_TYPE_U8);
     typedef unsigned char Pixel;
     typedef unsigned char Byte;
  

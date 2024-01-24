@@ -31,5 +31,5 @@ project(max_min_loc_example)
 find_package(vpi REQUIRED)
 find_package(OpenCV REQUIRED)
 
-add_executable(${PROJECT_NAME}.out main.cpp)
+add_executable(${PROJECT_NAME}.out main.cpp locator.cpp predictor.cpp)
 target_link_libraries(${PROJECT_NAME}.out vpi opencv_core opencv_imgproc opencv_imgcodecs stdc++fs)

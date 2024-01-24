@@ -1,4 +1,6 @@
-#include "locator.h"
+#include "../include/locator.h"
+
+int tmep_index = 0;
 
 vector<string> getAllFiles(string path){
     vector<string> files;
@@ -24,9 +26,9 @@ pair<int, int> getLocation (cv::Mat cvImage){
 
     VPIImageFormat format;
     vpiImageGetFormat(input, &format);
- 
     int width, height;
     vpiImageGetSize(input, &width, &height);
+    //std::cout<<"width: "<<width<<", height: "<<height<<std::endl;
     VPIPayload payload;
     vpiCreateMinMaxLoc(VPI_BACKEND_CPU, width, height, format, &payload);
     VPIArray minCoords;
@@ -70,10 +72,12 @@ pair<int, int> getLocation (cv::Mat cvImage){
     unsigned char min_value = min_row[min_j];
     unsigned char max_value = max_row[max_j];
     std::cout << "min: " << (int)min_value << " at (" << min_i << ", " << min_j << ")" << std::endl;
-    //vpiImageDataExportOpenCVMat(inputImageData, &outCvImage);
-    //cv::circle(outCvImage, cv::Point(min_j, min_i), 5, cv::Scalar(0, 0, 255), 20);
-    //bool succ = cv::imwrite("../outputs/"+file_name.substr(10), outCvImage);
-    //std::cout<<succ<<std::endl;
+    
+    // cv:: Mat outCvImage;
+    // vpiImageDataExportOpenCVMat(inputImageData, &outCvImage);
+    // cv::circle(outCvImage, cv::Point(min_j, min_i), 5, cv::Scalar(0, 0, 255), 20);
+    // bool succ = cv::imwrite("../outputs/"+ std::to_string(tmep_index++), outCvImage);
+    // std::cout<<succ<<std::endl;
     vpiArrayUnlock(maxCoords);
     vpiArrayUnlock(minCoords);
     vpiImageUnlock(input);
@@ -82,4 +86,5 @@ pair<int, int> getLocation (cv::Mat cvImage){
     vpiImageDestroy(input);
     vpiArrayDestroy(minCoords);
     vpiArrayDestroy(maxCoords);
+    return std::make_pair(min_i, min_j);
 }

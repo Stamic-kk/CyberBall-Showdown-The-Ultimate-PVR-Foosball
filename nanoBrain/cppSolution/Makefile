@@ -123,6 +123,33 @@ max_min_loc_example.out/fast:
 	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/build
 .PHONY : max_min_loc_example.out/fast
 
+locator.o: locator.cpp.o
+
+.PHONY : locator.o
+
+# target to build an object file
+locator.cpp.o:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/locator.cpp.o
+.PHONY : locator.cpp.o
+
+locator.i: locator.cpp.i
+
+.PHONY : locator.i
+
+# target to preprocess a source file
+locator.cpp.i:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/locator.cpp.i
+.PHONY : locator.cpp.i
+
+locator.s: locator.cpp.s
+
+.PHONY : locator.s
+
+# target to generate assembly for a file
+locator.cpp.s:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/locator.cpp.s
+.PHONY : locator.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -150,6 +177,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+predictor.o: predictor.cpp.o
+
+.PHONY : predictor.o
+
+# target to build an object file
+predictor.cpp.o:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.o
+.PHONY : predictor.cpp.o
+
+predictor.i: predictor.cpp.i
+
+.PHONY : predictor.i
+
+# target to preprocess a source file
+predictor.cpp.i:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.i
+.PHONY : predictor.cpp.i
+
+predictor.s: predictor.cpp.s
+
+.PHONY : predictor.s
+
+# target to generate assembly for a file
+predictor.cpp.s:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.s
+.PHONY : predictor.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -159,9 +213,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... max_min_loc_example.out"
 	@echo "... edit_cache"
+	@echo "... locator.o"
+	@echo "... locator.i"
+	@echo "... locator.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... predictor.o"
+	@echo "... predictor.i"
+	@echo "... predictor.s"
 .PHONY : help
 
 

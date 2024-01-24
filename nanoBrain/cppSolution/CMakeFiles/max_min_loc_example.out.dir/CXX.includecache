@@ -6,7 +6,23 @@
 
 #IncludeRegexTransform: 
 
+/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/locator.cpp
+../include/locator.h
+/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/include/locator.h
+
 /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/main.cpp
+../include/predictor.h
+/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/include/predictor.h
+../include/locator.h
+/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/include/locator.h
+
+/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/predictor.cpp
+../include/predictor.h
+/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/include/predictor.h
+
+/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/include/locator.h
+vector
+-
 opencv2/core/version.hpp
 -
 opencv2/imgproc/imgproc.hpp
@@ -40,6 +56,16 @@ time.h
 vector
 -
 experimental/filesystem
+-
+
+/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/include/predictor.h
+vector
+-
+math.h
+-
+array
+-
+iostream
 -
 
 /opt/nvidia/vpi1/include/vpi/AlgoFlags.h

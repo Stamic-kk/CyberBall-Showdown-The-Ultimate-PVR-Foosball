@@ -81,21 +81,73 @@ CMakeFiles/max_min_loc_example.out.dir/main.cpp.o.provides: CMakeFiles/max_min_l
 CMakeFiles/max_min_loc_example.out.dir/main.cpp.o.provides.build: CMakeFiles/max_min_loc_example.out.dir/main.cpp.o
 
 
+CMakeFiles/max_min_loc_example.out.dir/locator.cpp.o: CMakeFiles/max_min_loc_example.out.dir/flags.make
+CMakeFiles/max_min_loc_example.out.dir/locator.cpp.o: locator.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/max_min_loc_example.out.dir/locator.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/max_min_loc_example.out.dir/locator.cpp.o -c /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/locator.cpp
+
+CMakeFiles/max_min_loc_example.out.dir/locator.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/max_min_loc_example.out.dir/locator.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/locator.cpp > CMakeFiles/max_min_loc_example.out.dir/locator.cpp.i
+
+CMakeFiles/max_min_loc_example.out.dir/locator.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/max_min_loc_example.out.dir/locator.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/locator.cpp -o CMakeFiles/max_min_loc_example.out.dir/locator.cpp.s
+
+CMakeFiles/max_min_loc_example.out.dir/locator.cpp.o.requires:
+
+.PHONY : CMakeFiles/max_min_loc_example.out.dir/locator.cpp.o.requires
+
+CMakeFiles/max_min_loc_example.out.dir/locator.cpp.o.provides: CMakeFiles/max_min_loc_example.out.dir/locator.cpp.o.requires
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/locator.cpp.o.provides.build
+.PHONY : CMakeFiles/max_min_loc_example.out.dir/locator.cpp.o.provides
+
+CMakeFiles/max_min_loc_example.out.dir/locator.cpp.o.provides.build: CMakeFiles/max_min_loc_example.out.dir/locator.cpp.o
+
+
+CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.o: CMakeFiles/max_min_loc_example.out.dir/flags.make
+CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.o: predictor.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.o -c /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/predictor.cpp
+
+CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/predictor.cpp > CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.i
+
+CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/predictor.cpp -o CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.s
+
+CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.o.requires:
+
+.PHONY : CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.o.requires
+
+CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.o.provides: CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.o.requires
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.o.provides.build
+.PHONY : CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.o.provides
+
+CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.o.provides.build: CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.o
+
+
 # Object files for target max_min_loc_example.out
 max_min_loc_example_out_OBJECTS = \
-"CMakeFiles/max_min_loc_example.out.dir/main.cpp.o"
+"CMakeFiles/max_min_loc_example.out.dir/main.cpp.o" \
+"CMakeFiles/max_min_loc_example.out.dir/locator.cpp.o" \
+"CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.o"
 
 # External object files for target max_min_loc_example.out
 max_min_loc_example_out_EXTERNAL_OBJECTS =
 
 max_min_loc_example.out: CMakeFiles/max_min_loc_example.out.dir/main.cpp.o
+max_min_loc_example.out: CMakeFiles/max_min_loc_example.out.dir/locator.cpp.o
+max_min_loc_example.out: CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.o
 max_min_loc_example.out: CMakeFiles/max_min_loc_example.out.dir/build.make
 max_min_loc_example.out: /opt/nvidia/vpi1/lib64/libnvvpi.so.1.2.3
 max_min_loc_example.out: /usr/lib/aarch64-linux-gnu/libopencv_imgcodecs.so.4.1.1
 max_min_loc_example.out: /usr/lib/aarch64-linux-gnu/libopencv_imgproc.so.4.1.1
 max_min_loc_example.out: /usr/lib/aarch64-linux-gnu/libopencv_core.so.4.1.1
 max_min_loc_example.out: CMakeFiles/max_min_loc_example.out.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable max_min_loc_example.out"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable max_min_loc_example.out"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/max_min_loc_example.out.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -104,6 +156,8 @@ CMakeFiles/max_min_loc_example.out.dir/build: max_min_loc_example.out
 .PHONY : CMakeFiles/max_min_loc_example.out.dir/build
 
 CMakeFiles/max_min_loc_example.out.dir/requires: CMakeFiles/max_min_loc_example.out.dir/main.cpp.o.requires
+CMakeFiles/max_min_loc_example.out.dir/requires: CMakeFiles/max_min_loc_example.out.dir/locator.cpp.o.requires
+CMakeFiles/max_min_loc_example.out.dir/requires: CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.o.requires
 
 .PHONY : CMakeFiles/max_min_loc_example.out.dir/requires
 

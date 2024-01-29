@@ -61,7 +61,7 @@ build/
 
 #CMake files
 */CMakeLists.txt.user
-*/CMakeFiles/
+nanoBrain/cppSoultion/CMakeFiles/
 */CMakeCache.txt
 */cmake_install.cmake
 nanoBrain/outputs/*

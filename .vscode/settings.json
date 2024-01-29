@@ -3,7 +3,10 @@
         "stdlib.h": "c",
         "cstring": "cpp",
         "vector": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "predictor.h": "c",
+        "list": "cpp",
+        "array": "cpp"
     },
-    "cmake.sourceDirectory": "/home/li3975/S2023/SeniorDesign/nanoBrain"
+    "cmake.sourceDirectory": "/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution"
 }

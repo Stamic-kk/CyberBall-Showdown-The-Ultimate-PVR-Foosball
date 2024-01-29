@@ -1,0 +1,13 @@
+language: c
+sudo: false
+
+before_script: 
+  - git submodule update --init --recursive
+  - cd tests/
+  - make
+
+script:
+  - ./ukal_tests
+
+after_script:
+  - make clean

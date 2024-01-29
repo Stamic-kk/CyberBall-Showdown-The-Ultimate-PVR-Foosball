@@ -1,0 +1,3 @@
+[submodule "uKal"]
+	path = nanoBrain/uKal
+	url = git@github.com:SargisYonan/uKal.git

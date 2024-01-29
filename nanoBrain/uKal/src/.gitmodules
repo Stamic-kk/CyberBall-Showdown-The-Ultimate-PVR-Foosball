@@ -1,0 +1,3 @@
+[submodule "uLAPack"]
+	path = uLAPack
+	url = https://github.com/SargisYonan/uLAPack.git

@@ -123,86 +123,86 @@ max_min_loc_example.out/fast:
 	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/build
 .PHONY : max_min_loc_example.out/fast
 
-locator.o: locator.cpp.o
+src/locator.o: src/locator.cpp.o
 
-.PHONY : locator.o
-
-# target to build an object file
-locator.cpp.o:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/locator.cpp.o
-.PHONY : locator.cpp.o
-
-locator.i: locator.cpp.i
-
-.PHONY : locator.i
-
-# target to preprocess a source file
-locator.cpp.i:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/locator.cpp.i
-.PHONY : locator.cpp.i
-
-locator.s: locator.cpp.s
-
-.PHONY : locator.s
-
-# target to generate assembly for a file
-locator.cpp.s:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/locator.cpp.s
-.PHONY : locator.cpp.s
-
-main.o: main.cpp.o
-
-.PHONY : main.o
+.PHONY : src/locator.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/locator.cpp.o:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/locator.cpp.o
+.PHONY : src/locator.cpp.o
 
-main.i: main.cpp.i
+src/locator.i: src/locator.cpp.i
 
-.PHONY : main.i
+.PHONY : src/locator.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/locator.cpp.i:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/locator.cpp.i
+.PHONY : src/locator.cpp.i
 
-main.s: main.cpp.s
+src/locator.s: src/locator.cpp.s
 
-.PHONY : main.s
+.PHONY : src/locator.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/locator.cpp.s:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/locator.cpp.s
+.PHONY : src/locator.cpp.s
 
-predictor.o: predictor.cpp.o
+src/main.o: src/main.cpp.o
 
-.PHONY : predictor.o
+.PHONY : src/main.o
 
 # target to build an object file
-predictor.cpp.o:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.o
-.PHONY : predictor.cpp.o
+src/main.cpp.o:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
 
-predictor.i: predictor.cpp.i
+src/main.i: src/main.cpp.i
 
-.PHONY : predictor.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-predictor.cpp.i:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.i
-.PHONY : predictor.cpp.i
+src/main.cpp.i:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-predictor.s: predictor.cpp.s
+src/main.s: src/main.cpp.s
 
-.PHONY : predictor.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-predictor.cpp.s:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/predictor.cpp.s
-.PHONY : predictor.cpp.s
+src/main.cpp.s:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
+
+src/predictor.o: src/predictor.cpp.o
+
+.PHONY : src/predictor.o
+
+# target to build an object file
+src/predictor.cpp.o:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/predictor.cpp.o
+.PHONY : src/predictor.cpp.o
+
+src/predictor.i: src/predictor.cpp.i
+
+.PHONY : src/predictor.i
+
+# target to preprocess a source file
+src/predictor.cpp.i:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/predictor.cpp.i
+.PHONY : src/predictor.cpp.i
+
+src/predictor.s: src/predictor.cpp.s
+
+.PHONY : src/predictor.s
+
+# target to generate assembly for a file
+src/predictor.cpp.s:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/predictor.cpp.s
+.PHONY : src/predictor.cpp.s
 
 # Help Target
 help:
@@ -213,15 +213,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... max_min_loc_example.out"
 	@echo "... edit_cache"
-	@echo "... locator.o"
-	@echo "... locator.i"
-	@echo "... locator.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
-	@echo "... predictor.o"
-	@echo "... predictor.i"
-	@echo "... predictor.s"
+	@echo "... src/locator.o"
+	@echo "... src/locator.i"
+	@echo "... src/locator.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/predictor.o"
+	@echo "... src/predictor.i"
+	@echo "... src/predictor.s"
 .PHONY : help
 
 

@@ -6,21 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/locator.cpp
-../include/locator.h
-/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/include/locator.h
-
-/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/main.cpp
-../include/predictor.h
-/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/include/predictor.h
-../include/locator.h
-/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/include/locator.h
-
-/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/predictor.cpp
-../include/predictor.h
-/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/include/predictor.h
-
-/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/include/locator.h
+/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/include/locator.h
 vector
 -
 opencv2/core/version.hpp
@@ -58,7 +44,7 @@ vector
 experimental/filesystem
 -
 
-/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/include/predictor.h
+/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/include/predictor.h
 vector
 -
 math.h
@@ -67,6 +53,20 @@ array
 -
 iostream
 -
+
+/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/src/locator.cpp
+../include/locator.h
+/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/include/locator.h
+
+/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/src/main.cpp
+../include/predictor.h
+/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/include/predictor.h
+../include/locator.h
+/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/include/locator.h
+
+/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/src/predictor.cpp
+../include/predictor.h
+/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/include/predictor.h
 
 /opt/nvidia/vpi1/include/vpi/AlgoFlags.h
 Export.h

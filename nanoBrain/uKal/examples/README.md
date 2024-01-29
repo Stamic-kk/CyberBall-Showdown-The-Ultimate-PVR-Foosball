@@ -1,1 +1,0 @@
-[EKF uKal Tutorial](http://www.yonan.org/ukal/examples/ekf_example.html): An explanation of the Kalman Filter with the Extended Kalman Filter (EKF) using uKal.

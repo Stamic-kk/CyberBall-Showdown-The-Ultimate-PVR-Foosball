@@ -6,5 +6,5 @@ CXX_FLAGS =
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -isystem /opt/nvidia/vpi1/include -isystem /usr/include/opencv4 
+CXX_INCLUDES = -I/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/include -I/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/uKal/src -I/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/uKal/src/uLAPack/src -isystem /opt/nvidia/vpi1/include -isystem /usr/include/opencv4 
 

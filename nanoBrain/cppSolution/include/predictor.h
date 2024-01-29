@@ -14,7 +14,7 @@
 #define BALL_RADIUS_REAL 1.5
 // #define BALL_RADIUS BALL_RADIUS_REAL / SCALE
 #define BALL_RADIUS 5
-
+#define SAMPLE_RATE 0.020
 
 static std::vector<int> xs;
 static std::vector<int> ys;

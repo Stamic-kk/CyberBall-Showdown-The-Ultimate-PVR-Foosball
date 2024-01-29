@@ -31,5 +31,10 @@ project(max_min_loc_example)
 find_package(vpi REQUIRED)
 find_package(OpenCV REQUIRED)
 
-add_executable(${PROJECT_NAME}.out main.cpp locator.cpp predictor.cpp)
+
+
+add_executable(${PROJECT_NAME}.out src/main.cpp src/locator.cpp src/predictor.cpp)
+target_include_directories(${PROJECT_NAME}.out PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(${PROJECT_NAME}.out PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/uKal/src/)
+target_include_directories(${PROJECT_NAME}.out PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/uKal/src/uLAPack/src)
 target_link_libraries(${PROJECT_NAME}.out vpi opencv_core opencv_imgproc opencv_imgcodecs stdc++fs)

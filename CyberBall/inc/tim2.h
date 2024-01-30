@@ -4,5 +4,8 @@
 #include "tty.h"
 #include "stm32f0xx.h"
 #include <stdio.h>
+
+
+static int values[4];
 void init_tim2();
 #endif

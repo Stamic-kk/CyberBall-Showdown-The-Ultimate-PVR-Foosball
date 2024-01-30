@@ -13,6 +13,14 @@
 #include <stdint.h>
 #include "adc.h"
 #include "tim2.h"
+#include "spi.h"
+
+
+#include "fifo.h"
+#include "tty.h"
+#include <stdio.h>
+#include <string.h> // for memmove()
+#include <stdlib.h>
 // PD2 use for USART RX
 // PC12 use for USART TX
 
@@ -24,6 +32,7 @@ int main(void)
     init_usart5();
     setup_adc();
     init_tim2();
+    //spi_display();
 
     setbuf(stdin,0);
     setbuf(stdout,0);

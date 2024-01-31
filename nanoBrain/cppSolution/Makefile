@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution
+CMAKE_SOURCE_DIR = /home/grp9/cppWork
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution
+CMAKE_BINARY_DIR = /home/grp9/cppWork
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/CMakeFiles /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/grp9/cppWork/CMakeFiles /home/grp9/cppWork/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/grp9/cppWork/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -122,6 +122,33 @@ max_min_loc_example.out: cmake_check_build_system
 max_min_loc_example.out/fast:
 	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/build
 .PHONY : max_min_loc_example.out/fast
+
+src/camera.o: src/camera.cpp.o
+
+.PHONY : src/camera.o
+
+# target to build an object file
+src/camera.cpp.o:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/camera.cpp.o
+.PHONY : src/camera.cpp.o
+
+src/camera.i: src/camera.cpp.i
+
+.PHONY : src/camera.i
+
+# target to preprocess a source file
+src/camera.cpp.i:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/camera.cpp.i
+.PHONY : src/camera.cpp.i
+
+src/camera.s: src/camera.cpp.s
+
+.PHONY : src/camera.s
+
+# target to generate assembly for a file
+src/camera.cpp.s:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/camera.cpp.s
+.PHONY : src/camera.cpp.s
 
 src/locator.o: src/locator.cpp.o
 
@@ -213,6 +240,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... max_min_loc_example.out"
 	@echo "... edit_cache"
+	@echo "... src/camera.o"
+	@echo "... src/camera.i"
+	@echo "... src/camera.s"
 	@echo "... src/locator.o"
 	@echo "... src/locator.i"
 	@echo "... src/locator.s"

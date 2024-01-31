@@ -1,3 +1,0 @@
-/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/CMakeFiles/rebuild_cache.dir
-/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/CMakeFiles/max_min_loc_example.out.dir
-/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/CMakeFiles/edit_cache.dir

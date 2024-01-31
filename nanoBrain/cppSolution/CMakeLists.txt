@@ -33,8 +33,11 @@ find_package(OpenCV REQUIRED)
 
 
 
-add_executable(${PROJECT_NAME}.out src/main.cpp src/locator.cpp src/predictor.cpp)
+add_executable(${PROJECT_NAME}.out src/main.cpp src/locator.cpp src/predictor.cpp src/camera.cpp)
 target_include_directories(${PROJECT_NAME}.out PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_include_directories(${PROJECT_NAME}.out PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/uKal/src/)
 target_include_directories(${PROJECT_NAME}.out PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/uKal/src/uLAPack/src)
-target_link_libraries(${PROJECT_NAME}.out vpi opencv_core opencv_imgproc opencv_imgcodecs stdc++fs)
+#target_link_libraries(${PROJECT_NAME}.out vpi opencv_core opencv_imgproc opencv_imgcodecs opencv_videoio stdc++fs)
+# add_definitions(-ULAPACK_USE_STATIC_ALLOC)
+# target_compile_definitions(${PROJECT_NAME}.out PUBLIC ULAPACK_USE_STATIC_ALLOC)
+target_link_libraries(${PROJECT_NAME}.out vpi ${OpenCV_LIBS}  stdc++fs)

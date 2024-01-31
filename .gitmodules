@@ -1,8 +1,8 @@
 [submodule "uKal"]
 	path = nanoBrain/cppSolution/uKal
-	url = git@github.com:SargisYonan/uKal.git
+	url = git@github.com:Stamic-kk/uKal.git
 
 [submodule "uLAPack"]
 	path =  nanoBrain/cppSolution/uKal/src/uLAPack
-	url = https://github.com/SargisYonan/uLAPack.git
+	url = git@github.com:Stamic-kk/uLAPack.git
 

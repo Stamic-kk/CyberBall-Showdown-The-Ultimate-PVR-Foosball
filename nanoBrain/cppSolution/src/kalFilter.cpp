@@ -122,7 +122,12 @@ void visualize(Matrix_t x, Mat background){
     float y_coord = x.entry[1][0];
     float v = x.entry[2][0];
     float theta = x.entry[3][0];
-    cv::Point center(x_coord, y_coord);
+    float x_end = x_coord + v * cos(theta);
+    float y_end = y_coord + v * sin(theta);
+    cv::Point center = cv::Point(x_coord, y_coord);
+    cv::Point to_dot = cv::Point(x_end, y_end);
+
+    cv::line(background, center, to_dot, cv::Scalar(0, 0, 255), 2, 8, 0);
 
 }
 
@@ -134,5 +139,12 @@ void test_filter(){
     put_data(&y, 1, 0);
     ulapack_init(&y1, n_measurements, 1);
     set_filter();
+    for(;;){
+        get_fx(&fx, &kFilter.x, dt);
+        ukal_set_fx(&kFilter, &fx);
+        get_phi(&Phi, &kFilter.x, dt);
+        ukal_set_phi(&kFilter, &Phi);
+        ukal_predict(&kFilter);
+    }
 
 }

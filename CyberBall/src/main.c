@@ -30,12 +30,15 @@
 int main(void)
 {
     init_usart5();
-    setup_adc();
-    init_tim2();
+//    setup_adc();
+//    init_tim2();
 //    //spi_display();
     init_spi1();
     spi1_init_oled();
-    spi1_display1("SHA BI");
+    spi1_display1("WHOA!");
+
+    setup_adc();
+    init_tim2();
 
     setbuf(stdin,0);
     setbuf(stdout,0);

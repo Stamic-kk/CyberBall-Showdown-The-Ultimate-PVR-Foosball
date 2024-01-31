@@ -2,6 +2,9 @@
 #define KAL_FILTER_H_
 #include "ukal.h"
 #include "predictor.h"
+
+/*Change config.hh for Matrix configuration modification*/
+
 Filter_t kFilter;
 
 const Index_t n_states = 4;
@@ -14,6 +17,7 @@ const MatrixEntry_t varx = (stdx*stdx) / 3;
 const MatrixEntry_t vary = varx;
 const MatrixEntry_t varv = 2*sqrt(2)*(varx / (dt * dt));
 const MatrixEntry_t vartheta = sqrt(11);
+
 
 Matrix_t y;
 Matrix_t x;

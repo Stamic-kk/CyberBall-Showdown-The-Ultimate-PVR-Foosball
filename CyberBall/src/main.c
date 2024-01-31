@@ -32,14 +32,18 @@ int main(void)
     init_usart5();
     setup_adc();
     init_tim2();
-    //spi_display();
+//    //spi_display();
+    init_spi1();
+    spi1_init_oled();
+    spi1_display1("SHA BI");
 
     setbuf(stdin,0);
     setbuf(stdout,0);
     setbuf(stderr,0);
 
-//    for(int i = 0; i < 10; i++){
-//    	printf("Incremental Printout Test %d\n", i);
-//    }
+    for(int i = 0; i < 10; i++){
+    	printf("Incremental Printout Test %d\n", i);
+    }
+	for(;;);
 }
 

@@ -11,8 +11,10 @@
 #include <stdlib.h>
 
 static char ** vals;
-void spi_display(void);
-
+//void spi_display(void);
+void init_spi1();
+void spi1_init_oled();
+void spi1_display1(const char *string);
 
 
 #endif

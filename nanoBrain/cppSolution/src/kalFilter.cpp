@@ -1,8 +1,31 @@
 #include "kalFilter.h"
 #include <math.h>
-#include "camera.h"
 
-using namespace cv;
+Filter_t kFilter;
+
+const Index_t n_states = 4;
+const Index_t n_measurements = 2;
+const MatrixEntry_t dt = SAMPLE_RATE;
+const MatrixEntry_t stdx = 1.3940;      //change this
+const MatrixEntry_t stdy = stdx;        //change this
+
+const MatrixEntry_t varx = (stdx*stdx) / 3;
+const MatrixEntry_t vary = varx;
+const MatrixEntry_t varv = 2*sqrt(2)*(varx / (dt * dt));
+const MatrixEntry_t vartheta = sqrt(11);
+
+
+Matrix_t y; 
+Matrix_t x;
+Matrix_t Phi;
+Matrix_t gam;
+Matrix_t Q;
+Matrix_t P;
+Matrix_t R;
+Matrix_t H;
+Matrix_t fx;
+Matrix_t hx;
+
 
 
 static void get_phi(Matrix_t * const Phi, 
@@ -42,8 +65,8 @@ MatrixError_t init_Matrices(){
     ulapack_init(&y, n_measurements, 1);
     ulapack_init(&x, n_states, 1);
     ulapack_init(&Phi, n_states, n_states);
-    ulapack_init(&gamma, n_states, n_measurements);
-    ulapack_init(&Q, gamma.n_cols, gamma.n_cols);
+    ulapack_init(&gam, n_states, n_measurements);
+    ulapack_init(&Q, gam.n_cols, gam.n_cols);
     ulapack_init(&P, n_states, n_states);
     ulapack_init(&R, n_measurements, n_measurements);
     ulapack_init(&H, n_measurements, n_states);
@@ -66,9 +89,9 @@ MatrixError_t setup(Matrix_t y1){
 
     get_phi(&Phi, &x, dt);
 
-    ulapack_set(&gamma, 0.0);
-    ulapack_edit_entry(&gamma, 2, 0, 1.0);
-    ulapack_edit_entry(&gamma, 3, 1, 1.0);
+    ulapack_set(&gam, 0.0);
+    ulapack_edit_entry(&gam, 2, 0, 1.0);
+    ulapack_edit_entry(&gam, 3, 1, 1.0);
     
     ulapack_set(&Q, 0.0);
     ulapack_edit_entry(&Q, 0, 0, 5*5*dt);
@@ -104,7 +127,7 @@ MatrixError_t setup(Matrix_t y1){
 MatrixError_t set_filter(){
     ukal_filter_create(&kFilter, ekf,            
                    n_states, n_measurements, 
-                   &Phi, &gamma, &x, &Q,     
+                   &Phi, &gam, &x, &Q,     
                    &P,                       
                    &H, &R);
     return ulapack_success;
@@ -134,17 +157,39 @@ void visualize(Matrix_t x, Mat background){
 void test_filter(){
     Mat backgrounhd = Mat::zeros(CAPTURE_WIDTH, CAPTURE_HEIGHT, CV_8UC3);
     Matrix_t y1;
+
+    const MatrixEntry_t sample_data[10][2]={ {2.1,2.204},
+                                                {2.91,2.84},
+                                                {3.1,3.204},
+                                                {3.91,3.84},
+                                                {4.1,4.204},
+                                                {4.91,4.84},
+                                                {5.1,5.204},
+                                                {5.91,5.84},
+                                                {6.1,6.204},
+                                                {6.91,6.84},
+                                                };
+
+
     init_Matrices();
     put_data(&y1, 0, 0);
     put_data(&y, 1, 0);
     ulapack_init(&y1, n_measurements, 1);
     set_filter();
-    for(;;){
+    for(int i = 0;i < sizeof(sample_data);i++){
         get_fx(&fx, &kFilter.x, dt);
         ukal_set_fx(&kFilter, &fx);
         get_phi(&Phi, &kFilter.x, dt);
         ukal_set_phi(&kFilter, &Phi);
-        ukal_predict(&kFilter);
+        ukal_model_predict(&kFilter);
+        put_data(&y, sample_data[i][0], sample_data[i][1]);
+        get_hx(&hx, &kFilter.x);
+        ukal_set_hx(&kFilter, &hx);
+        ukal_update(&kFilter, &y);
+        visualize(kFilter.x, backgrounhd);
     }
-
+    cv::namedWindow("Kalman show", cv::WINDOW_AUTOSIZE);
+    cv::imshow("Trajectory", backgrounhd);
+    if(cv::waitKey(10) == 27) ;
+    cv::destroyAllWindows();
 }

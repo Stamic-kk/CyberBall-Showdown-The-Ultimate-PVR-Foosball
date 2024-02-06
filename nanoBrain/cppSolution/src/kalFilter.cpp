@@ -1,12 +1,12 @@
 #include "kalFilter.h"
-#include <math.h>
+
 
 Filter_t kFilter;
 
 const Index_t n_states = 4;
 const Index_t n_measurements = 2;
 const MatrixEntry_t dt = SAMPLE_RATE;
-const MatrixEntry_t stdx = 1.3940;      //change this
+const MatrixEntry_t stdx = 0.25;      //change this
 const MatrixEntry_t stdy = stdx;        //change this
 
 const MatrixEntry_t varx = (stdx*stdx) / 3;
@@ -140,22 +140,23 @@ MatrixError_t put_data (Matrix_t *y, float x_coord, float y_coord){
     
 }
 
-void visualize(Matrix_t x, Mat background){
+void visualize(Matrix_t x, Mat &background){
     float x_coord = x.entry[0][0];
     float y_coord = x.entry[1][0];
     float v = x.entry[2][0];
     float theta = x.entry[3][0];
-    float x_end = x_coord + v * cos(theta);
-    float y_end = y_coord + v * sin(theta);
-    cv::Point center = cv::Point(x_coord, y_coord);
-    cv::Point to_dot = cv::Point(x_end, y_end);
-
-    cv::line(background, center, to_dot, cv::Scalar(0, 0, 255), 2, 8, 0);
+    float x_end = x_coord + v * cos(theta) * dt;
+    float y_end = y_coord + v * sin(theta) * dt;
+    cv::Point center = cv::Point(y_coord, x_coord);
+    cv::Point to_dot = cv::Point(y_end, x_end);
+    std::cout<<"from: "<<center.x<<", "<<center.y<< " to " <<to_dot.x<<", "<<to_dot.y<<std::endl;
+    // cv::line(background, center, to_dot, cv::Scalar(0, 0, 255), 2, 8, 0);
+    cv::circle(background, center, 2, cv::Scalar(0, 0, 255), 2, 8, 0);
 
 }
 
-void test_filter(){
-    Mat backgrounhd = Mat::zeros(CAPTURE_WIDTH, CAPTURE_HEIGHT, CV_8UC3);
+void test_filter(std::string path=""){
+    Mat backgrounhd = Mat::zeros(CAPTURE_HEIGHT, CAPTURE_WIDTH * 2, CV_8UC3);
     Matrix_t y1;
 
     const MatrixEntry_t sample_data[10][2]={ {2.1,2.204},
@@ -170,26 +171,66 @@ void test_filter(){
                                                 {6.91,6.84},
                                                 };
 
+    vector<pair<float, float>> data;
+    if(path.length() > 0){
+        if(read_sim_data(path, data) == false){
+            std::cout<<"Error reading file"<<std::endl;
+        }
+    }
+    else{
+        for(int i = 0;i < 10;i++){
+            data.push_back(std::make_pair(sample_data[i][0], sample_data[i][1]));
+        }
+    }
+    int n = data.size();
+    for_each(data.begin(), data.end(), [](std::pair<float, float> p){
+        std::cout<<p.first<<", "<<p.second<<std::endl;
+    });
+    std::cout<<"Data size: "<<n<<std::endl; 
+    
+
 
     init_Matrices();
-    put_data(&y1, 0, 0);
-    put_data(&y, 1, 0);
     ulapack_init(&y1, n_measurements, 1);
+    put_data(&y1, data[0].first, data[0].second);
+    put_data(&y, data[1].first, data[1].second);
+    setup(y1);  
     set_filter();
-    for(int i = 0;i < sizeof(sample_data);i++){
+
+    for(int i = 2;i < data.size();i++){
         get_fx(&fx, &kFilter.x, dt);
         ukal_set_fx(&kFilter, &fx);
         get_phi(&Phi, &kFilter.x, dt);
         ukal_set_phi(&kFilter, &Phi);
         ukal_model_predict(&kFilter);
-        put_data(&y, sample_data[i][0], sample_data[i][1]);
+        put_data(&y, data[i].first, data[i].second);
         get_hx(&hx, &kFilter.x);
         ukal_set_hx(&kFilter, &hx);
         ukal_update(&kFilter, &y);
         visualize(kFilter.x, backgrounhd);
     }
-    cv::namedWindow("Kalman show", cv::WINDOW_AUTOSIZE);
     cv::imshow("Trajectory", backgrounhd);
-    if(cv::waitKey(10) == 27) ;
+    while(true){
+        if(cv::waitKey(10) == 27) break;
+    }
     cv::destroyAllWindows();
+}
+
+bool read_sim_data(string path, vector<pair<float, float>> &data){
+    // std::ifstream file(path);
+    // std::ifstream file = std::ifstream(path);
+    // if(!file.is_open()) return false;
+
+    // file.close();
+    // return true;
+    
+    FILE *file = fopen(path.c_str(), "r");
+    if(file == NULL) return false;
+    data.clear();
+    float x, y;
+    while(fscanf(file, " [%f %f]\n", &x, &y) != EOF){
+        data.push_back(std::make_pair(x, y));
+    }
+    fclose(file);
+    return true;
 }

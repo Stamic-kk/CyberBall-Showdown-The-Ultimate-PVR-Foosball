@@ -29,7 +29,19 @@ int main(){
     // cv::line(imTosolve, pt3, pt4, cv::Scalar(0, 0, 255), 20);
     // cv::imwrite("../outputs/traj.jpg", imTosolve);
     // return 0;
+
     // camera_test();
-    test_filter();
+    std::string path = "../inputs/traj.txt";
+
+    test_filter(path);  
+    // std::vector<std::pair<float, float>> data;
+    // if(read_sim_data(path, data) == false){
+    //     std::cout<<"Error reading file"<<std::endl;
+    // }
+    //verify
+    // for_each(data.begin(), data.end(), [](std::pair<float, float> p){
+    //     std::cout<<p.first<<", "<<p.second<<std::endl;
+    // });
+    
     return 0;
 }

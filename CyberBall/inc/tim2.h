@@ -6,6 +6,6 @@
 #include <stdio.h>
 
 
-static int values[4];
+int values[4];
 void init_tim2();
 #endif

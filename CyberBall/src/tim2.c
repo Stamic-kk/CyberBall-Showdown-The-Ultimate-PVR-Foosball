@@ -1,6 +1,7 @@
 #include "tim2.h"
+#include "spi.h"
 
-
+extern int values[4];
 
 void init_tim2(void) {
     RCC -> APB1ENR |= RCC_APB1ENR_TIM2EN;
@@ -35,5 +36,9 @@ void TIM2_IRQHandler(){
     } else {
     	printf("   not detected  \n");
     }
+
+    //send data to led ( just for testing)
+    spi_cmd(0x02);
+    spi_data(values[0]);
 
 }

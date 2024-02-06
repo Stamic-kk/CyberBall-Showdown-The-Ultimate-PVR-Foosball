@@ -15,6 +15,8 @@ static char ** vals;
 void init_spi1();
 void spi1_init_oled();
 void spi1_display1(const char *string);
+void spi_cmd(unsigned int data);
+void spi_data(unsigned int data);
 
 
 #endif

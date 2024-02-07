@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/grp9/cppWork
+CMAKE_SOURCE_DIR = /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/grp9/cppWork
+CMAKE_BINARY_DIR = /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/grp9/cppWork/CMakeFiles /home/grp9/cppWork/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/CMakeFiles /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/grp9/cppWork/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,6 +123,32 @@ max_min_loc_example.out/fast:
 	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/build
 .PHONY : max_min_loc_example.out/fast
 
+#=============================================================================
+# Target rules for targets named uKal
+
+# Build rule for target.
+uKal: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 uKal
+.PHONY : uKal
+
+# fast build rule for target.
+uKal/fast:
+	$(MAKE) -f uKal/CMakeFiles/uKal.dir/build.make uKal/CMakeFiles/uKal.dir/build
+.PHONY : uKal/fast
+
+#=============================================================================
+# Target rules for targets named uLAPack
+
+# Build rule for target.
+uLAPack: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 uLAPack
+.PHONY : uLAPack
+
+# fast build rule for target.
+uLAPack/fast:
+	$(MAKE) -f uKal/src/uLAPack/CMakeFiles/uLAPack.dir/build.make uKal/src/uLAPack/CMakeFiles/uLAPack.dir/build
+.PHONY : uLAPack/fast
+
 src/camera.o: src/camera.cpp.o
 
 .PHONY : src/camera.o
@@ -149,6 +175,33 @@ src/camera.s: src/camera.cpp.s
 src/camera.cpp.s:
 	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/camera.cpp.s
 .PHONY : src/camera.cpp.s
+
+src/kalFilter.o: src/kalFilter.cpp.o
+
+.PHONY : src/kalFilter.o
+
+# target to build an object file
+src/kalFilter.cpp.o:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/kalFilter.cpp.o
+.PHONY : src/kalFilter.cpp.o
+
+src/kalFilter.i: src/kalFilter.cpp.i
+
+.PHONY : src/kalFilter.i
+
+# target to preprocess a source file
+src/kalFilter.cpp.i:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/kalFilter.cpp.i
+.PHONY : src/kalFilter.cpp.i
+
+src/kalFilter.s: src/kalFilter.cpp.s
+
+.PHONY : src/kalFilter.s
+
+# target to generate assembly for a file
+src/kalFilter.cpp.s:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/kalFilter.cpp.s
+.PHONY : src/kalFilter.cpp.s
 
 src/locator.o: src/locator.cpp.o
 
@@ -240,9 +293,14 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... max_min_loc_example.out"
 	@echo "... edit_cache"
+	@echo "... uKal"
+	@echo "... uLAPack"
 	@echo "... src/camera.o"
 	@echo "... src/camera.i"
 	@echo "... src/camera.s"
+	@echo "... src/kalFilter.o"
+	@echo "... src/kalFilter.i"
+	@echo "... src/kalFilter.s"
 	@echo "... src/locator.o"
 	@echo "... src/locator.i"
 	@echo "... src/locator.s"

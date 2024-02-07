@@ -1,8 +1,31 @@
 #include "kalFilter.h"
-#include <math.h>
-#include "camera.h"
 
-using namespace cv;
+
+Filter_t kFilter;
+
+const Index_t n_states = 4;
+const Index_t n_measurements = 2;
+const MatrixEntry_t dt = SAMPLE_RATE;
+const MatrixEntry_t stdx = 0.25;      //change this
+const MatrixEntry_t stdy = stdx;        //change this
+
+const MatrixEntry_t varx = (stdx*stdx) / 3;
+const MatrixEntry_t vary = varx;
+const MatrixEntry_t varv = 2*sqrt(2)*(varx / (dt * dt));
+const MatrixEntry_t vartheta = sqrt(11);
+
+
+Matrix_t y; 
+Matrix_t x;
+Matrix_t Phi;
+Matrix_t gam;
+Matrix_t Q;
+Matrix_t P;
+Matrix_t R;
+Matrix_t H;
+Matrix_t fx;
+Matrix_t hx;
+
 
 
 static void get_phi(Matrix_t * const Phi, 
@@ -42,8 +65,8 @@ MatrixError_t init_Matrices(){
     ulapack_init(&y, n_measurements, 1);
     ulapack_init(&x, n_states, 1);
     ulapack_init(&Phi, n_states, n_states);
-    ulapack_init(&gamma, n_states, n_measurements);
-    ulapack_init(&Q, gamma.n_cols, gamma.n_cols);
+    ulapack_init(&gam, n_states, n_measurements);
+    ulapack_init(&Q, gam.n_cols, gam.n_cols);
     ulapack_init(&P, n_states, n_states);
     ulapack_init(&R, n_measurements, n_measurements);
     ulapack_init(&H, n_measurements, n_states);
@@ -66,9 +89,9 @@ MatrixError_t setup(Matrix_t y1){
 
     get_phi(&Phi, &x, dt);
 
-    ulapack_set(&gamma, 0.0);
-    ulapack_edit_entry(&gamma, 2, 0, 1.0);
-    ulapack_edit_entry(&gamma, 3, 1, 1.0);
+    ulapack_set(&gam, 0.0);
+    ulapack_edit_entry(&gam, 2, 0, 1.0);
+    ulapack_edit_entry(&gam, 3, 1, 1.0);
     
     ulapack_set(&Q, 0.0);
     ulapack_edit_entry(&Q, 0, 0, 5*5*dt);
@@ -104,7 +127,7 @@ MatrixError_t setup(Matrix_t y1){
 MatrixError_t set_filter(){
     ukal_filter_create(&kFilter, ekf,            
                    n_states, n_measurements, 
-                   &Phi, &gamma, &x, &Q,     
+                   &Phi, &gam, &x, &Q,     
                    &P,                       
                    &H, &R);
     return ulapack_success;
@@ -117,34 +140,97 @@ MatrixError_t put_data (Matrix_t *y, float x_coord, float y_coord){
     
 }
 
-void visualize(Matrix_t x, Mat background){
+void visualize(Matrix_t x, Mat &background){
     float x_coord = x.entry[0][0];
     float y_coord = x.entry[1][0];
     float v = x.entry[2][0];
     float theta = x.entry[3][0];
-    float x_end = x_coord + v * cos(theta);
-    float y_end = y_coord + v * sin(theta);
-    cv::Point center = cv::Point(x_coord, y_coord);
-    cv::Point to_dot = cv::Point(x_end, y_end);
-
-    cv::line(background, center, to_dot, cv::Scalar(0, 0, 255), 2, 8, 0);
+    float x_end = x_coord + v * cos(theta) * dt;
+    float y_end = y_coord + v * sin(theta) * dt;
+    cv::Point center = cv::Point(y_coord, x_coord);
+    cv::Point to_dot = cv::Point(y_end, x_end);
+    std::cout<<"from: "<<center.x<<", "<<center.y<< " to " <<to_dot.x<<", "<<to_dot.y<<std::endl;
+    // cv::line(background, center, to_dot, cv::Scalar(0, 0, 255), 2, 8, 0);
+    cv::circle(background, center, 2, cv::Scalar(0, 0, 255), 2, 8, 0);
 
 }
 
-void test_filter(){
-    Mat backgrounhd = Mat::zeros(CAPTURE_WIDTH, CAPTURE_HEIGHT, CV_8UC3);
+void test_filter(std::string path=""){
+    Mat backgrounhd = Mat::zeros(CAPTURE_HEIGHT, CAPTURE_WIDTH * 2, CV_8UC3);
     Matrix_t y1;
+
+    const MatrixEntry_t sample_data[10][2]={ {2.1,2.204},
+                                                {2.91,2.84},
+                                                {3.1,3.204},
+                                                {3.91,3.84},
+                                                {4.1,4.204},
+                                                {4.91,4.84},
+                                                {5.1,5.204},
+                                                {5.91,5.84},
+                                                {6.1,6.204},
+                                                {6.91,6.84},
+                                                };
+
+    vector<pair<float, float>> data;
+    if(path.length() > 0){
+        if(read_sim_data(path, data) == false){
+            std::cout<<"Error reading file"<<std::endl;
+        }
+    }
+    else{
+        for(int i = 0;i < 10;i++){
+            data.push_back(std::make_pair(sample_data[i][0], sample_data[i][1]));
+        }
+    }
+    int n = data.size();
+    for_each(data.begin(), data.end(), [](std::pair<float, float> p){
+        std::cout<<p.first<<", "<<p.second<<std::endl;
+    });
+    std::cout<<"Data size: "<<n<<std::endl; 
+    
+
+
     init_Matrices();
-    put_data(&y1, 0, 0);
-    put_data(&y, 1, 0);
     ulapack_init(&y1, n_measurements, 1);
+    put_data(&y1, data[0].first, data[0].second);
+    put_data(&y, data[1].first, data[1].second);
+    setup(y1);  
     set_filter();
-    for(;;){
+
+    for(int i = 2;i < data.size();i++){
         get_fx(&fx, &kFilter.x, dt);
         ukal_set_fx(&kFilter, &fx);
         get_phi(&Phi, &kFilter.x, dt);
         ukal_set_phi(&kFilter, &Phi);
-        ukal_predict(&kFilter);
+        ukal_model_predict(&kFilter);
+        put_data(&y, data[i].first, data[i].second);
+        get_hx(&hx, &kFilter.x);
+        ukal_set_hx(&kFilter, &hx);
+        ukal_update(&kFilter, &y);
+        visualize(kFilter.x, backgrounhd);
     }
+    cv::imshow("Trajectory", backgrounhd);
+    while(true){
+        if(cv::waitKey(10) == 27) break;
+    }
+    cv::destroyAllWindows();
+}
 
+bool read_sim_data(string path, vector<pair<float, float>> &data){
+    // std::ifstream file(path);
+    // std::ifstream file = std::ifstream(path);
+    // if(!file.is_open()) return false;
+
+    // file.close();
+    // return true;
+    
+    FILE *file = fopen(path.c_str(), "r");
+    if(file == NULL) return false;
+    data.clear();
+    float x, y;
+    while(fscanf(file, " [%f %f]\n", &x, &y) != EOF){
+        data.push_back(std::make_pair(x, y));
+    }
+    fclose(file);
+    return true;
 }

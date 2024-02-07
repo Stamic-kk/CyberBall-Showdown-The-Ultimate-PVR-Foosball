@@ -1,7 +1,8 @@
-#include "../include/predictor.h"
-#include "../include/locator.h"
-#include <camera.h>
-int main(int argc, char**argv){
+#include "predictor.h"
+#include "locator.h"
+#include "camera.h"
+#include "kalFilter.h"
+int main(){
     // char * first_loc_image = argv[1];
     // char * second_loc_image = argv[2];
     // cv::Mat imTosolve = cv::imread(first_loc_image, cv::IMREAD_GRAYSCALE);
@@ -28,5 +29,19 @@ int main(int argc, char**argv){
     // cv::line(imTosolve, pt3, pt4, cv::Scalar(0, 0, 255), 20);
     // cv::imwrite("../outputs/traj.jpg", imTosolve);
     // return 0;
-    return camera_test();
+
+    // camera_test();
+    std::string path = "../inputs/traj.txt";
+
+    test_filter(path);  
+    // std::vector<std::pair<float, float>> data;
+    // if(read_sim_data(path, data) == false){
+    //     std::cout<<"Error reading file"<<std::endl;
+    // }
+    //verify
+    // for_each(data.begin(), data.end(), [](std::pair<float, float> p){
+    //     std::cout<<p.first<<", "<<p.second<<std::endl;
+    // });
+    
+    return 0;
 }

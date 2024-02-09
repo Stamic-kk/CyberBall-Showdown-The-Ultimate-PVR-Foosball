@@ -56,7 +56,13 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "thread": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "ulapack.h": "c",
+        "opencv.hpp": "c",
+        "opencvinterop.hpp": "c",
+        "camera.h": "c",
+        "kalfilter.h": "c",
+        "locator.h": "c"
     },
     "cmake.sourceDirectory": "/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution"
 }

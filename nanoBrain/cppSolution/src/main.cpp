@@ -42,6 +42,6 @@ int main(){
     // for_each(data.begin(), data.end(), [](std::pair<float, float> p){
     //     std::cout<<p.first<<", "<<p.second<<std::endl;
     // });
-    
+    // test_locator("../inputs");  
     return 0;
 }

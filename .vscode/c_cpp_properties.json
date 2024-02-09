@@ -6,8 +6,12 @@
                 "${workspaceFolder}/**",
                 "/usr/include/opencv4"
             ],
-            "defines": [],
-            "compilerPath": "/usr/bin/gcc",
+            "defines": [
+                "ULAPACK_USE_STATIC_ALLOC",
+                "UKAL_MAX_STATE_VECTOR_SIZE=10",
+                "DUKAL_MAX_MEASUREMENT_VECTOR_SIZE=5"
+            ],
+            "compilerPath": "/usr/bin/g++",
             "cStandard": "c11",
             "cppStandard": "gnu++14",
             "intelliSenseMode": "linux-gcc-arm64"

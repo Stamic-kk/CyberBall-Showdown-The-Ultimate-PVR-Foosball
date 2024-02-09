@@ -1,11 +1,15 @@
 #include "../include/locator.h"
 
+#define SAVE
+
 int tmep_index = 0;
+std::string name;
 
 vector<string> getAllFiles(string path){
     vector<string> files;
     for(const auto & entry : fs::directory_iterator(path)){
-        files.push_back(entry.path());
+        if(entry.path().extension() == ".png" || entry.path().extension() == ".jpg")
+            files.push_back(entry.path());
     }
     for(string file : files){
         std::cout<<file<<std::endl;
@@ -72,12 +76,14 @@ pair<int, int> getLocation (cv::Mat cvImage){
     unsigned char min_value = min_row[min_j];
     unsigned char max_value = max_row[max_j];
     std::cout << "min: " << (int)min_value << " at (" << min_i << ", " << min_j << ")" << std::endl;
-    
-    // cv:: Mat outCvImage;
-    // vpiImageDataExportOpenCVMat(inputImageData, &outCvImage);
-    // cv::circle(outCvImage, cv::Point(min_j, min_i), 5, cv::Scalar(0, 0, 255), 20);
-    // bool succ = cv::imwrite("../outputs/"+ std::to_string(tmep_index++), outCvImage);
+    #ifdef SAVE
+    cv:: Mat outCvImage;
+    vpiImageDataExportOpenCVMat(inputImageData, &outCvImage);
+    cv::circle(outCvImage, cv::Point(min_j, min_i), 2, cv::Scalar(0, 0, 255), 20);
+    // bool succ = cv::imwrite("../outputs/"+ std::to_string(tmep_index++) + ".png", outCvImage);
+    bool succ = cv::imwrite("../outputs/"+ name, outCvImage);
     // std::cout<<succ<<std::endl;
+    #endif
     vpiArrayUnlock(maxCoords);
     vpiArrayUnlock(minCoords);
     vpiImageUnlock(input);
@@ -87,4 +93,16 @@ pair<int, int> getLocation (cv::Mat cvImage){
     vpiArrayDestroy(minCoords);
     vpiArrayDestroy(maxCoords);
     return std::make_pair(min_i, min_j);
+}
+
+void test_locator(string path){
+    vector<string> files = getAllFiles(path);
+    for(string file : files){
+        cv::Mat cvImage = cv::imread(file);
+        name = file.substr(file.find_last_of("/\\") + 1);
+        std::cout<<name<<std::endl;
+        cv::absdiff(cvImage, cv::Scalar(TARGET_B, TARGET_G, TARGET_R), cvImage);
+        pair<int, int> location = getLocation(cvImage);
+        std::cout<<"Location: "<<location.first<<", "<<location.second<<std::endl;
+    }
 }

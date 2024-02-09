@@ -38,7 +38,11 @@ void TIM2_IRQHandler(){
     }
 
     //send data to led ( just for testing)
-    spi_cmd(0x02);
-    spi_data(values[0]);
+//    spi_cmd(0xff0f);
+    uint16_t i;
+    for (i=0; i<5; i++){
+//    	printf("data number: %d\n", i);
+    	SPI1->DR = 0x000 | (uint16_t)i;
+    }
 
 }

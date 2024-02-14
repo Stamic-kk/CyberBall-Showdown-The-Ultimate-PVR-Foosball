@@ -8,6 +8,7 @@ find_package(OpenCV REQUIRED)
 file(GLOB source "src/*.cpp")
 
 add_executable(${PROJECT_NAME}.out ${source})
+set_property(TARGET ${PROJECT_NAME}.out PROPERTY CXX_STANDARD 17)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include ${CMAKE_CURRENT_SOURCE_DIR}/uKal/src/ ${CMAKE_CURRENT_SOURCE_DIR}/uKal/src/uLAPack/src)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/uKal)
 # # add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/uKal ${CMAKE_CURRENT_SOURCE_DIR}/uKal/src/uLAPack)

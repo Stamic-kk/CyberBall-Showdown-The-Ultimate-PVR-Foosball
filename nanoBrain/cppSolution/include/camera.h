@@ -16,6 +16,10 @@
 #define CAPTURE_WIDTH 320   
 #define CAPTURE_HEIGHT 240
 
-int camera_test();
 
+
+
+int camera_test();
+cv::VideoCapture get_camera();
+bool get_image(cv::VideoCapture cap, cv::Mat &img);
 #endif

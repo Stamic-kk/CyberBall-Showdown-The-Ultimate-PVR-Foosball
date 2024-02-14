@@ -1,6 +1,6 @@
 #include "../include/locator.h"
 
-#define SAVE
+// #define SAVE
 
 int tmep_index = 0;
 std::string name;
@@ -105,4 +105,8 @@ void test_locator(string path){
         pair<int, int> location = getLocation(cvImage);
         std::cout<<"Location: "<<location.first<<", "<<location.second<<std::endl;
     }
+}
+
+void draw_detected(cv::Mat &img, std::pair<int, int> location){
+    cv::circle(img, cv::Point(location.second, location.first), 2, cv::Scalar(0, 0, 255), 3);
 }

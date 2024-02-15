@@ -25,6 +25,12 @@
 #include <vector>
 #include <experimental/filesystem>
 
+#define TARGET_B 30
+#define TARGET_G 255
+#define TARGET_R 255
+#define TARGET_GREY (TARGET_B + TARGET_G + TARGET_R) / 3    
+
+
 namespace fs = std::experimental::filesystem;
 using std::string;
 using std::vector;
@@ -32,5 +38,6 @@ using std::pair;
 
 vector<string> getAllFiles(string path);
 pair<int, int> getLocation (cv::Mat cvImage);
-
+void test_locator(string path);
+void draw_detected(cv::Mat &img, std::pair<int, int> location);
 #endif

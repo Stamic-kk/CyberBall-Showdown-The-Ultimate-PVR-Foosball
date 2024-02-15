@@ -2,6 +2,7 @@
 #include "locator.h"
 #include "camera.h"
 #include "kalFilter.h"
+#include <unistd.h>
 int main(){
     // char * first_loc_image = argv[1];
     // char * second_loc_image = argv[2];
@@ -31,9 +32,9 @@ int main(){
     // return 0;
 
     // camera_test();
-    std::string path = "../inputs/traj.txt";
+    // std::string path = "../inputs/traj.txt";
 
-    test_filter(path);  
+    // test_filter(path);  
     // std::vector<std::pair<float, float>> data;
     // if(read_sim_data(path, data) == false){
     //     std::cout<<"Error reading file"<<std::endl;
@@ -42,6 +43,61 @@ int main(){
     // for_each(data.begin(), data.end(), [](std::pair<float, float> p){
     //     std::cout<<p.first<<", "<<p.second<<std::endl;
     // });
+    // test_locator("../inputs");  
+    // cv::namedWindow("Table Capture", cv::WINDOW_AUTOSIZE);
+    cv::VideoCapture cap = get_camera();
+    if(!cap.isOpened()) throw std::runtime_error("Failed to open camera");
+    cv::Mat img;
+    cv::Mat copy;
+    while (/* condition */true)
+    {
+        /* code */
+        // if (!cap.read(img)) {
+		// std::cout<<"Capture read error"<<std::endl;
+		// break;
+	    // }
+        if(get_image(cap, img) == false){
+            std::cout<<"Capture read error"<<std::endl;
+            break;
+        }
+        // cv::copyTo(img, copy, cv::noArray());
+        cv::absdiff(img, cv::Scalar(TARGET_B, TARGET_G, TARGET_R), copy);
+        draw_detected(copy, getLocation(copy));
+        cv::imshow("camera",copy);
+        int keycode = cv::waitKey(10) & 0xff ; 
+            if (keycode == 27) break;
+    }
     
+    // cv::Mat img;
+    // while (true)
+    // {
+    //     /* code */
+    //     // get_image(cap, img);
+    //     if (!cap.read(img)) {
+	// 	std::cout<<"Capture read error"<<std::endl;
+	// 	break;
+	//     }
+    //     // std::pair<int, int> location = getLocation(img);
+    //     // draw_detected(img, location);
+    //     cv::imshow("Table Capture",img);
+    //     // sleep(1);
+    // }
+    cap.release();
+    cv::destroyAllWindows();
+
+
+    //  sleep(10);
+    // if(cap.read(img)){
+       
+    //     std::cout<<"Read image"<<std::endl;
+    //     cv::namedWindow("TRY Camera", cv::WINDOW_AUTOSIZE);
+    //     while(true)
+    //         cv::imshow("USB Camera", img);
+    // }
+    // else{
+    //     std::cout<<"Failed to read image"<<std::endl;
+    // }
+    // cap.release();
+    // cv::destroyAllWindows();
     return 0;
 }

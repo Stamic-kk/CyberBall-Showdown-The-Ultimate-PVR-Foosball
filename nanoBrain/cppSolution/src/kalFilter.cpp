@@ -157,6 +157,7 @@ void visualize(Matrix_t x, Mat &background){
 
 void test_filter(std::string path=""){
     Mat backgrounhd = Mat::zeros(CAPTURE_HEIGHT, CAPTURE_WIDTH * 2, CV_8UC3);
+    
     Matrix_t y1;
 
     const MatrixEntry_t sample_data[10][2]={ {2.1,2.204},

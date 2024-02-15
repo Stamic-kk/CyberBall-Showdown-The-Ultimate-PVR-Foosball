@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution
+CMAKE_SOURCE_DIR = /home/grp9/cppWork
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution
+CMAKE_BINARY_DIR = /home/grp9/cppWork
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/CMakeFiles /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/grp9/cppWork/CMakeFiles /home/grp9/cppWork/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/grp9/cppWork/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

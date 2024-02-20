@@ -64,5 +64,5 @@
         "kalfilter.h": "c",
         "locator.h": "c"
     },
-    "cmake.sourceDirectory": "/home/grp9/Documents/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution"
+    "cmake.sourceDirectory": "/home/grp9/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution"
 }

@@ -63,7 +63,7 @@ int main(){
         // cv::copyTo(img, copy, cv::noArray());
         cv::absdiff(img, cv::Scalar(TARGET_B, TARGET_G, TARGET_R), copy);
         draw_detected(copy, getLocation(copy));
-        cv::imshow("camera",copy);
+        //cv::imshow("camera",copy);
         int keycode = cv::waitKey(10) & 0xff ; 
             if (keycode == 27) break;
     }

@@ -1,5 +1,7 @@
 #include "usart.h"
 
+char data;
+
 void init_usart5() {
     RCC->AHBENR |= RCC_AHBENR_GPIOCEN|RCC_AHBENR_GPIODEN;
     GPIOC->MODER |= GPIO_MODER_MODER12_1;
@@ -19,8 +21,50 @@ void init_usart5() {
 
 
 void init_usart3(){
-
+	RCC->AHBENR |= RCC_AHBENR_GPIOCEN;
+	GPIOC->MODER |= GPIO_MODER_MODER10_1| GPIO_MODER_MODER11_1;
+	GPIOC->AFR[1] &= ~GPIO_AFRH_AFR10;
+	GPIOC->AFR[1] &= ~GPIO_AFRH_AFR11;
+	GPIOC->AFR[1] |= (0x1 << (4*3)) | (0x1 << (4*4));		//AF1 for PC10&11
+	RCC->APB1ENR |= RCC_APB1ENR_USART3EN;
+    USART3->CR1 &= ~(USART_CR1_UE);
+    USART3->CR1 &= ~(USART_CR1_M|(USART_CR1_M<<16)|USART_CR1_PCE|USART_CR1_OVER8);
+    USART3->CR1 &= ~(USART_CR2_STOP);
+    USART3->BRR =0x1A1;
+    USART3->CR1 |= USART_CR1_TE|USART_CR1_RE;
+    USART3->CR1 |= USART_CR1_UE;
+    while(!(USART3->ISR & USART_ISR_TEACK)){};
+    while(!(USART3->ISR & USART_ISR_REACK)){};
 }
+
+
+char usart_get(USART_TypeDef * u){
+	 while (!(u->ISR & USART_ISR_RXNE)) {}
+	 	 return u->TDR;
+}
+
+void setUpSampling(USART_TypeDef * u){
+	u->CR1 |= USART_CR1_RXNEIE;
+	//setup DMA if necessary
+	//maybe we do not have DMA on the board
+	NVIC -> ISER[0] |= 1<<USART3_8_IRQn;		//This enables interrupt for both 3 and 5
+}
+
+void USART3_4_5_6_7_8_IRQHandler(){
+	if(USART3->ISR & USART_ISR_RXNE ){
+		data = usart_get(USART3);
+		printf("%c", data);
+	}
+	else if (USART3->ISR & USART_ISR_ORE){
+		//if overrun, ignore
+		USART3->ICR |= USART_ICR_ORECF;
+	}
+	else{
+		// if USART5 interrupt enabled.
+		usart_get(USART5);
+	}
+}
+
 
 int __io_putchar(int c) {
     if(c == '\n')

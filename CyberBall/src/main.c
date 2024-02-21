@@ -30,17 +30,22 @@
 int main(void)
 {
     init_usart5();
-    setup_adc();
+    init_usart3();
+    setUpSampling(USART3);
+
+
+
+//    setup_adc();
     //init_spi1_for_stm32_stm32();
-    init_spi1_for_LCD();
-    spi1_init_oled();
-    spi1_display1("Ult foosball");
-
-    init_tim2();
-
-    setbuf(stdin,0);
-    setbuf(stdout,0);
-    setbuf(stderr,0);
+//    init_spi1_for_LCD();
+//    spi1_init_oled();
+//    spi1_display1("Ult foosball");
+//
+//    init_tim2();
+//
+//    setbuf(stdin,0);
+//    setbuf(stdout,0);
+//    setbuf(stderr,0);
 
 	for(;;);
 }

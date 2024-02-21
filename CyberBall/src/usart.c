@@ -18,6 +18,9 @@ void init_usart5() {
 }
 
 
+void init_usart3(){
+
+}
 
 int __io_putchar(int c) {
     if(c == '\n')

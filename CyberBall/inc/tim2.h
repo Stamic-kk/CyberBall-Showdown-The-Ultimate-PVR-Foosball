@@ -4,6 +4,7 @@
 #include "tty.h"
 #include "stm32f0xx.h"
 #include <stdio.h>
+#include "spi.h"
 
 
 int values[4];

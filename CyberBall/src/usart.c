@@ -13,10 +13,10 @@ void init_usart5() {
     USART5->CR1 &= ~(USART_CR1_M|(USART_CR1_M<<16)|USART_CR1_PCE|USART_CR1_OVER8);
     USART5->CR1 &= ~(USART_CR2_STOP);
     USART5->BRR =0x1A1;
-    USART5->CR1 |= USART_CR1_TE|USART_CR1_RE;
+    USART5->CR1 |= USART_CR1_TE;
     USART5->CR1 |= USART_CR1_UE;
     while(!(USART5->ISR & USART_ISR_TEACK)){};
-    while(!(USART5->ISR & USART_ISR_REACK)){};
+//    while(!(USART5->ISR & USART_ISR_REACK)){};
 }
 
 
@@ -25,22 +25,32 @@ void init_usart3(){
 	GPIOC->MODER |= GPIO_MODER_MODER10_1| GPIO_MODER_MODER11_1;
 	GPIOC->AFR[1] &= ~GPIO_AFRH_AFR10;
 	GPIOC->AFR[1] &= ~GPIO_AFRH_AFR11;
-	GPIOC->AFR[1] |= (0x1 << (4*3)) | (0x1 << (4*4));		//AF1 for PC10&11
+	GPIOC->AFR[1] |= (0x1 << (4*3)) | (0x1 << (4*2));		//AF1 for PC10&11
 	RCC->APB1ENR |= RCC_APB1ENR_USART3EN;
     USART3->CR1 &= ~(USART_CR1_UE);
     USART3->CR1 &= ~(USART_CR1_M|(USART_CR1_M<<16)|USART_CR1_PCE|USART_CR1_OVER8);
     USART3->CR1 &= ~(USART_CR2_STOP);
     USART3->BRR =0x1A1;
-    USART3->CR1 |= USART_CR1_TE|USART_CR1_RE;
+//    USART3->BRR = 65520;
+    USART3->CR1 |= USART_CR1_RE|USART_CR1_TE;
     USART3->CR1 |= USART_CR1_UE;
     while(!(USART3->ISR & USART_ISR_TEACK)){};
     while(!(USART3->ISR & USART_ISR_REACK)){};
+    USART3->RQR |= USART_RQR_RXFRQ;
 }
 
 
 char usart_get(USART_TypeDef * u){
-	 while (!(u->ISR & USART_ISR_RXNE)) {}
-	 	 return u->TDR;
+	//printf("asdasdasd");
+	 while (!(u->ISR & USART_ISR_RXNE)) {
+//		 printf("%ld\n", u->ISR);
+	 }
+	 	 return u->RDR;
+}
+
+void usart_send(USART_TypeDef * u, char c){
+	while(!(USART5->ISR & USART_ISR_TXE)){}
+	u->TDR = c;
 }
 
 void setUpSampling(USART_TypeDef * u){

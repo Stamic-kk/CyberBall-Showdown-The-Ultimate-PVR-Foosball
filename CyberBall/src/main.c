@@ -29,9 +29,30 @@
 
 int main(void)
 {
+
     init_usart5();
-    init_usart3();
+	init_usart3();
+    setbuf(stdin,0);
+    setbuf(stdout,0);
+    setbuf(stderr,0);
+    printf("a");
+    printf("b");
+    printf("c");
+//    while(!(USART5->ISR & USART_ISR_TXE)){}
+//    while(!(USART3->ISR & USART_ISR_TXE));
+//    USART3->TDR = 'R';
+//    printf("12345");
     setUpSampling(USART3);
+    while(1){
+    	while(!(USART5->ISR & USART_ISR_TXE)){}
+    	USART3->TDR = 'C';
+    	nano_wait(1000000);
+    }
+//    while (!((USART3->ISR & USART_ISR_RXNE) == USART_ISR_RXNE)){}
+//    char c = usart_get(USART3);
+//    printf("%c", c);
+//    asm("wfi");
+//    printf("asdasd");
 
 
 
@@ -43,9 +64,6 @@ int main(void)
 //
 //    init_tim2();
 //
-//    setbuf(stdin,0);
-//    setbuf(stdout,0);
-//    setbuf(stderr,0);
 
 	for(;;);
 }

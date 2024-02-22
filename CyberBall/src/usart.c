@@ -48,6 +48,11 @@ char usart_get(USART_TypeDef * u){
 	 	 return u->RDR;
 }
 
+void usart_send(USART_TypeDef * u, char c){
+	while(!(USART5->ISR & USART_ISR_TXE)){}
+	u->TDR = c;
+}
+
 void setUpSampling(USART_TypeDef * u){
 	u->CR1 |= USART_CR1_RXNEIE;
 	//setup DMA if necessary

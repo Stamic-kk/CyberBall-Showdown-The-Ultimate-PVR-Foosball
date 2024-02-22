@@ -8,5 +8,6 @@ void init_usart5();
 void init_usart3();
 char usart_get(USART_TypeDef * u);
 void setUpSampling(USART_TypeDef * u);
+void usart_send(USART_TypeDef * u, char c);
 extern char data;
 #endif

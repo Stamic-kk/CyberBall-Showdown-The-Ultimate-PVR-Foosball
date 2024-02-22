@@ -1,4 +1,4 @@
-22638115499719798
+22648366407980587
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -85763,6 +85763,48 @@ rotary encoder
 0
 7
 6
+Senior Design
+10idc
+
+
+0
+10
+10
+Senior Design
+Jetson Nano
+
+
+0
+40
+40
+Senior Design
+Sensor Port
+
+
+0
+12
+12
+Senior Design
+Serial_port
+
+
+0
+6
+6
+Senior Design
+User_Interface
+
+
+0
+8
+8
+Senior Design
+goal sensor
+
+
+0
+2
+2
 Sensor
 ASAIR_AM2302_P2.54mm_Lead2.75mm_TabDown
 Temperature and humidity module, http://akizukidenshi.com/download/ds/aosong/AM2302.pdf

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/grp9/cppWork
+CMAKE_SOURCE_DIR = /home/grp9/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/grp9/cppWork
+CMAKE_BINARY_DIR = /home/grp9/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/grp9/cppWork/CMakeFiles /home/grp9/cppWork/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/grp9/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/CMakeFiles /home/grp9/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/grp9/cppWork/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/grp9/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -284,6 +284,33 @@ src/predictor.cpp.s:
 	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/predictor.cpp.s
 .PHONY : src/predictor.cpp.s
 
+src/uart.o: src/uart.cpp.o
+
+.PHONY : src/uart.o
+
+# target to build an object file
+src/uart.cpp.o:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/uart.cpp.o
+.PHONY : src/uart.cpp.o
+
+src/uart.i: src/uart.cpp.i
+
+.PHONY : src/uart.i
+
+# target to preprocess a source file
+src/uart.cpp.i:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/uart.cpp.i
+.PHONY : src/uart.cpp.i
+
+src/uart.s: src/uart.cpp.s
+
+.PHONY : src/uart.s
+
+# target to generate assembly for a file
+src/uart.cpp.s:
+	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/uart.cpp.s
+.PHONY : src/uart.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -310,6 +337,9 @@ help:
 	@echo "... src/predictor.o"
 	@echo "... src/predictor.i"
 	@echo "... src/predictor.s"
+	@echo "... src/uart.o"
+	@echo "... src/uart.i"
+	@echo "... src/uart.s"
 .PHONY : help
 
 

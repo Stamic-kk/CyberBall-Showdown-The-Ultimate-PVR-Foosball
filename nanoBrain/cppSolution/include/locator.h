@@ -29,7 +29,8 @@
 #define TARGET_G 255
 #define TARGET_R 255
 #define TARGET_GREY (TARGET_B + TARGET_G + TARGET_R) / 3    
-
+typedef unsigned char Pixel;
+typedef unsigned char Byte;
 
 namespace fs = std::experimental::filesystem;
 using std::string;
@@ -40,4 +41,6 @@ vector<string> getAllFiles(string path);
 pair<int, int> getLocation (cv::Mat cvImage);
 void test_locator(string path);
 void draw_detected(cv::Mat &img, std::pair<int, int> location);
+void setUpVpi();
+void tearDownVpi();
 #endif

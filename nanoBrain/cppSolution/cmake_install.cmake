@@ -1,4 +1,4 @@
-# Install script for directory: /home/grp9/cppWork
+# Install script for directory: /home/grp9/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/grp9/cppWork/uKal/cmake_install.cmake")
+  include("/home/grp9/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/uKal/cmake_install.cmake")
 
 endif()
 
@@ -51,5 +51,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/grp9/cppWork/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/grp9/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

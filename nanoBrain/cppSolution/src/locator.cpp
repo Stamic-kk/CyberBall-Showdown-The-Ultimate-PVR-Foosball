@@ -1,9 +1,24 @@
 #include "../include/locator.h"
-
+#include <camera.h>
 // #define SAVE
 
 int tmep_index = 0;
 std::string name;
+VPIStream stream;
+VPIPayload payload;
+VPIImageFormat format;
+
+void setUpVpi(){
+    vpiStreamCreate(0, &stream);
+    // vpiCreateMinMaxLoc(VPI_BACKEND_CPU, CAPTURE_WIDTH, CAPTURE_HEIGHT, VPI_IMAGE_FORMAT_U8, &payload);
+}
+
+void tearDownVpi(){
+    vpiStreamDestroy(stream);
+    // vpiPayloadDestroy(payload);
+}
+
+
 
 vector<string> getAllFiles(string path){
     vector<string> files;
@@ -21,8 +36,6 @@ pair<int, int> getLocation (cv::Mat cvImage){
     time_t start, end;
     VPIImage inputBGR = NULL;
     VPIImage input = NULL;
-    VPIStream stream;
-    vpiStreamCreate(0, &stream);
     start = clock();
     vpiImageCreateOpenCVMatWrapper(cvImage, 0, &inputBGR);
     vpiImageCreate(cvImage.cols, cvImage.rows, VPI_IMAGE_FORMAT_U8, 0, &input);
@@ -36,10 +49,10 @@ pair<int, int> getLocation (cv::Mat cvImage){
     VPIPayload payload;
     vpiCreateMinMaxLoc(VPI_BACKEND_CPU, width, height, format, &payload);
     VPIArray minCoords;
-    vpiArrayCreate(10000, VPI_ARRAY_TYPE_KEYPOINT, 0, &minCoords);
+    vpiArrayCreate(20, VPI_ARRAY_TYPE_KEYPOINT, 0, &minCoords);
  
     VPIArray maxCoords;
-    vpiArrayCreate(10000, VPI_ARRAY_TYPE_KEYPOINT, 0, &maxCoords);
+    vpiArrayCreate(20, VPI_ARRAY_TYPE_KEYPOINT, 0, &maxCoords);
 
     vpiSubmitMinMaxLoc(stream, VPI_BACKEND_CPU, payload, input, minCoords, maxCoords);
     vpiStreamSync(stream);
@@ -47,35 +60,28 @@ pair<int, int> getLocation (cv::Mat cvImage){
     vpiImageLock(input, VPI_LOCK_READ, &inputImageData);
     VPIArrayData minCoordsData, maxCoordsData;
     vpiArrayLock(minCoords, VPI_LOCK_READ, &minCoordsData);
-    vpiArrayLock(maxCoords, VPI_LOCK_READ, &maxCoordsData);
     VPIKeypoint *min_coords = (VPIKeypoint *)minCoordsData.data;
-    VPIKeypoint *max_coords = (VPIKeypoint *)maxCoordsData.data; 
- 
+    vpiImageUnlock(input);
     int min_i = min_coords[0].y;
     int min_j = min_coords[0].x;
  
-    int max_i = max_coords[0].y;
-    int max_j = max_coords[0].x;
-
     end = clock();
     std::cout << "Time taken by program is : " << double(end - start) / double(CLOCKS_PER_SEC) << " seconds" << std::endl;
+    start = clock();
     // Assuming that the input image is grayscale (only one plane).
         assert(inputImageData.numPlanes == 1);
  
-    void *imgData     = inputImageData.planes[0].data;
-    int imgPitchBytes = inputImageData.planes[0].pitchBytes;
+    // void *imgData     = inputImageData.planes[0].data;
+    // int imgPitchBytes = inputImageData.planes[0].pitchBytes;
  
     // Assuming that the plane has 8-bit unsigned int type.
     assert(inputImageData.planes[0].pixelType == VPI_PIXEL_TYPE_U8);
-    typedef unsigned char Pixel;
-    typedef unsigned char Byte;
+
  
-    const Pixel *min_row = (const Pixel *)((const Byte *)imgData + min_i * imgPitchBytes);
-    const Pixel *max_row = (const Pixel *)((const Byte *)imgData + max_i * imgPitchBytes);
+    // const Pixel *min_row = (const Pixel *)((const Byte *)imgData + min_i * imgPitchBytes);
  
-    unsigned char min_value = min_row[min_j];
-    unsigned char max_value = max_row[max_j];
-    std::cout << "min: " << (int)min_value << " at (" << min_i << ", " << min_j << ")" << std::endl;
+    // unsigned char min_value = min_row[min_j];
+    // std::cout << "min: " << (int)min_value << " at (" << min_i << ", " << min_j << ")" << std::endl;
     #ifdef SAVE
     cv:: Mat outCvImage;
     vpiImageDataExportOpenCVMat(inputImageData, &outCvImage);
@@ -84,14 +90,15 @@ pair<int, int> getLocation (cv::Mat cvImage){
     bool succ = cv::imwrite("../outputs/"+ name, outCvImage);
     // std::cout<<succ<<std::endl;
     #endif
+
     vpiArrayUnlock(maxCoords);
     vpiArrayUnlock(minCoords);
-    vpiImageUnlock(input);
-    vpiStreamDestroy(stream);
     vpiPayloadDestroy(payload);
-    vpiImageDestroy(input);
     vpiArrayDestroy(minCoords);
     vpiArrayDestroy(maxCoords);
+    vpiImageDestroy(input);
+    vpiImageDestroy(inputBGR);
+    std::cout << "Time taken by cleaning up is : " << double(clock() - start) / double(CLOCKS_PER_SEC) << " seconds" << std::endl;
     return std::make_pair(min_i, min_j);
 }
 

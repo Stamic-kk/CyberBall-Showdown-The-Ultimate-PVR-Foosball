@@ -1,72 +1,72 @@
-/**
-  ******************************************************************************
-  * @file    main.c
-  * @author  Ac6
-  * @version V1.0
-  * @date    01-December-2013
-  * @brief   Default main function.
-  ******************************************************************************
-*/
-
-#include "stm32f0xx.h"
-#include "usart.h"
-#include <stdint.h>
-#include "adc.h"
-#include "tim2.h"
-#include "spi.h"
-
-
-#include "fifo.h"
-#include "tty.h"
-#include <stdio.h>
-#include <string.h> // for memmove()
-#include <stdlib.h>
-// PD2 use for USART RX
-// PC12 use for USART TX
-
-
-
-
-int main(void)
-{
-
-    init_usart5();
-	init_usart3();
-    setbuf(stdin,0);
-    setbuf(stdout,0);
-    setbuf(stderr,0);
-    printf("a");
-    printf("b");
-    printf("c");
-//    while(!(USART5->ISR & USART_ISR_TXE)){}
-//    while(!(USART3->ISR & USART_ISR_TXE));
-//    USART3->TDR = 'R';
-//    printf("12345");
-    setUpSampling(USART3);
-    while(1){
-    	while(!(USART5->ISR & USART_ISR_TXE)){}
-    	USART3->TDR = 'C';
-    	nano_wait(1000000);
-    }
-//    while (!((USART3->ISR & USART_ISR_RXNE) == USART_ISR_RXNE)){}
-//    char c = usart_get(USART3);
-//    printf("%c", c);
-//    asm("wfi");
-//    printf("asdasd");
-
-
-
-//    setup_adc();
-    //init_spi1_for_stm32_stm32();
-//    init_spi1_for_LCD();
-//    spi1_init_oled();
-//    spi1_display1("Ult foosball");
+///**
+//  ******************************************************************************
+//  * @file    main.c
+//  * @author  Ac6
+//  * @version V1.0
+//  * @date    01-December-2013
+//  * @brief   Default main function.
+//  ******************************************************************************
+//*/
 //
-//    init_tim2();
+//#include "stm32f0xx.h"
+//#include "usart.h"
+//#include <stdint.h>
+//#include "adc.h"
+//#include "tim2.h"
+//#include "spi.h"
 //
-
-	for(;;);
-}
+//
+//#include "fifo.h"
+//#include "tty.h"
+//#include <stdio.h>
+//#include <string.h> // for memmove()
+//#include <stdlib.h>
+//// PD2 use for USART RX
+//// PC12 use for USART TX
+//
+//
+//
+//
+//int main(void)
+//{
+//
+//    init_usart5();
+//	init_usart3();
+//    setbuf(stdin,0);
+//    setbuf(stdout,0);
+//    setbuf(stderr,0);
+//    printf("a");
+//    printf("b");
+//    printf("c");
+////    while(!(USART5->ISR & USART_ISR_TXE)){}
+////    while(!(USART3->ISR & USART_ISR_TXE));
+////    USART3->TDR = 'R';
+////    printf("12345");
+//    setUpSampling(USART3);
+//    while(1){
+//    	while(!(USART5->ISR & USART_ISR_TXE)){}
+//    	USART3->TDR = 'C';
+//    	nano_wait(1000000);
+//    }
+////    while (!((USART3->ISR & USART_ISR_RXNE) == USART_ISR_RXNE)){}
+////    char c = usart_get(USART3);
+////    printf("%c", c);
+////    asm("wfi");
+////    printf("asdasd");
+//
+//
+//
+////    setup_adc();
+//    //init_spi1_for_stm32_stm32();
+////    init_spi1_for_LCD();
+////    spi1_init_oled();
+////    spi1_display1("Ult foosball");
+////
+////    init_tim2();
+////
+//
+//	for(;;);
+//}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -150,4 +150,59 @@ int main(void)
 ////    	printf("Incremental Printout Test %d\n", i);
 ////    }
 //}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+/**
+  ******************************************************************************
+  * @file    main.c
+  * @author  Ac6
+  * @version V1.0
+  * @date    01-December-2013
+  * @brief   Default main function.
+  ******************************************************************************
+*/
+
+#include "stm32f0xx.h"
+#include "usart.h"
+#include <stdint.h>
+#include "adc.h"
+#include "tim2.h"
+#include "spi.h"
+#include "GPIO_INIT.h"
+#include "EXTI.h"
+
+
+#include "fifo.h"
+#include "tty.h"
+#include <stdio.h>
+#include <string.h> // for memmove()
+#include <stdlib.h>
+// PD2 use for USART RX
+// PC12 use for USART TX
+
+
+
+
+int main(void)
+{
+	init_usart5();
+	setbuf(stdin,0);
+	setbuf(stdout,0);
+	setbuf(stderr,0);
+	printf("a");
+	printf("b");
+	printf("c\n");
+//
+	init_GPIO_C();
+	init_GPIO_A();
+	init_GPIO_B();
+//
+	init_spi2_for_LCD();
+	spi2_init_oled();
+	spi2_display1("Hello!");
+//
+	init_exti();
+
+	for(;;);
+}
 

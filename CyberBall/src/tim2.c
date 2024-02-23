@@ -40,15 +40,15 @@ void TIM2_IRQHandler(){
     	// if detected, then print the number of goal
     	spi_cmd(0x01);        // clear the screen
     	nano_wait(2000000);   // wait for the screen to be cleaned
-    	spi1_display1("GOAL!!!");// display goal! to screen
+    	spi2_display1("GOAL!!!");// display goal! to screen
     	for (int i = 0; i < 500; i++){
     		nano_wait(2000000);
     	}
 
     	spi_cmd(0x01);
     	nano_wait(2000000);
-    	spi1_display1("Score: ");   //the next goal can only be detected after 4 secs. (dumb way to debounce)
-    	spi1_display2(str);
+    	spi2_display1("Score: ");   //the next goal can only be detected after 4 secs. (dumb way to debounce)
+    	spi2_display2(str);
     	for (int i = 0; i < 1000; i++){
     		nano_wait(2000000);
     	}

@@ -1,393 +1,1163 @@
-95382630835326
-Capacitor_Tantalum_SMD
-CP_EIA-1608-08_AVX-J
-Tantalum Capacitor SMD AVX-J (1608-08 Metric), IPC_7351 nominal, (Body size from: https://www.vishay.com/docs/48064/_t58_vmn_pt0471_1601.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+282751504488601
+MountingHole
+MountingHole_2.1mm
+Mounting Hole 2.1mm, no annular
+mounting hole 2.1mm no annular
+0
+0
+0
+MountingHole
+MountingHole_2.2mm_M2
+Mounting Hole 2.2mm, no annular, M2
+mounting hole 2.2mm no annular m2
+0
+0
+0
+MountingHole
+MountingHole_2.2mm_M2_DIN965
+Mounting Hole 2.2mm, no annular, M2, DIN965
+mounting hole 2.2mm no annular m2 din965
+0
+0
+0
+MountingHole
+MountingHole_2.2mm_M2_DIN965_Pad
+Mounting Hole 2.2mm, M2, DIN965
+mounting hole 2.2mm m2 din965
+0
+1
+1
+MountingHole
+MountingHole_2.2mm_M2_DIN965_Pad_TopBottom
+Mounting Hole 2.2mm, M2, DIN965
+mounting hole 2.2mm m2 din965
+0
+3
+1
+MountingHole
+MountingHole_2.2mm_M2_DIN965_Pad_TopOnly
+Mounting Hole 2.2mm, M2, DIN965
+mounting hole 2.2mm m2 din965
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-1608-08_AVX-J_Pad1.25x1.05mm_HandSolder
-Tantalum Capacitor SMD AVX-J (1608-08 Metric), IPC_7351 nominal, (Body size from: https://www.vishay.com/docs/48064/_t58_vmn_pt0471_1601.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_2.2mm_M2_ISO7380
+Mounting Hole 2.2mm, no annular, M2, ISO7380
+mounting hole 2.2mm no annular m2 iso7380
+0
+0
+0
+MountingHole
+MountingHole_2.2mm_M2_ISO7380_Pad
+Mounting Hole 2.2mm, M2, ISO7380
+mounting hole 2.2mm m2 iso7380
+0
+1
+1
+MountingHole
+MountingHole_2.2mm_M2_ISO7380_Pad_TopBottom
+Mounting Hole 2.2mm, M2, ISO7380
+mounting hole 2.2mm m2 iso7380
+0
+3
+1
+MountingHole
+MountingHole_2.2mm_M2_ISO7380_Pad_TopOnly
+Mounting Hole 2.2mm, M2, ISO7380
+mounting hole 2.2mm m2 iso7380
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-1608-10_AVX-L
-Tantalum Capacitor SMD AVX-L (1608-10 Metric), IPC_7351 nominal, (Body size from: https://www.vishay.com/docs/48064/_t58_vmn_pt0471_1601.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_2.2mm_M2_ISO14580
+Mounting Hole 2.2mm, no annular, M2, ISO14580
+mounting hole 2.2mm no annular m2 iso14580
+0
+0
+0
+MountingHole
+MountingHole_2.2mm_M2_ISO14580_Pad
+Mounting Hole 2.2mm, M2, ISO14580
+mounting hole 2.2mm m2 iso14580
+0
+1
+1
+MountingHole
+MountingHole_2.2mm_M2_ISO14580_Pad_TopBottom
+Mounting Hole 2.2mm, M2, ISO14580
+mounting hole 2.2mm m2 iso14580
+0
+3
+1
+MountingHole
+MountingHole_2.2mm_M2_ISO14580_Pad_TopOnly
+Mounting Hole 2.2mm, M2, ISO14580
+mounting hole 2.2mm m2 iso14580
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-1608-10_AVX-L_Pad1.25x1.05mm_HandSolder
-Tantalum Capacitor SMD AVX-L (1608-10 Metric), IPC_7351 nominal, (Body size from: https://www.vishay.com/docs/48064/_t58_vmn_pt0471_1601.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_2.2mm_M2_Pad
+Mounting Hole 2.2mm, M2
+mounting hole 2.2mm m2
+0
+1
+1
+MountingHole
+MountingHole_2.2mm_M2_Pad_TopBottom
+Mounting Hole 2.2mm, M2
+mounting hole 2.2mm m2
+0
+3
+1
+MountingHole
+MountingHole_2.2mm_M2_Pad_TopOnly
+Mounting Hole 2.2mm, M2
+mounting hole 2.2mm m2
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-2012-12_Kemet-R
-Tantalum Capacitor SMD Kemet-R (2012-12 Metric), IPC_7351 nominal, (Body size from: https://www.vishay.com/docs/40182/tmch.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_2.2mm_M2_Pad_Via
+Mounting Hole 2.2mm, M2
+mounting hole 2.2mm m2
+0
+9
+1
+MountingHole
+MountingHole_2.5mm
+Mounting Hole 2.5mm, no annular
+mounting hole 2.5mm no annular
+0
+0
+0
+MountingHole
+MountingHole_2.5mm_Pad
+Mounting Hole 2.5mm
+mounting hole 2.5mm
+0
+1
+1
+MountingHole
+MountingHole_2.5mm_Pad_TopBottom
+Mounting Hole 2.5mm
+mounting hole 2.5mm
+0
+3
+1
+MountingHole
+MountingHole_2.5mm_Pad_TopOnly
+Mounting Hole 2.5mm
+mounting hole 2.5mm
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-2012-12_Kemet-R_Pad1.30x1.05mm_HandSolder
-Tantalum Capacitor SMD Kemet-R (2012-12 Metric), IPC_7351 nominal, (Body size from: https://www.vishay.com/docs/40182/tmch.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_2.5mm_Pad_Via
+Mounting Hole 2.5mm
+mounting hole 2.5mm
+0
+9
+1
+MountingHole
+MountingHole_2.7mm
+Mounting Hole 2.7mm, no annular
+mounting hole 2.7mm no annular
+0
+0
+0
+MountingHole
+MountingHole_2.7mm_M2.5
+Mounting Hole 2.7mm, no annular, M2.5
+mounting hole 2.7mm no annular m2.5
+0
+0
+0
+MountingHole
+MountingHole_2.7mm_M2.5_DIN965
+Mounting Hole 2.7mm, no annular, M2.5, DIN965
+mounting hole 2.7mm no annular m2.5 din965
+0
+0
+0
+MountingHole
+MountingHole_2.7mm_M2.5_DIN965_Pad
+Mounting Hole 2.7mm, M2.5, DIN965
+mounting hole 2.7mm m2.5 din965
+0
+1
+1
+MountingHole
+MountingHole_2.7mm_M2.5_DIN965_Pad_TopBottom
+Mounting Hole 2.7mm, M2.5, DIN965
+mounting hole 2.7mm m2.5 din965
+0
+3
+1
+MountingHole
+MountingHole_2.7mm_M2.5_DIN965_Pad_TopOnly
+Mounting Hole 2.7mm, M2.5, DIN965
+mounting hole 2.7mm m2.5 din965
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-2012-15_AVX-P
-Tantalum Capacitor SMD AVX-P (2012-15 Metric), IPC_7351 nominal, (Body size from: https://www.vishay.com/docs/40182/tmch.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_2.7mm_M2.5_ISO7380
+Mounting Hole 2.7mm, no annular, M2.5, ISO7380
+mounting hole 2.7mm no annular m2.5 iso7380
+0
+0
+0
+MountingHole
+MountingHole_2.7mm_M2.5_ISO7380_Pad
+Mounting Hole 2.7mm, M2.5, ISO7380
+mounting hole 2.7mm m2.5 iso7380
+0
+1
+1
+MountingHole
+MountingHole_2.7mm_M2.5_ISO7380_Pad_TopBottom
+Mounting Hole 2.7mm, M2.5, ISO7380
+mounting hole 2.7mm m2.5 iso7380
+0
+3
+1
+MountingHole
+MountingHole_2.7mm_M2.5_ISO7380_Pad_TopOnly
+Mounting Hole 2.7mm, M2.5, ISO7380
+mounting hole 2.7mm m2.5 iso7380
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-2012-15_AVX-P_Pad1.30x1.05mm_HandSolder
-Tantalum Capacitor SMD AVX-P (2012-15 Metric), IPC_7351 nominal, (Body size from: https://www.vishay.com/docs/40182/tmch.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_2.7mm_M2.5_ISO14580
+Mounting Hole 2.7mm, no annular, M2.5, ISO14580
+mounting hole 2.7mm no annular m2.5 iso14580
+0
+0
+0
+MountingHole
+MountingHole_2.7mm_M2.5_ISO14580_Pad
+Mounting Hole 2.7mm, M2.5, ISO14580
+mounting hole 2.7mm m2.5 iso14580
+0
+1
+1
+MountingHole
+MountingHole_2.7mm_M2.5_ISO14580_Pad_TopBottom
+Mounting Hole 2.7mm, M2.5, ISO14580
+mounting hole 2.7mm m2.5 iso14580
+0
+3
+1
+MountingHole
+MountingHole_2.7mm_M2.5_ISO14580_Pad_TopOnly
+Mounting Hole 2.7mm, M2.5, ISO14580
+mounting hole 2.7mm m2.5 iso14580
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-3216-10_Kemet-I
-Tantalum Capacitor SMD Kemet-I (3216-10 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_2.7mm_M2.5_Pad
+Mounting Hole 2.7mm, M2.5
+mounting hole 2.7mm m2.5
+0
+1
+1
+MountingHole
+MountingHole_2.7mm_M2.5_Pad_TopBottom
+Mounting Hole 2.7mm, M2.5
+mounting hole 2.7mm m2.5
+0
+3
+1
+MountingHole
+MountingHole_2.7mm_M2.5_Pad_TopOnly
+Mounting Hole 2.7mm, M2.5
+mounting hole 2.7mm m2.5
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-3216-10_Kemet-I_Pad1.58x1.35mm_HandSolder
-Tantalum Capacitor SMD Kemet-I (3216-10 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_2.7mm_M2.5_Pad_Via
+Mounting Hole 2.7mm
+mounting hole 2.7mm
+0
+9
+1
+MountingHole
+MountingHole_2.7mm_Pad
+Mounting Hole 2.7mm
+mounting hole 2.7mm
+0
+1
+1
+MountingHole
+MountingHole_2.7mm_Pad_TopBottom
+Mounting Hole 2.7mm
+mounting hole 2.7mm
+0
+3
+1
+MountingHole
+MountingHole_2.7mm_Pad_TopOnly
+Mounting Hole 2.7mm
+mounting hole 2.7mm
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-3216-12_Kemet-S
-Tantalum Capacitor SMD Kemet-S (3216-12 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_2.7mm_Pad_Via
+Mounting Hole 2.7mm
+mounting hole 2.7mm
+0
+9
+1
+MountingHole
+MountingHole_2mm
+Mounting Hole 2mm, no annular
+mounting hole 2mm no annular
+0
+0
+0
+MountingHole
+MountingHole_3.2mm_M3
+Mounting Hole 3.2mm, no annular, M3
+mounting hole 3.2mm no annular m3
+0
+0
+0
+MountingHole
+MountingHole_3.2mm_M3_DIN965
+Mounting Hole 3.2mm, no annular, M3, DIN965
+mounting hole 3.2mm no annular m3 din965
+0
+0
+0
+MountingHole
+MountingHole_3.2mm_M3_DIN965_Pad
+Mounting Hole 3.2mm, M3, DIN965
+mounting hole 3.2mm m3 din965
+0
+1
+1
+MountingHole
+MountingHole_3.2mm_M3_DIN965_Pad_TopBottom
+Mounting Hole 3.2mm, M3, DIN965
+mounting hole 3.2mm m3 din965
+0
+3
+1
+MountingHole
+MountingHole_3.2mm_M3_DIN965_Pad_TopOnly
+Mounting Hole 3.2mm, M3, DIN965
+mounting hole 3.2mm m3 din965
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-3216-12_Kemet-S_Pad1.58x1.35mm_HandSolder
-Tantalum Capacitor SMD Kemet-S (3216-12 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_3.2mm_M3_ISO7380
+Mounting Hole 3.2mm, no annular, M3, ISO7380
+mounting hole 3.2mm no annular m3 iso7380
+0
+0
+0
+MountingHole
+MountingHole_3.2mm_M3_ISO7380_Pad
+Mounting Hole 3.2mm, M3, ISO7380
+mounting hole 3.2mm m3 iso7380
+0
+1
+1
+MountingHole
+MountingHole_3.2mm_M3_ISO7380_Pad_TopBottom
+Mounting Hole 3.2mm, M3, ISO7380
+mounting hole 3.2mm m3 iso7380
+0
+3
+1
+MountingHole
+MountingHole_3.2mm_M3_ISO7380_Pad_TopOnly
+Mounting Hole 3.2mm, M3, ISO7380
+mounting hole 3.2mm m3 iso7380
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-3216-18_Kemet-A
-Tantalum Capacitor SMD Kemet-A (3216-18 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_3.2mm_M3_ISO14580
+Mounting Hole 3.2mm, no annular, M3, ISO14580
+mounting hole 3.2mm no annular m3 iso14580
+0
+0
+0
+MountingHole
+MountingHole_3.2mm_M3_ISO14580_Pad
+Mounting Hole 3.2mm, M3, ISO14580
+mounting hole 3.2mm m3 iso14580
+0
+1
+1
+MountingHole
+MountingHole_3.2mm_M3_ISO14580_Pad_TopBottom
+Mounting Hole 3.2mm, M3, ISO14580
+mounting hole 3.2mm m3 iso14580
+0
+3
+1
+MountingHole
+MountingHole_3.2mm_M3_ISO14580_Pad_TopOnly
+Mounting Hole 3.2mm, M3, ISO14580
+mounting hole 3.2mm m3 iso14580
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-3216-18_Kemet-A_Pad1.58x1.35mm_HandSolder
-Tantalum Capacitor SMD Kemet-A (3216-18 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_3.2mm_M3_Pad
+Mounting Hole 3.2mm, M3
+mounting hole 3.2mm m3
+0
+1
+1
+MountingHole
+MountingHole_3.2mm_M3_Pad_TopBottom
+Mounting Hole 3.2mm, M3
+mounting hole 3.2mm m3
+0
+3
+1
+MountingHole
+MountingHole_3.2mm_M3_Pad_TopOnly
+Mounting Hole 3.2mm, M3
+mounting hole 3.2mm m3
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-3528-12_Kemet-T
-Tantalum Capacitor SMD Kemet-T (3528-12 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_3.2mm_M3_Pad_Via
+Mounting Hole 3.2mm, M3
+mounting hole 3.2mm m3
+0
+9
+1
+MountingHole
+MountingHole_3.5mm
+Mounting Hole 3.5mm, no annular
+mounting hole 3.5mm no annular
+0
+0
+0
+MountingHole
+MountingHole_3.5mm_Pad
+Mounting Hole 3.5mm
+mounting hole 3.5mm
+0
+1
+1
+MountingHole
+MountingHole_3.5mm_Pad_TopBottom
+Mounting Hole 3.5mm
+mounting hole 3.5mm
+0
+3
+1
+MountingHole
+MountingHole_3.5mm_Pad_TopOnly
+Mounting Hole 3.5mm
+mounting hole 3.5mm
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-3528-12_Kemet-T_Pad1.50x2.35mm_HandSolder
-Tantalum Capacitor SMD Kemet-T (3528-12 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_3.5mm_Pad_Via
+Mounting Hole 3.5mm
+mounting hole 3.5mm
+0
+9
+1
+MountingHole
+MountingHole_3.7mm
+Mounting Hole 3.7mm, no annular
+mounting hole 3.7mm no annular
+0
+0
+0
+MountingHole
+MountingHole_3.7mm_Pad
+Mounting Hole 3.7mm
+mounting hole 3.7mm
+0
+1
+1
+MountingHole
+MountingHole_3.7mm_Pad_TopBottom
+Mounting Hole 3.7mm
+mounting hole 3.7mm
+0
+3
+1
+MountingHole
+MountingHole_3.7mm_Pad_TopOnly
+Mounting Hole 3.7mm
+mounting hole 3.7mm
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-3528-15_AVX-H
-Tantalum Capacitor SMD AVX-H (3528-15 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_3.7mm_Pad_Via
+Mounting Hole 3.7mm
+mounting hole 3.7mm
+0
+9
+1
+MountingHole
+MountingHole_3mm
+Mounting Hole 3mm, no annular
+mounting hole 3mm no annular
+0
+0
+0
+MountingHole
+MountingHole_3mm_Pad
+Mounting Hole 3mm
+mounting hole 3mm
+0
+1
+1
+MountingHole
+MountingHole_3mm_Pad_TopBottom
+Mounting Hole 3mm
+mounting hole 3mm
+0
+3
+1
+MountingHole
+MountingHole_3mm_Pad_TopOnly
+Mounting Hole 3mm
+mounting hole 3mm
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-3528-15_AVX-H_Pad1.50x2.35mm_HandSolder
-Tantalum Capacitor SMD AVX-H (3528-15 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_3mm_Pad_Via
+Mounting Hole 3mm
+mounting hole 3mm
+0
+9
+1
+MountingHole
+MountingHole_4.3mm_M4
+Mounting Hole 4.3mm, no annular, M4
+mounting hole 4.3mm no annular m4
+0
+0
+0
+MountingHole
+MountingHole_4.3mm_M4_DIN965
+Mounting Hole 4.3mm, no annular, M4, DIN965
+mounting hole 4.3mm no annular m4 din965
+0
+0
+0
+MountingHole
+MountingHole_4.3mm_M4_DIN965_Pad
+Mounting Hole 4.3mm, M4, DIN965
+mounting hole 4.3mm m4 din965
+0
+1
+1
+MountingHole
+MountingHole_4.3mm_M4_DIN965_Pad_TopBottom
+Mounting Hole 4.3mm, M4, DIN965
+mounting hole 4.3mm m4 din965
+0
+3
+1
+MountingHole
+MountingHole_4.3mm_M4_DIN965_Pad_TopOnly
+Mounting Hole 4.3mm, M4, DIN965
+mounting hole 4.3mm m4 din965
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-3528-21_Kemet-B
-Tantalum Capacitor SMD Kemet-B (3528-21 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_4.3mm_M4_ISO7380
+Mounting Hole 4.3mm, no annular, M4, ISO7380
+mounting hole 4.3mm no annular m4 iso7380
+0
+0
+0
+MountingHole
+MountingHole_4.3mm_M4_ISO7380_Pad
+Mounting Hole 4.3mm, M4, ISO7380
+mounting hole 4.3mm m4 iso7380
+0
+1
+1
+MountingHole
+MountingHole_4.3mm_M4_ISO7380_Pad_TopBottom
+Mounting Hole 4.3mm, M4, ISO7380
+mounting hole 4.3mm m4 iso7380
+0
+3
+1
+MountingHole
+MountingHole_4.3mm_M4_ISO7380_Pad_TopOnly
+Mounting Hole 4.3mm, M4, ISO7380
+mounting hole 4.3mm m4 iso7380
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-3528-21_Kemet-B_Pad1.50x2.35mm_HandSolder
-Tantalum Capacitor SMD Kemet-B (3528-21 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_4.3mm_M4_ISO14580
+Mounting Hole 4.3mm, no annular, M4, ISO14580
+mounting hole 4.3mm no annular m4 iso14580
+0
+0
+0
+MountingHole
+MountingHole_4.3mm_M4_ISO14580_Pad
+Mounting Hole 4.3mm, M4, ISO14580
+mounting hole 4.3mm m4 iso14580
+0
+1
+1
+MountingHole
+MountingHole_4.3mm_M4_ISO14580_Pad_TopBottom
+Mounting Hole 4.3mm, M4, ISO14580
+mounting hole 4.3mm m4 iso14580
+0
+3
+1
+MountingHole
+MountingHole_4.3mm_M4_ISO14580_Pad_TopOnly
+Mounting Hole 4.3mm, M4, ISO14580
+mounting hole 4.3mm m4 iso14580
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-6032-15_Kemet-U
-Tantalum Capacitor SMD Kemet-U (6032-15 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_4.3mm_M4_Pad
+Mounting Hole 4.3mm, M4
+mounting hole 4.3mm m4
+0
+1
+1
+MountingHole
+MountingHole_4.3mm_M4_Pad_TopBottom
+Mounting Hole 4.3mm, M4
+mounting hole 4.3mm m4
+0
+3
+1
+MountingHole
+MountingHole_4.3mm_M4_Pad_TopOnly
+Mounting Hole 4.3mm, M4
+mounting hole 4.3mm m4
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-6032-15_Kemet-U_Pad2.25x2.35mm_HandSolder
-Tantalum Capacitor SMD Kemet-U (6032-15 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_4.3mm_M4_Pad_Via
+Mounting Hole 4.3mm, M4
+mounting hole 4.3mm m4
+0
+9
+1
+MountingHole
+MountingHole_4.3x6.2mm_M4_Pad
+Mounting Hole 4.3x6.2mm, M4
+mounting hole 4.3x6.2mm m4
+0
+1
+1
+MountingHole
+MountingHole_4.3x6.2mm_M4_Pad_Via
+Mounting Hole 4.3x6.2mm, M4
+mounting hole 4.3x6.2mm m4
+0
+17
+1
+MountingHole
+MountingHole_4.5mm
+Mounting Hole 4.5mm, no annular
+mounting hole 4.5mm no annular
+0
+0
+0
+MountingHole
+MountingHole_4.5mm_Pad
+Mounting Hole 4.5mm
+mounting hole 4.5mm
+0
+1
+1
+MountingHole
+MountingHole_4.5mm_Pad_TopBottom
+Mounting Hole 4.5mm
+mounting hole 4.5mm
+0
+3
+1
+MountingHole
+MountingHole_4.5mm_Pad_TopOnly
+Mounting Hole 4.5mm
+mounting hole 4.5mm
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-6032-20_AVX-F
-Tantalum Capacitor SMD AVX-F (6032-20 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_4.5mm_Pad_Via
+Mounting Hole 4.5mm
+mounting hole 4.5mm
+0
+9
+1
+MountingHole
+MountingHole_4mm
+Mounting Hole 4mm, no annular
+mounting hole 4mm no annular
+0
+0
+0
+MountingHole
+MountingHole_4mm_Pad
+Mounting Hole 4mm
+mounting hole 4mm
+0
+1
+1
+MountingHole
+MountingHole_4mm_Pad_TopBottom
+Mounting Hole 4mm
+mounting hole 4mm
+0
+3
+1
+MountingHole
+MountingHole_4mm_Pad_TopOnly
+Mounting Hole 4mm
+mounting hole 4mm
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-6032-20_AVX-F_Pad2.25x2.35mm_HandSolder
-Tantalum Capacitor SMD AVX-F (6032-20 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_4mm_Pad_Via
+Mounting Hole 4mm
+mounting hole 4mm
+0
+9
+1
+MountingHole
+MountingHole_5.3mm_M5
+Mounting Hole 5.3mm, no annular, M5
+mounting hole 5.3mm no annular m5
+0
+0
+0
+MountingHole
+MountingHole_5.3mm_M5_DIN965
+Mounting Hole 5.3mm, no annular, M5, DIN965
+mounting hole 5.3mm no annular m5 din965
+0
+0
+0
+MountingHole
+MountingHole_5.3mm_M5_DIN965_Pad
+Mounting Hole 5.3mm, M5, DIN965
+mounting hole 5.3mm m5 din965
+0
+1
+1
+MountingHole
+MountingHole_5.3mm_M5_DIN965_Pad_TopBottom
+Mounting Hole 5.3mm, M5, DIN965
+mounting hole 5.3mm m5 din965
+0
+3
+1
+MountingHole
+MountingHole_5.3mm_M5_DIN965_Pad_TopOnly
+Mounting Hole 5.3mm, M5, DIN965
+mounting hole 5.3mm m5 din965
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-6032-28_Kemet-C
-Tantalum Capacitor SMD Kemet-C (6032-28 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_5.3mm_M5_ISO7380
+Mounting Hole 5.3mm, no annular, M5, ISO7380
+mounting hole 5.3mm no annular m5 iso7380
+0
+0
+0
+MountingHole
+MountingHole_5.3mm_M5_ISO7380_Pad
+Mounting Hole 5.3mm, M5, ISO7380
+mounting hole 5.3mm m5 iso7380
+0
+1
+1
+MountingHole
+MountingHole_5.3mm_M5_ISO7380_Pad_TopBottom
+Mounting Hole 5.3mm, M5, ISO7380
+mounting hole 5.3mm m5 iso7380
+0
+3
+1
+MountingHole
+MountingHole_5.3mm_M5_ISO7380_Pad_TopOnly
+Mounting Hole 5.3mm, M5, ISO7380
+mounting hole 5.3mm m5 iso7380
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-6032-28_Kemet-C_Pad2.25x2.35mm_HandSolder
-Tantalum Capacitor SMD Kemet-C (6032-28 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_5.3mm_M5_ISO14580
+Mounting Hole 5.3mm, no annular, M5, ISO14580
+mounting hole 5.3mm no annular m5 iso14580
+0
+0
+0
+MountingHole
+MountingHole_5.3mm_M5_ISO14580_Pad
+Mounting Hole 5.3mm, M5, ISO14580
+mounting hole 5.3mm m5 iso14580
+0
+1
+1
+MountingHole
+MountingHole_5.3mm_M5_ISO14580_Pad_TopBottom
+Mounting Hole 5.3mm, M5, ISO14580
+mounting hole 5.3mm m5 iso14580
+0
+3
+1
+MountingHole
+MountingHole_5.3mm_M5_ISO14580_Pad_TopOnly
+Mounting Hole 5.3mm, M5, ISO14580
+mounting hole 5.3mm m5 iso14580
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7132-20_AVX-U
-Tantalum Capacitor SMD AVX-U (7132-20 Metric), IPC_7351 nominal, (Body size from: http://datasheets.avx.com/F72-F75.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_5.3mm_M5_Pad
+Mounting Hole 5.3mm, M5
+mounting hole 5.3mm m5
+0
+1
+1
+MountingHole
+MountingHole_5.3mm_M5_Pad_TopBottom
+Mounting Hole 5.3mm, M5
+mounting hole 5.3mm m5
+0
+3
+1
+MountingHole
+MountingHole_5.3mm_M5_Pad_TopOnly
+Mounting Hole 5.3mm, M5
+mounting hole 5.3mm m5
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7132-20_AVX-U_Pad2.72x3.50mm_HandSolder
-Tantalum Capacitor SMD AVX-U (7132-20 Metric), IPC_7351 nominal, (Body size from: http://datasheets.avx.com/F72-F75.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_5.3mm_M5_Pad_Via
+Mounting Hole 5.3mm, M5
+mounting hole 5.3mm m5
+0
+9
+1
+MountingHole
+MountingHole_5.5mm
+Mounting Hole 5.5mm, no annular
+mounting hole 5.5mm no annular
+0
+0
+0
+MountingHole
+MountingHole_5.5mm_Pad
+Mounting Hole 5.5mm
+mounting hole 5.5mm
+0
+1
+1
+MountingHole
+MountingHole_5.5mm_Pad_TopBottom
+Mounting Hole 5.5mm
+mounting hole 5.5mm
+0
+3
+1
+MountingHole
+MountingHole_5.5mm_Pad_TopOnly
+Mounting Hole 5.5mm
+mounting hole 5.5mm
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7132-28_AVX-C
-Tantalum Capacitor SMD AVX-C (7132-28 Metric), IPC_7351 nominal, (Body size from: http://datasheets.avx.com/F72-F75.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_5.5mm_Pad_Via
+Mounting Hole 5.5mm
+mounting hole 5.5mm
+0
+9
+1
+MountingHole
+MountingHole_5mm
+Mounting Hole 5mm, no annular
+mounting hole 5mm no annular
+0
+0
+0
+MountingHole
+MountingHole_5mm_Pad
+Mounting Hole 5mm
+mounting hole 5mm
+0
+1
+1
+MountingHole
+MountingHole_5mm_Pad_TopBottom
+Mounting Hole 5mm
+mounting hole 5mm
+0
+3
+1
+MountingHole
+MountingHole_5mm_Pad_TopOnly
+Mounting Hole 5mm
+mounting hole 5mm
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7132-28_AVX-C_Pad2.72x3.50mm_HandSolder
-Tantalum Capacitor SMD AVX-C (7132-28 Metric), IPC_7351 nominal, (Body size from: http://datasheets.avx.com/F72-F75.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_5mm_Pad_Via
+Mounting Hole 5mm
+mounting hole 5mm
+0
+9
+1
+MountingHole
+MountingHole_6.4mm_M6
+Mounting Hole 6.4mm, no annular, M6
+mounting hole 6.4mm no annular m6
+0
+0
+0
+MountingHole
+MountingHole_6.4mm_M6_DIN965
+Mounting Hole 6.4mm, no annular, M6, DIN965
+mounting hole 6.4mm no annular m6 din965
+0
+0
+0
+MountingHole
+MountingHole_6.4mm_M6_DIN965_Pad
+Mounting Hole 6.4mm, M6, DIN965
+mounting hole 6.4mm m6 din965
+0
+1
+1
+MountingHole
+MountingHole_6.4mm_M6_DIN965_Pad_TopBottom
+Mounting Hole 6.4mm, M6, DIN965
+mounting hole 6.4mm m6 din965
+0
+3
+1
+MountingHole
+MountingHole_6.4mm_M6_DIN965_Pad_TopOnly
+Mounting Hole 6.4mm, M6, DIN965
+mounting hole 6.4mm m6 din965
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7260-15_AVX-R
-Tantalum Capacitor SMD AVX-R (7260-15 Metric), IPC_7351 nominal, (Body size from: http://datasheets.avx.com/F72-F75.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_6.4mm_M6_ISO7380
+Mounting Hole 6.4mm, no annular, M6, ISO7380
+mounting hole 6.4mm no annular m6 iso7380
+0
+0
+0
+MountingHole
+MountingHole_6.4mm_M6_ISO7380_Pad
+Mounting Hole 6.4mm, M6, ISO7380
+mounting hole 6.4mm m6 iso7380
+0
+1
+1
+MountingHole
+MountingHole_6.4mm_M6_ISO7380_Pad_TopBottom
+Mounting Hole 6.4mm, M6, ISO7380
+mounting hole 6.4mm m6 iso7380
+0
+3
+1
+MountingHole
+MountingHole_6.4mm_M6_ISO7380_Pad_TopOnly
+Mounting Hole 6.4mm, M6, ISO7380
+mounting hole 6.4mm m6 iso7380
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7260-15_AVX-R_Pad2.68x6.30mm_HandSolder
-Tantalum Capacitor SMD AVX-R (7260-15 Metric), IPC_7351 nominal, (Body size from: http://datasheets.avx.com/F72-F75.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_6.4mm_M6_ISO14580
+Mounting Hole 6.4mm, no annular, M6, ISO14580
+mounting hole 6.4mm no annular m6 iso14580
+0
+0
+0
+MountingHole
+MountingHole_6.4mm_M6_ISO14580_Pad
+Mounting Hole 6.4mm, M6, ISO14580
+mounting hole 6.4mm m6 iso14580
+0
+1
+1
+MountingHole
+MountingHole_6.4mm_M6_ISO14580_Pad_TopBottom
+Mounting Hole 6.4mm, M6, ISO14580
+mounting hole 6.4mm m6 iso14580
+0
+3
+1
+MountingHole
+MountingHole_6.4mm_M6_ISO14580_Pad_TopOnly
+Mounting Hole 6.4mm, M6, ISO14580
+mounting hole 6.4mm m6 iso14580
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7260-20_AVX-M
-Tantalum Capacitor SMD AVX-M (7260-20 Metric), IPC_7351 nominal, (Body size from: http://datasheets.avx.com/F72-F75.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_6.4mm_M6_Pad
+Mounting Hole 6.4mm, M6
+mounting hole 6.4mm m6
+0
+1
+1
+MountingHole
+MountingHole_6.4mm_M6_Pad_TopBottom
+Mounting Hole 6.4mm, M6
+mounting hole 6.4mm m6
+0
+3
+1
+MountingHole
+MountingHole_6.4mm_M6_Pad_TopOnly
+Mounting Hole 6.4mm, M6
+mounting hole 6.4mm m6
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7260-20_AVX-M_Pad2.68x6.30mm_HandSolder
-Tantalum Capacitor SMD AVX-M (7260-20 Metric), IPC_7351 nominal, (Body size from: http://datasheets.avx.com/F72-F75.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_6.4mm_M6_Pad_Via
+Mounting Hole 6.4mm, M6
+mounting hole 6.4mm m6
+0
+9
+1
+MountingHole
+MountingHole_6.5mm
+Mounting Hole 6.5mm, no annular
+mounting hole 6.5mm no annular
+0
+0
+0
+MountingHole
+MountingHole_6.5mm_Pad
+Mounting Hole 6.5mm
+mounting hole 6.5mm
+0
+1
+1
+MountingHole
+MountingHole_6.5mm_Pad_TopBottom
+Mounting Hole 6.5mm
+mounting hole 6.5mm
+0
+3
+1
+MountingHole
+MountingHole_6.5mm_Pad_TopOnly
+Mounting Hole 6.5mm
+mounting hole 6.5mm
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7260-28_AVX-M
-Tantalum Capacitor SMD AVX-M (7260-28 Metric), IPC_7351 nominal, (Body size from: http://datasheets.avx.com/F72-F75.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_6.5mm_Pad_Via
+Mounting Hole 6.5mm
+mounting hole 6.5mm
+0
+9
+1
+MountingHole
+MountingHole_6mm
+Mounting Hole 6mm, no annular
+mounting hole 6mm no annular
+0
+0
+0
+MountingHole
+MountingHole_6mm_Pad
+Mounting Hole 6mm
+mounting hole 6mm
+0
+1
+1
+MountingHole
+MountingHole_6mm_Pad_TopBottom
+Mounting Hole 6mm
+mounting hole 6mm
+0
+3
+1
+MountingHole
+MountingHole_6mm_Pad_TopOnly
+Mounting Hole 6mm
+mounting hole 6mm
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7260-28_AVX-M_Pad2.68x6.30mm_HandSolder
-Tantalum Capacitor SMD AVX-M (7260-28 Metric), IPC_7351 nominal, (Body size from: http://datasheets.avx.com/F72-F75.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_6mm_Pad_Via
+Mounting Hole 6mm
+mounting hole 6mm
+0
+9
+1
+MountingHole
+MountingHole_8.4mm_M8
+Mounting Hole 8.4mm, no annular, M8
+mounting hole 8.4mm no annular m8
+0
+0
+0
+MountingHole
+MountingHole_8.4mm_M8_Pad
+Mounting Hole 8.4mm, M8
+mounting hole 8.4mm m8
+0
+1
+1
+MountingHole
+MountingHole_8.4mm_M8_Pad_TopBottom
+Mounting Hole 8.4mm, M8
+mounting hole 8.4mm m8
+0
+3
+1
+MountingHole
+MountingHole_8.4mm_M8_Pad_TopOnly
+Mounting Hole 8.4mm, M8
+mounting hole 8.4mm m8
 0
 2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7260-38_AVX-R
-Tantalum Capacitor SMD AVX-R (7260-38 Metric), IPC_7351 nominal, (Body size from: http://datasheets.avx.com/F72-F75.pdf), generated with kicad-footprint-generator
-capacitor tantalum
+1
+MountingHole
+MountingHole_8.4mm_M8_Pad_Via
+Mounting Hole 8.4mm, M8
+mounting hole 8.4mm m8
 0
-2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7260-38_AVX-R_Pad2.68x6.30mm_HandSolder
-Tantalum Capacitor SMD AVX-R (7260-38 Metric), IPC_7351 nominal, (Body size from: http://datasheets.avx.com/F72-F75.pdf), generated with kicad-footprint-generator
-capacitor tantalum
-0
-2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7343-15_Kemet-W
-Tantalum Capacitor SMD Kemet-W (7343-15 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
-0
-2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7343-15_Kemet-W_Pad2.25x2.55mm_HandSolder
-Tantalum Capacitor SMD Kemet-W (7343-15 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
-0
-2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7343-20_Kemet-V
-Tantalum Capacitor SMD Kemet-V (7343-20 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
-0
-2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7343-20_Kemet-V_Pad2.25x2.55mm_HandSolder
-Tantalum Capacitor SMD Kemet-V (7343-20 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
-0
-2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7343-30_AVX-N
-Tantalum Capacitor SMD AVX-N (7343-30 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
-0
-2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7343-30_AVX-N_Pad2.25x2.55mm_HandSolder
-Tantalum Capacitor SMD AVX-N (7343-30 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
-0
-2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7343-31_Kemet-D
-Tantalum Capacitor SMD Kemet-D (7343-31 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
-0
-2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7343-31_Kemet-D_Pad2.25x2.55mm_HandSolder
-Tantalum Capacitor SMD Kemet-D (7343-31 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
-0
-2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7343-40_Kemet-Y
-Tantalum Capacitor SMD Kemet-Y (7343-40 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
-0
-2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7343-40_Kemet-Y_Pad2.25x2.55mm_HandSolder
-Tantalum Capacitor SMD Kemet-Y (7343-40 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
-0
-2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7343-43_Kemet-X
-Tantalum Capacitor SMD Kemet-X (7343-43 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
-0
-2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7343-43_Kemet-X_Pad2.25x2.55mm_HandSolder
-Tantalum Capacitor SMD Kemet-X (7343-43 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
-0
-2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7360-38_Kemet-E
-Tantalum Capacitor SMD Kemet-E (7360-38 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
-0
-2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7360-38_Kemet-E_Pad2.25x4.25mm_HandSolder
-Tantalum Capacitor SMD Kemet-E (7360-38 Metric), IPC_7351 nominal, (Body size from: http://www.kemet.com/Lists/ProductCatalog/Attachments/253/KEM_TC101_STD.pdf), generated with kicad-footprint-generator
-capacitor tantalum
-0
-2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7361-38_AVX-V
-Tantalum Capacitor SMD AVX-V (7361-38 Metric), IPC_7351 nominal, (Body size from: http://datasheets.avx.com/NOS.pdf), generated with kicad-footprint-generator
-capacitor tantalum
-0
-2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7361-38_AVX-V_Pad2.18x3.30mm_HandSolder
-Tantalum Capacitor SMD AVX-V (7361-38 Metric), IPC_7351 nominal, (Body size from: http://datasheets.avx.com/NOS.pdf), generated with kicad-footprint-generator
-capacitor tantalum
-0
-2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7361-438_AVX-U
-Tantalum Capacitor SMD AVX-U (7361-438 Metric), IPC_7351 nominal, (Body size from: http://datasheets.avx.com/NOS.pdf), generated with kicad-footprint-generator
-capacitor tantalum
-0
-2
-2
-Capacitor_Tantalum_SMD
-CP_EIA-7361-438_AVX-U_Pad2.18x3.30mm_HandSolder
-Tantalum Capacitor SMD AVX-U (7361-438 Metric), IPC_7351 nominal, (Body size from: http://datasheets.avx.com/NOS.pdf), generated with kicad-footprint-generator
-capacitor tantalum
-0
-2
-2
+9
+1

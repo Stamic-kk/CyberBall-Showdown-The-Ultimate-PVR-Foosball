@@ -416,15 +416,15 @@
     (property "Value" "~" (at 102.87 25.4 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6_Handsoldering" (at 102.87 25.4 0)
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-3" (at 102.87 25.4 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (at 102.87 25.4 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "3" (uuid c29be93a-8c7d-4779-a2d7-14aa80a5377d))
     (pin "1" (uuid 5a46ffcf-a9bd-4465-a945-beb6a485e358))
     (pin "2" (uuid 3f6b661f-624b-45bd-80dc-33cc3cfc86c5))
+    (pin "3" (uuid c29be93a-8c7d-4779-a2d7-14aa80a5377d))
     (instances
       (project "Hall_effect_sensors"
         (path "/cf9b5590-5fea-4738-9c8a-e45b08a8e509"
@@ -449,18 +449,18 @@
     (property "Datasheet" "" (at 72.39 83.82 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "10" (uuid 774d23f4-b1ce-4cc2-9f1b-733579fad784))
-    (pin "6" (uuid b2c99c6d-f254-4ec0-9510-a0904d62b43b))
-    (pin "2" (uuid 58e6b0b8-09e8-49d2-939c-877ebfcdb2d9))
-    (pin "4" (uuid 1753fe09-1007-4184-9ec1-3051940dcda8))
-    (pin "12" (uuid dc310523-d260-406c-accb-2564b4268181))
     (pin "1" (uuid a878fa04-7d6d-4657-a35a-c2d203dc50c9))
+    (pin "10" (uuid 774d23f4-b1ce-4cc2-9f1b-733579fad784))
     (pin "11" (uuid 8c004eca-f32b-4297-a11f-38e3ff3e5332))
-    (pin "9" (uuid bdef6b1d-cdc1-4039-bebd-5400acb1b150))
-    (pin "8" (uuid e90c7ed3-4184-467c-b09d-080f17937637))
-    (pin "7" (uuid dc0c138e-2a84-48e5-94fb-c32a5d805930))
+    (pin "12" (uuid dc310523-d260-406c-accb-2564b4268181))
+    (pin "2" (uuid 58e6b0b8-09e8-49d2-939c-877ebfcdb2d9))
     (pin "3" (uuid 495e786a-ff77-495d-a13e-fc372ec8fc89))
+    (pin "4" (uuid 1753fe09-1007-4184-9ec1-3051940dcda8))
     (pin "5" (uuid 372ac2f5-8f2e-42f8-af32-d2232a659ebd))
+    (pin "6" (uuid b2c99c6d-f254-4ec0-9510-a0904d62b43b))
+    (pin "7" (uuid dc0c138e-2a84-48e5-94fb-c32a5d805930))
+    (pin "8" (uuid e90c7ed3-4184-467c-b09d-080f17937637))
+    (pin "9" (uuid bdef6b1d-cdc1-4039-bebd-5400acb1b150))
     (instances
       (project "Hall_effect_sensors"
         (path "/cf9b5590-5fea-4738-9c8a-e45b08a8e509"
@@ -479,15 +479,15 @@
     (property "Value" "~" (at 43.18 43.18 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6_Handsoldering" (at 43.18 43.18 0)
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-3" (at 43.18 43.18 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (at 43.18 43.18 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "3" (uuid fd762ef0-234b-4936-b8ba-2ea02c59ac81))
     (pin "1" (uuid ca688c8c-9edf-4b7b-9326-fdc244b101da))
     (pin "2" (uuid cdd36b58-59a9-4c2c-a823-d6875289c425))
+    (pin "3" (uuid fd762ef0-234b-4936-b8ba-2ea02c59ac81))
     (instances
       (project "Hall_effect_sensors"
         (path "/cf9b5590-5fea-4738-9c8a-e45b08a8e509"
@@ -506,15 +506,15 @@
     (property "Value" "~" (at 173.99 43.18 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6_Handsoldering" (at 173.99 43.18 0)
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-3" (at 173.99 43.18 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (at 173.99 43.18 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "3" (uuid 24b74f97-97e1-4634-aca8-baee54f20dd2))
     (pin "1" (uuid 4cbafecb-1e8e-4ab6-9dd7-acb447eadf2c))
     (pin "2" (uuid 02b829b5-fc38-4c04-9a48-dc270405cc13))
+    (pin "3" (uuid 24b74f97-97e1-4634-aca8-baee54f20dd2))
     (instances
       (project "Hall_effect_sensors"
         (path "/cf9b5590-5fea-4738-9c8a-e45b08a8e509"
@@ -533,15 +533,15 @@
     (property "Value" "~" (at 73.66 25.4 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6_Handsoldering" (at 73.66 25.4 0)
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-3" (at 73.66 25.4 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (at 73.66 25.4 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "3" (uuid 1d9aca13-049e-4670-80ff-b7eab939c387))
     (pin "1" (uuid b331bc30-2453-443d-87be-aeca0c55e202))
     (pin "2" (uuid cd191ce9-45a9-45f5-994e-6948fa55b05c))
+    (pin "3" (uuid 1d9aca13-049e-4670-80ff-b7eab939c387))
     (instances
       (project "Hall_effect_sensors"
         (path "/cf9b5590-5fea-4738-9c8a-e45b08a8e509"
@@ -560,15 +560,15 @@
     (property "Value" "~" (at 172.72 26.67 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6_Handsoldering" (at 172.72 26.67 0)
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-3" (at 172.72 26.67 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (at 172.72 26.67 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "3" (uuid d2814d5b-4b9a-456d-b32b-e88e270c5f7c))
     (pin "1" (uuid b89d9f52-285b-4c2c-85ca-f548f06e04f2))
     (pin "2" (uuid b2f35500-9463-49bb-9ae3-dc66772325ab))
+    (pin "3" (uuid d2814d5b-4b9a-456d-b32b-e88e270c5f7c))
     (instances
       (project "Hall_effect_sensors"
         (path "/cf9b5590-5fea-4738-9c8a-e45b08a8e509"
@@ -587,15 +587,15 @@
     (property "Value" "~" (at 104.14 41.91 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6_Handsoldering" (at 104.14 41.91 0)
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-3" (at 104.14 41.91 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (at 104.14 41.91 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "3" (uuid 7ee88c9a-c61f-4e27-aca8-f1e4d6639770))
-    (pin "1" (uuid 1e15e905-3472-4a9e-9def-9a323560cd92))
-    (pin "2" (uuid 0d1df25b-41bb-447d-8d94-f3d448acd970))
+    (pin "1" (uuid f537f842-0dd0-4be5-8763-4e6797838d82))
+    (pin "2" (uuid 35c46bf4-c3d7-458d-aa7b-7494443d8f2d))
+    (pin "3" (uuid 7cdfc9d4-ee90-4ff0-8a45-046a22d1d43c))
     (instances
       (project "Hall_effect_sensors"
         (path "/cf9b5590-5fea-4738-9c8a-e45b08a8e509"
@@ -614,15 +614,15 @@
     (property "Value" "~" (at 138.43 41.91 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6_Handsoldering" (at 138.43 41.91 0)
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-3" (at 138.43 41.91 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (at 138.43 41.91 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "3" (uuid 0e100891-eaf6-4143-8a4e-04d56dbe114b))
     (pin "1" (uuid b0ee8cd5-af9c-4f5b-b80f-b498e89fa543))
     (pin "2" (uuid acf666a5-cd79-42d0-aacb-eb788aad4455))
+    (pin "3" (uuid 0e100891-eaf6-4143-8a4e-04d56dbe114b))
     (instances
       (project "Hall_effect_sensors"
         (path "/cf9b5590-5fea-4738-9c8a-e45b08a8e509"
@@ -641,15 +641,15 @@
     (property "Value" "~" (at 43.18 24.13 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6_Handsoldering" (at 43.18 24.13 0)
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-3" (at 43.18 24.13 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (at 43.18 24.13 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "3" (uuid 0d8cfc88-2dc6-4129-aa31-5e15f6a12375))
     (pin "1" (uuid 8ee16398-b578-4924-a224-a46d905f2ed2))
     (pin "2" (uuid 34e6a3f2-1ab7-48e7-ad88-62882808431c))
+    (pin "3" (uuid 0d8cfc88-2dc6-4129-aa31-5e15f6a12375))
     (instances
       (project "Hall_effect_sensors"
         (path "/cf9b5590-5fea-4738-9c8a-e45b08a8e509"
@@ -668,15 +668,15 @@
     (property "Value" "~" (at 72.39 43.18 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6_Handsoldering" (at 72.39 43.18 0)
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-3" (at 72.39 43.18 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (at 72.39 43.18 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "3" (uuid 34c95930-1c1d-440b-9ad3-ce7941355188))
     (pin "1" (uuid aca4e38e-10a2-4576-8d90-b52ede9a1403))
     (pin "2" (uuid 3e0c7802-e9d4-44ad-a96c-5fbb0b15eff9))
+    (pin "3" (uuid 34c95930-1c1d-440b-9ad3-ce7941355188))
     (instances
       (project "Hall_effect_sensors"
         (path "/cf9b5590-5fea-4738-9c8a-e45b08a8e509"
@@ -695,15 +695,15 @@
     (property "Value" "~" (at 137.16 26.67 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6_Handsoldering" (at 137.16 26.67 0)
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-3" (at 137.16 26.67 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (at 137.16 26.67 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "3" (uuid 8ffa9cb7-86c7-4a0f-be2c-7638899689b4))
     (pin "1" (uuid f5e200f7-5bc0-49c5-ab71-5a3626065dd0))
     (pin "2" (uuid 967d6228-0788-400f-83c1-bccd30caf231))
+    (pin "3" (uuid 8ffa9cb7-86c7-4a0f-be2c-7638899689b4))
     (instances
       (project "Hall_effect_sensors"
         (path "/cf9b5590-5fea-4738-9c8a-e45b08a8e509"

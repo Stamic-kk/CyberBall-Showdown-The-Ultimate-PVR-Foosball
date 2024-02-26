@@ -26,14 +26,14 @@ void EXTI4_15_IRQHandler(){
 		EXTI->PR |= (EXTI_PR_PR10);
     	spi_cmd(0x01);        // clear the screen
     	nano_wait(2000000);   // wait for the screen to be cleaned
-    	spi2_display1("Reset game");// display
-		printf("Reset game\n");
+    	spi2_display1("Hello");// display
+		printf("Rest game\n");
 	}
 	else if( (EXTI->PR & EXTI_PR_PR11) == EXTI_PR_PR11){
 		EXTI->PR |= EXTI_PR_PR11;
     	spi_cmd(0x01);        // clear the screen
     	nano_wait(2000000);   // wait for the screen to be cleaned
-    	spi2_display1("Start");// display
+    	spi2_display1("Start game");// display
 		printf("Start\n");
 	}
 	else if( (EXTI->PR & EXTI_PR_PR14) == EXTI_PR_PR14){

@@ -6,6 +6,7 @@
 #include <unistd.h>
 int main(){
     // camera_test();
+    // return 0;
     // Uart uart;
     // usleep(1000);
     // char pack = packByte(0, 18);
@@ -36,13 +37,17 @@ int main(){
         }// cv::copyTo(img, copy, cv::noArray());
         cv::absdiff(img, cv::Scalar(TARGET_B, TARGET_G, TARGET_R), copy);
         current = std::chrono::steady_clock::now();
-        std::cout<<"Time to get location: "<<std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - current).count()<<std::endl;
+       // std::pair<int, int> loc = getLocation(copy);
+        // std::cout<<"Time to get location: "<<std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - current).count()<<std::endl;
+        
+        //std::cout<<"Location: "<<loc.first<<", "<<loc.second<<std::endl;
         draw_detected(copy, getLocation(copy));
-        // cv::imshow("camera",copy);
-        //int keycode = cv::waitKey(10) & 0xff ; 
-        //    if (keycode == 27) break;
-        current = std::chrono::steady_clock::now();
-        std::cout<<"Time esplised "<<std::chrono::duration_cast<std::chrono::milliseconds>(current-begin).count()<<std::endl;
+        cv::imshow("camera",copy);
+        int keycode = cv::waitKey(2) & 0xff ; 
+             if (keycode == 27) break;
+            
+         current = std::chrono::steady_clock::now();
+         std::cout<<"Time esplised "<<std::chrono::duration_cast<std::chrono::milliseconds>(current-begin).count()<<std::endl;
         while(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - begin).count() >= 1000){
             std::cout<<"FPS: "<<runs<<std::endl;   
             runs = 0;

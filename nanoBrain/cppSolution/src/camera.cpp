@@ -20,7 +20,7 @@ int camera_test(){
 	return (-1);
     }
 
-    cv::namedWindow("CSI Camera", cv::WINDOW_AUTOSIZE);
+    // cv::namedWindow("CSI Camera", cv::WINDOW_AUTOSIZE);
     cv::Mat img;
     std::cout << "Hit ESC to exit" << "\n" ;
     int run = 0;
@@ -32,7 +32,7 @@ int camera_test(){
 		break;
 	    }
 	
-        cv::imshow("CSI Camera",img);
+        // cv::imshow("CSI Camera",img);
         int keycode = cv::waitKey(10) & 0xff ; 
             if (keycode == 27) break ;
         
@@ -50,8 +50,8 @@ int camera_test(){
 }
 
 cv::VideoCapture get_camera(){
-    cv::VideoCapture cap(gst, cv::CAP_GSTREAMER);
-    // cp::VideoCapture cap(gst_HW, cv::CAP_GSTREAMER);
+    // cv::VideoCapture cap(gst, cv::CAP_GSTREAMER);
+    cv::VideoCapture cap(gst_HW, cv::CAP_GSTREAMER);
     if(!cap.isOpened()) {
         std::cout<<"Failed to open camera."<<std::endl;
         throw std::runtime_error("Failed to open camera");

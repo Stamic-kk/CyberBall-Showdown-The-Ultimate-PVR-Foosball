@@ -2,6 +2,7 @@
 #define CAMERA_H_
 #include <opencv2/opencv.hpp>
 #include <opencv2/core.hpp>
+#include <opencv4/opencv2/opencv.hpp>
 #include <opencv2/core/version.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #if CV_MAJOR_VERSION >= 3

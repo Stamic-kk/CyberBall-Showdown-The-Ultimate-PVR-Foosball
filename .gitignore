@@ -58,6 +58,8 @@ dkms.conf
 
 # binary
 build/
+nanoBrain/cppSolution/uKal
+
 
 #CMake files
 */CMakeLists.txt.user
@@ -70,3 +72,10 @@ nanoBrain/outputs/*
 
 #vscode
 .vscode/
+
+
+
+#clangd
+nanoBrain/cppSolution/.clangd/
+nanoBrain/cppSolution/compile_commands.json
+refs/remotes/origin/main

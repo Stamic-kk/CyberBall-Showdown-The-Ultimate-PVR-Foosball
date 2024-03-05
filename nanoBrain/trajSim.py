@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sys
 
+
 X_MAX = 320
 Y_MAX = 240
 origin = np.array([X_MAX/2, Y_MAX/2])

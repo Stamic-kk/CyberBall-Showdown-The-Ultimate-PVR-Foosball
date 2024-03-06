@@ -8,7 +8,7 @@ const char* gst = "v4l2src device=/dev/video0 ! video/x-raw, format=YUY2, width=
 const std::string gst_HW = "v4l2src device=/dev/video0 ! video/x-raw, format=YUY2, width="+ 
     std::to_string(CAPTURE_WIDTH) + ", height="+ 
     std::to_string(CAPTURE_HEIGHT) + 
-    ", framerate=90/1 ! nvvidconv ! video/x-raw(memory:NVMM) ! nvvidconv ! video/x-raw, format=BGRx !  videoconvert ! video/x-raw, format=BGR ! appsink"
+    ", framerate=" + std::to_string(FRAME_RATE) + "/1 ! nvvidconv ! video/x-raw(memory:NVMM) ! nvvidconv ! video/x-raw, format=BGRx !  videoconvert ! video/x-raw, format=BGR ! appsink"
             ;
 
 int camera_test(){

@@ -66,8 +66,8 @@ nanoBrain/cppSolution/uKal
 nanoBrain/cppSolution/CMakeFiles/
 */CMakeFiles/
 *.cmake
+nanoBrain/cppSolution/cmake_install.cmake 
 nanoBrain/cppSolution/CMakeCache.txt
-nanoBrain/cppSolution/cmake_install.cmake
 nanoBrain/outputs/*
 
 #vscode

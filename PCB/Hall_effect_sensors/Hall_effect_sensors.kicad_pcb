@@ -71,7 +71,7 @@
       (mirror false)
       (drillshape 0)
       (scaleselection 1)
-      (outputdirectory "")
+      (outputdirectory "Hall_effect_sensors_gerber/")
     )
   )
 

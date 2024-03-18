@@ -15,9 +15,11 @@
 #include <vpi/OpenCVInterop.hpp>
 #include <opencv2/videoio.hpp>
 
+#ifndef CAPTURE_META
+#define FRAME_RATE 90
 #define CAPTURE_WIDTH 320   
 #define CAPTURE_HEIGHT 240
-
+#endif
 
 
 

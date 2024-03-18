@@ -5,14 +5,14 @@ Filter_t kFilter;
 
 const Index_t n_states = 4;
 const Index_t n_measurements = 2;
-const MatrixEntry_t dt = SAMPLE_RATE;
+const MatrixEntry_t dt = 1/FRAME_RATE;
 const MatrixEntry_t stdx = 0.25;      //change this
 const MatrixEntry_t stdy = stdx;        //change this
 
-const MatrixEntry_t varx = (stdx*stdx) / 3;
+const MatrixEntry_t varx = (stdx*stdx);
 const MatrixEntry_t vary = varx;
-const MatrixEntry_t varv = 2*sqrt(2)*(varx / (dt * dt));
-const MatrixEntry_t vartheta = sqrt(11);
+const MatrixEntry_t varv = 2*sqrt(2)*(  varx / (dt * dt));
+const MatrixEntry_t vartheta = M_PI;
 
 
 Matrix_t y; 
@@ -27,6 +27,8 @@ Matrix_t fx;
 Matrix_t hx;
 
 
+vector<int> x_arr;
+vector<int> y_arr;
 
 static void get_phi(Matrix_t * const Phi, 
                     const Matrix_t * const x, 
@@ -234,4 +236,33 @@ bool read_sim_data(string path, vector<pair<float, float>> &data){
     }
     fclose(file);
     return true;
+}
+
+bool cal_variance(std::pair<int, int> loc){
+    if(x_arr.size() >= 100 ) return false;
+
+
+    x_arr.push_back(loc.first);
+    y_arr.push_back(loc.second);
+    if(x_arr.size() < 100) return false;
+    int x_sum = std::accumulate(x_arr.begin(), x_arr.end(), 0);
+    int y_sum = std::accumulate(y_arr.begin(), y_arr.end(), 0);
+    int x_mean = x_sum / x_arr.size();
+    int y_mean = y_sum / y_arr.size();
+    int var_x = 0;
+    int var_y = 0;
+    for(int x: x_arr){
+        var_x += (x - x_mean) * (x - x_mean);
+    }
+    for(int y: y_arr){
+        var_y += (y - y_mean) * (y - y_mean);
+    }
+    var_x /= x_arr.size() - 1;
+    var_y /= y_arr.size() - 1;
+    std::cout<<"Variance x: "<<var_x<<", Variance y: "<<var_y<<std::endl;
+    std::cout<<"Mean x: "<<x_mean<<", Mean y: "<<y_mean<<std::endl;
+    std::cout<<"std x"<<sqrt(var_x)<<", std y: "<<sqrt(var_y)<<std::endl;
+
+    return true;
+
 }

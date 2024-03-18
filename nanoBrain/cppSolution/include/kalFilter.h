@@ -11,6 +11,8 @@ extern "C"{
 #include <vector>
 #include <cstdio>
 #include <algorithm>
+#include <numeric>
+#include <functional>
 using namespace cv;
 using std::vector;
 using std::pair;
@@ -32,4 +34,5 @@ MatrixError_t put_data (Matrix_t *y, float x_coord, float y_coord);
 void visualize(Matrix_t x, Mat &background);
 void test_filter(std::string path);
 bool read_sim_data(string path, vector<pair<float, float>> &data);
+bool cal_variance(std::pair<int, int> loc);
 #endif

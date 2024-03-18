@@ -8,6 +8,7 @@ VPIStream stream;
 VPIPayload payload;
 VPIImageFormat format;
 
+// void setUpVpi(cv::Mat Sample){
 void setUpVpi(){
     vpiStreamCreate(0, &stream);
     // vpiCreateMinMaxLoc(VPI_BACKEND_CPU, CAPTURE_WIDTH, CAPTURE_HEIGHT, VPI_IMAGE_FORMAT_U8, &payload);
@@ -40,7 +41,7 @@ pair<int, int> getLocation (cv::Mat cvImage){
     vpiImageCreateOpenCVMatWrapper(cvImage, 0, &inputBGR);
     vpiImageCreate(cvImage.cols, cvImage.rows, VPI_IMAGE_FORMAT_U8, 0, &input);
     vpiSubmitConvertImageFormat(stream, VPI_BACKEND_CUDA, inputBGR, input, NULL);
-
+    //input = inputBGR;
     VPIImageFormat format;
     vpiImageGetFormat(input, &format);
     int width, height;
@@ -64,10 +65,6 @@ pair<int, int> getLocation (cv::Mat cvImage){
     vpiImageUnlock(input);
     int min_i = min_coords[0].y;
     int min_j = min_coords[0].x;
- 
-    end = clock();
-    std::cout << "Time taken by program is : " << double(end - start) / double(CLOCKS_PER_SEC) << " seconds" << std::endl;
-    start = clock();
     // Assuming that the input image is grayscale (only one plane).
         assert(inputImageData.numPlanes == 1);
  
@@ -98,7 +95,7 @@ pair<int, int> getLocation (cv::Mat cvImage){
     vpiArrayDestroy(maxCoords);
     vpiImageDestroy(input);
     vpiImageDestroy(inputBGR);
-    std::cout << "Time taken by cleaning up is : " << double(clock() - start) / double(CLOCKS_PER_SEC) << " seconds" << std::endl;
+    //std::cout << "Time taken VPI task is : " << double(clock() - start) / double(CLOCKS_PER_SEC) << " seconds" << std::endl;
     return std::make_pair(min_i, min_j);
 }
 

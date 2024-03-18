@@ -62,7 +62,9 @@
         "opencvinterop.hpp": "c",
         "camera.h": "c",
         "kalfilter.h": "c",
-        "locator.h": "c"
+        "locator.h": "c",
+        "numeric": "cpp",
+        "cinttypes": "cpp"
     },
     "cmake.sourceDirectory": "/home/grp9/CyberBall-Showdown-The-Ultimate-PVR-Foosball/nanoBrain/cppSolution"
 }

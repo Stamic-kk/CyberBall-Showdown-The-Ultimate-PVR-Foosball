@@ -1,11 +1,10 @@
-#ifndef TIM2_H
-#define TIM2_H
+#ifndef SERVO_H
+#define SERVO_H
 #include "fifo.h"
 #include "tty.h"
 #include "stm32f0xx.h"
 #include <stdio.h>
-#include "spi.h"
-#include "usart.h"
 
-void init_tim2();
+void Servo_control(int channel, float duty_cycle);
+
 #endif

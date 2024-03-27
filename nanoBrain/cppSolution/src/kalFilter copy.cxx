@@ -5,18 +5,15 @@ Filter_t kFilter;
 
 const Index_t n_states = 4;
 const Index_t n_measurements = 2;
-const MatrixEntry_t dt = SAMPLE_RATE;
-const MatrixEntry_t stdx = 1.87285;      //change this
-const MatrixEntry_t stdy = 2.01378;        //change this
+const MatrixEntry_t dt = 1/FRAME_RATE;
+const MatrixEntry_t stdx = 1;      //change this
+const MatrixEntry_t stdy = 1;        //change this
 
-const MatrixEntry_t varx =  (stdx*stdx);
-const MatrixEntry_t vary = (stdy * stdy);
-const MatrixEntry_t varv = 2*sqrt(2)*(varx / (dt * dt));
-const MatrixEntry_t vartheta = M_PI;
+const MatrixEntry_t varx = (stdx*stdx);
+const MatrixEntry_t vary = varx;
+const MatrixEntry_t varv = 2*sqrt(2)*(  varx / (dt * dt));
+const MatrixEntry_t vartheta = 2;
 
-
-vector<int> x_arr;
-vector<int> y_arr;
 
 Matrix_t y; 
 Matrix_t x;
@@ -30,20 +27,10 @@ Matrix_t fx;
 Matrix_t hx;
 
 
-int counter = 0;
+vector<int> x_arr;
+vector<int> y_arr;
 
-
-
-void init_kalman(pair<int, int> firstLoc){
-    Matrix_t y1;
-    init_Matrices();
-    ulapack_init(&y1, n_measurements, 1);
-    put_data(&y1, firstLoc.first, firstLoc.second);
-    put_data(&y, firstLoc.first, firstLoc.second);
-    setup(y1);  
-    set_filter();
-}
- void get_phi(Matrix_t * const Phi, 
+static void get_phi(Matrix_t * const Phi, 
                     const Matrix_t * const x, 
                     const MatrixEntry_t dt) {
     MatrixEntry_t v = x->entry[2][0];
@@ -58,7 +45,7 @@ void init_kalman(pair<int, int> firstLoc){
 }
 
 // propagation
- void get_fx(Matrix_t * const fx,
+static void get_fx(Matrix_t * const fx,
                    const Matrix_t * const x,
                    const MatrixEntry_t dt) {
     MatrixEntry_t v = x->entry[2][0];
@@ -70,7 +57,7 @@ void init_kalman(pair<int, int> firstLoc){
     ulapack_edit_entry(fx, 3, 0, x->entry[3][0]);
 }
 // Observor
- void get_hx(Matrix_t * const hx, 
+static void get_hx(Matrix_t * const hx, 
                    const Matrix_t * const x) {
     ulapack_edit_entry(hx, 0, 0, x->entry[0][0]);
     ulapack_edit_entry(hx, 1, 0, x->entry[1][0]);
@@ -140,11 +127,6 @@ MatrixError_t setup(Matrix_t y1){
 }
 
 MatrixError_t set_filter(){
-    std::cout<<"init Kalman filter"<<std::endl;
-    std::cout<<"Phi"<<std::endl;
-    print_mat(&Phi);
-    std::cout<<"gam"<<std::endl;
-    print_mat(&gam);
     ukal_filter_create(&kFilter, ekf,            
                    n_states, n_measurements, 
                    &Phi, &gam, &x, &Q,     
@@ -165,24 +147,19 @@ void visualize(Matrix_t x, Mat &background){
     float y_coord = x.entry[1][0];
     float v = x.entry[2][0];
     float theta = x.entry[3][0];
-    // float x_end = x_coord + v * cos(theta) * dt;
-    float x_end = x_coord + v * cos(theta) * 20;
-    // x_end = std::min((int)x_end, CAPTURE_HEIGHT-1);
-    // x_end = std::max(0, (int)x_end);
-    // float y_end = y_coord + v * sin(theta) * dt;
-    float y_end = y_coord + v * sin(theta) * 20;
-    // y_end = std::min((int)y_end, CAPTURE_WIDTH-1);
-    // y_end = std::max(0, (int)y_end);
+    float x_end = x_coord + v * cos(theta) * dt;
+    float y_end = y_coord + v * sin(theta) * dt;
     cv::Point center = cv::Point(y_coord, x_coord);
     cv::Point to_dot = cv::Point(y_end, x_end);
-    // std::cout<<"from: "<<center.x<<", "<<center.y<< " to " <<to_dot.x<<", "<<to_dot.y<<std::endl;
-    cv::line(background, center, to_dot, cv::Scalar(0, 255  , 255), 1, 4, 0);
-    cv::circle(background, center, 2, cv::Scalar(255, 0, 255), 2, 8, 0);
+    std::cout<<"from: "<<center.x<<", "<<center.y<< " to " <<to_dot.x<<", "<<to_dot.y<<std::endl;
+    // cv::line(background, center, to_dot, cv::Scalar(0, 0, 255), 2, 8, 0);
+    cv::circle(background, center, 2, cv::Scalar(0, 0, 255), 2, 8, 0);
 
 }
 
 void test_filter(std::string path=""){
     Mat backgrounhd = Mat::zeros(CAPTURE_HEIGHT, CAPTURE_WIDTH * 2, CV_8UC3);
+    
     Matrix_t y1;
 
     const MatrixEntry_t sample_data[10][2]={ {2.1,2.204},
@@ -215,25 +192,27 @@ void test_filter(std::string path=""){
     std::cout<<"Data size: "<<n<<std::endl; 
     
 
-    // init_Matrices();
-    // ulapack_init(&y1, n_measurements, 1);
-    // put_data(&y1, data[0].first, data[0].second);
-    put_data(&y, data[1].first, data[1].second);
-    init_kalman(data[0]);
-    // setup(y1);  
-    // set_filter();
 
-    for(int i = 1;i < data.size();i++){
-        // get_fx(&fx, &kFilter.x, dt);
-        // ukal_set_fx(&kFilter, &fx);
-        // get_phi(&Phi, &kFilter.x, dt);
-        // ukal_set_phi(&kFilter, &Phi);
-        // ukal_model_predict(&kFilter);
-        // put_data(&y, data[i].first, data[i].second);
-        // get_hx(&hx, &kFilter.x);
-        // ukal_set_hx(&kFilter, &hx);
-        // ukal_update(&kFilter, &y);
-        kalmanCapture(data[i]);
+    init_Matrices();
+    ulapack_init(&y1, n_measurements, 1);
+    put_data(&y1, data[0].first, data[0].second);
+    put_data(&y, data[1].first, data[1].second);
+    setup(y1);  
+    set_filter();
+
+    for(int i = 2;i < data.size();i++){
+        get_fx(&fx, &kFilter.x, dt);
+        ukal_set_fx(&kFilter, &fx);
+        get_phi(&Phi, &kFilter.x, dt);
+        ukal_set_phi(&kFilter, &Phi);
+        ukal_model_predict(&kFilter);
+        put_data(&y, data[i].first, data[i].second);
+        std::cout<<kFilter.x.entry[0][0]<<", "<<kFilter.x.entry[1][0]<<std::endl;
+        std::cout<<kFilter.x.entry[2][0]<<", "<<kFilter.x.entry[3][0]<<std::endl;
+        get_hx(&hx, &kFilter.x);
+        ukal_set_hx(&kFilter, &hx);
+        ukal_update(&kFilter, &y);
+        
         visualize(kFilter.x, backgrounhd);
     }
     cv::imshow("Trajectory", backgrounhd);
@@ -243,7 +222,7 @@ void test_filter(std::string path=""){
     cv::destroyAllWindows();
 }
 
-void kalmanCapture(pair<float, float> loc){
+void update_filter(std::pair<int, int> loc){
         get_fx(&fx, &kFilter.x, dt);
         ukal_set_fx(&kFilter, &fx);
         get_phi(&Phi, &kFilter.x, dt);
@@ -253,12 +232,17 @@ void kalmanCapture(pair<float, float> loc){
         get_hx(&hx, &kFilter.x);
         ukal_set_hx(&kFilter, &hx);
         ukal_update(&kFilter, &y);
-        // std::cout<<"Location: "<<loc.first<<", "<<loc.second<<std::endl;
-        // std::cout<<"Predicted: "<<kFilter.x.entry[0][0]<<", "<<kFilter.x.entry[1][0]<<std::endl;
-        // std::cout<<"Predicted: "<<kFilter.x.entry[2][0]<<std::endl;
-        // std::cout<<"Predicted: "<<kFilter.x.entry[3][0]<<std::endl;
 }
 
+void init_kalman(pair<int, int> firstLoc){
+    Matrix_t y1;
+        init_Matrices();
+    ulapack_init(&y1, n_measurements, 1);
+    put_data(&y1, firstLoc.first, firstLoc.second);
+    put_data(&y, firstLoc.first, firstLoc.second);
+    setup(y1);  
+    set_filter();
+}
 
 bool read_sim_data(string path, vector<pair<float, float>> &data){
     // std::ifstream file(path);
@@ -279,14 +263,13 @@ bool read_sim_data(string path, vector<pair<float, float>> &data){
     return true;
 }
 
-
 bool cal_variance(std::pair<int, int> loc){
-    if(x_arr.size() >= 10000 ) return false;
+    if(x_arr.size() >= 100 ) return false;
 
 
     x_arr.push_back(loc.first);
     y_arr.push_back(loc.second);
-    if(x_arr.size() < 10000) return false;
+    if(x_arr.size() < 100) return false;
     int x_sum = std::accumulate(x_arr.begin(), x_arr.end(), 0);
     int y_sum = std::accumulate(y_arr.begin(), y_arr.end(), 0);
     int x_mean = x_sum / x_arr.size();
@@ -307,23 +290,4 @@ bool cal_variance(std::pair<int, int> loc){
 
     return true;
 
-}
-
-void print_mat(Matrix_t *mat){
-    for(int i = 0;i < mat->n_rows;i++){
-        for(int j = 0;j < mat->n_cols;j++){
-            std::cout<<mat->entry[i][j]<<" ";
-        }
-        std::cout<<std::endl;
-    }
-}
-
-
-void add_lines(cv::Mat background){
-    int line_A = 70;
-    int line_B = 190;
-    int line_C = CAPTURE_WIDTH - 5;
-    cv::line(background, cv::Point(line_A, 0), cv::Point(line_A, CAPTURE_HEIGHT), cv::Scalar(255, 255, 255), 1, 4, 0);
-    cv::line(background, cv::Point(line_B, 0), cv::Point(line_B, CAPTURE_HEIGHT), cv::Scalar(255, 255, 255), 1, 4, 0);    
-    cv::line(background, cv::Point(line_C, 0), cv::Point(line_C, CAPTURE_HEIGHT), cv::Scalar(255, 255, 255), 1, 4, 0);    
 }

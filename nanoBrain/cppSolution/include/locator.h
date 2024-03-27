@@ -36,11 +36,13 @@ namespace fs = std::experimental::filesystem;
 using std::string;
 using std::vector;
 using std::pair;
-
+extern std::pair<int,int> last_location;
+extern std::pair<int,int> curr_location;
 vector<string> getAllFiles(string path);
 pair<int, int> getLocation (cv::Mat cvImage);
 void test_locator(string path);
 void draw_detected(cv::Mat &img, std::pair<int, int> location);
 void setUpVpi();
 void tearDownVpi();
+int get_different(pair<int,int> curr, pair<int,int> last);
 #endif

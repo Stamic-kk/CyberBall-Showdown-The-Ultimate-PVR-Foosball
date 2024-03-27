@@ -8,6 +8,8 @@ VPIStream stream;
 VPIPayload payload;
 VPIImageFormat format;
 
+std::pair<int, int> last_location = std::make_pair(-1,-1);
+std::pair<int, int> curr_location = std::make_pair(-1, -1);
 // void setUpVpi(cv::Mat Sample){
 void setUpVpi(){
     vpiStreamCreate(0, &stream);
@@ -113,4 +115,16 @@ void test_locator(string path){
 
 void draw_detected(cv::Mat &img, std::pair<int, int> location){
     cv::circle(img, cv::Point(location.second, location.first), 2, cv::Scalar(0, 0, 255), 3);
+}
+
+int get_different(std::pair<int, int> curr, std::pair<int,int> last){
+    return sqrt(abs(curr.first - last.first) + abs(curr.second - last.second));
+}
+
+bool is_static(){
+    int diff = get_different(curr_location, last_location);
+    if(diff > 5)
+        return false;
+    else
+        return true;
 }

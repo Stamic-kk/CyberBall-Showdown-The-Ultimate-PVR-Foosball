@@ -23,12 +23,14 @@
 #include <sstream>
 #include <time.h>
 #include <vector>
+#include <list>
 #include <experimental/filesystem>
 
 #define TARGET_B 30
 #define TARGET_G 255
 #define TARGET_R 255
-#define TARGET_GREY (TARGET_B + TARGET_G + TARGET_R) / 3    
+#define TARGET_GREY (TARGET_B + TARGET_G + TARGET_R) / 3
+  
 typedef unsigned char Pixel;
 typedef unsigned char Byte;
 
@@ -38,6 +40,7 @@ using std::vector;
 using std::pair;
 extern std::pair<int,int> last_location;
 extern std::pair<int,int> curr_location;
+extern std::list<std::pair<int, int>> locations;
 vector<string> getAllFiles(string path);
 pair<int, int> getLocation (cv::Mat cvImage);
 void test_locator(string path);
@@ -45,4 +48,5 @@ void draw_detected(cv::Mat &img, std::pair<int, int> location);
 void setUpVpi();
 void tearDownVpi();
 int get_different(pair<int,int> curr, pair<int,int> last);
+bool is_static();
 #endif

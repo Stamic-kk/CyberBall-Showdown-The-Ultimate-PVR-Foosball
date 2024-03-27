@@ -8,6 +8,7 @@ VPIStream stream;
 VPIPayload payload;
 VPIImageFormat format;
 
+std::list<std::pair<int, int>> locations;
 std::pair<int, int> last_location = std::make_pair(-1,-1);
 std::pair<int, int> curr_location = std::make_pair(-1, -1);
 // void setUpVpi(cv::Mat Sample){
@@ -68,19 +69,20 @@ pair<int, int> getLocation (cv::Mat cvImage){
     int min_i = min_coords[0].y;
     int min_j = min_coords[0].x;
     // Assuming that the input image is grayscale (only one plane).
-        assert(inputImageData.numPlanes == 1);
+    assert(inputImageData.numPlanes == 1);
  
-    // void *imgData     = inputImageData.planes[0].data;
-    // int imgPitchBytes = inputImageData.planes[0].pitchBytes;
+    void *imgData     = inputImageData.planes[0].data;
+    int imgPitchBytes = inputImageData.planes[0].pitchBytes;
  
     // Assuming that the plane has 8-bit unsigned int type.
     assert(inputImageData.planes[0].pixelType == VPI_PIXEL_TYPE_U8);
 
  
-    // const Pixel *min_row = (const Pixel *)((const Byte *)imgData + min_i * imgPitchBytes);
+    const Pixel *min_row = (const Pixel *)((const Byte *)imgData + min_i * imgPitchBytes);
  
-    // unsigned char min_value = min_row[min_j];
-    // std::cout << "min: " << (int)min_value << " at (" << min_i << ", " << min_j << ")" << std::endl;
+    unsigned char min_value = min_row[min_j];
+    //std::cout << "min: " << (int)min_value << " at (" << min_i << ", " << min_j << ")" << std::endl;
+    assert(min_value < 250);
     #ifdef SAVE
     cv:: Mat outCvImage;
     vpiImageDataExportOpenCVMat(inputImageData, &outCvImage);
@@ -97,6 +99,10 @@ pair<int, int> getLocation (cv::Mat cvImage){
     vpiArrayDestroy(maxCoords);
     vpiImageDestroy(input);
     vpiImageDestroy(inputBGR);
+    if(min_value > 5){
+        // std::cout<<(int)min_value<<std::endl;
+        return std::make_pair(-1, -1);
+    }
     //std::cout << "Time taken VPI task is : " << double(clock() - start) / double(CLOCKS_PER_SEC) << " seconds" << std::endl;
     return std::make_pair(min_i, min_j);
 }
@@ -122,9 +128,10 @@ int get_different(std::pair<int, int> curr, std::pair<int,int> last){
 }
 
 bool is_static(){
-    int diff = get_different(curr_location, last_location);
-    if(diff > 5)
-        return false;
-    else
-        return true;
+    assert(locations.size() <= 25);
+    for(std::pair<int, int> loc : locations){
+        if(get_different(loc, curr_location) > 3)
+            return false;
+    }
+    return true;
 }

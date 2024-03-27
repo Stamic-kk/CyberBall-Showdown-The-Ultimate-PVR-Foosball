@@ -6,6 +6,10 @@
 #include <unistd.h>
 #define SHOW_IMAGE
 
+
+
+
+
 int main(){
     // camera_test();
     // return 0;
@@ -31,6 +35,7 @@ int main(){
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     std::chrono::steady_clock::time_point current;
     int runs = 0;
+    int diff;
     init_Matrices();
     if(get_image(cap, img) == false){
         std::cout<<"Capture read error"<<std::endl;
@@ -69,30 +74,25 @@ int main(){
         if(get_image(cap, img) == false){
             std::cout<<"Capture read error"<<std::endl;
            break;
-        }else{
-            
-            //std::cout<<"Time to get image: "<<std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - current).count()<<std::endl;
-    
-        }// cv::copyTo(img, copy, cv::noArray());
+        }
         cv::absdiff(img, cv::Scalar(TARGET_B, TARGET_G, TARGET_R), copy);
         current = std::chrono::steady_clock::now();
         curr_location =  getLocation(copy);
-        //std::pair<int, int> loc = getLocation(copy);
-        // std::cout<<"Time to get location: "<<std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - current).count()<<std::endl;
-        int diff = get_different(curr_location, last_location);
-        if(diff > 10)
-            std::cout<<"Diff: "<<diff<<std::endl;
-        //std::cout<<"Location: "<<loc.first<<", "<<loc.second<<std::endl;
-        // draw_detected(copy, getLocation(copy));
-        // cv::imshow("camera",copy);
+        if(curr_location.first != -1){
+        
+        diff = get_different(curr_location, last_location);
         kalmanCapture(curr_location);
-        visualize(kFilter.x, copy);
+        visualize(kFilter.x, copy, is_static());
         add_lines(copy);
-        if(cal_variance(curr_location)){
+        // Get variance first before setup the filter
+        /*if(cal_variance(curr_location)){
         //    break;
         }
+        */
+        }
         #ifdef SHOW_IMAGE
-        draw_detected(copy, curr_location);
+        if(curr_location.first != -1)
+            draw_detected(copy, curr_location);
         cv::imshow("camera",copy);
         int keycode = cv::waitKey(1) & 0xff ; 
              if (keycode == 27) break;
@@ -110,6 +110,10 @@ int main(){
         runs++;
         last_location.first = curr_location.first;
         last_location.second = curr_location.second;
+        if(locations.size() > 20)
+            locations.pop_back();
+        locations.push_front(last_location);
+        
     }
     tearDownVpi();
     cap.release();

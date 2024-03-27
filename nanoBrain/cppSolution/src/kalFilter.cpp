@@ -17,6 +17,7 @@ const MatrixEntry_t vartheta = M_PI;
 
 vector<int> x_arr;
 vector<int> y_arr;
+vector<Matrix_t> stateArr; 
 
 Matrix_t y; 
 Matrix_t x;
@@ -160,23 +161,17 @@ MatrixError_t put_data (Matrix_t *y, float x_coord, float y_coord){
     
 }
 
-void visualize(Matrix_t x, Mat &background){
+void visualize(Matrix_t x, Mat &background, bool is_static=false){
     float x_coord = x.entry[0][0];
     float y_coord = x.entry[1][0];
     float v = x.entry[2][0];
     float theta = x.entry[3][0];
-    // float x_end = x_coord + v * cos(theta) * dt;
-    float x_end = x_coord + v * cos(theta) * 20;
-    // x_end = std::min((int)x_end, CAPTURE_HEIGHT-1);
-    // x_end = std::max(0, (int)x_end);
-    // float y_end = y_coord + v * sin(theta) * dt;
-    float y_end = y_coord + v * sin(theta) * 20;
-    // y_end = std::min((int)y_end, CAPTURE_WIDTH-1);
-    // y_end = std::max(0, (int)y_end);
+    float x_end = x_coord + v * cos(theta) * VISUAL_EXAG_FACTOR;
+    float y_end = y_coord + v * sin(theta) * VISUAL_EXAG_FACTOR;
     cv::Point center = cv::Point(y_coord, x_coord);
     cv::Point to_dot = cv::Point(y_end, x_end);
-    // std::cout<<"from: "<<center.x<<", "<<center.y<< " to " <<to_dot.x<<", "<<to_dot.y<<std::endl;
-    cv::line(background, center, to_dot, cv::Scalar(0, 255  , 255), 1, 4, 0);
+    if(!is_static)
+        cv::line(background, center, to_dot, cv::Scalar(0, 255  , 255), 1, 4, 0);
     cv::circle(background, center, 2, cv::Scalar(255, 0, 255), 2, 8, 0);
 
 }
@@ -253,10 +248,6 @@ void kalmanCapture(pair<float, float> loc){
         get_hx(&hx, &kFilter.x);
         ukal_set_hx(&kFilter, &hx);
         ukal_update(&kFilter, &y);
-        // std::cout<<"Location: "<<loc.first<<", "<<loc.second<<std::endl;
-        // std::cout<<"Predicted: "<<kFilter.x.entry[0][0]<<", "<<kFilter.x.entry[1][0]<<std::endl;
-        // std::cout<<"Predicted: "<<kFilter.x.entry[2][0]<<std::endl;
-        // std::cout<<"Predicted: "<<kFilter.x.entry[3][0]<<std::endl;
 }
 
 

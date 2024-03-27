@@ -1,5 +1,6 @@
 #include "EXTI.h"
 #include "spi.h"
+#include "usart.h"
 
 void init_exti(){
 	RCC->APB2ENR |= RCC_APB2ENR_SYSCFGCOMPEN;
@@ -27,6 +28,7 @@ void EXTI4_15_IRQHandler(){
     	spi_cmd(0x01);        // clear the screen
     	nano_wait(2000000);   // wait for the screen to be cleaned
     	spi2_display1("Hello");// display
+    	usart_send(USART3, 'S');
 		printf("Rest game\n");
 	}
 	else if( (EXTI->PR & EXTI_PR_PR11) == EXTI_PR_PR11){
@@ -34,6 +36,7 @@ void EXTI4_15_IRQHandler(){
     	spi_cmd(0x01);        // clear the screen
     	nano_wait(2000000);   // wait for the screen to be cleaned
     	spi2_display1("Start game");// display
+    	usart_send(USART3, 'T');
 		printf("Start\n");
 	}
 	else if( (EXTI->PR & EXTI_PR_PR14) == EXTI_PR_PR14){

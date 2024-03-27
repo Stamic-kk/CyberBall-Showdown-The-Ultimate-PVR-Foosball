@@ -1,4 +1,6 @@
 #include "usart.h"
+#include "servo.h"
+#include "spi.h"
 
 char data;
 
@@ -21,11 +23,11 @@ void init_usart5() {
 
 
 void init_usart3(){
-	RCC->AHBENR |= RCC_AHBENR_GPIOCEN;
-	GPIOC->MODER |= GPIO_MODER_MODER10_1| GPIO_MODER_MODER11_1;
-	GPIOC->AFR[1] &= ~GPIO_AFRH_AFR10;
-	GPIOC->AFR[1] &= ~GPIO_AFRH_AFR11;
-	GPIOC->AFR[1] |= (0x1 << (4*3)) | (0x1 << (4*2));		//AF1 for PC10&11
+//	RCC->AHBENR |= RCC_AHBENR_GPIOCEN;
+//	GPIOC->MODER |= GPIO_MODER_MODER10_1| GPIO_MODER_MODER11_1;
+//	GPIOC->AFR[1] &= ~GPIO_AFRH_AFR10;
+//	GPIOC->AFR[1] &= ~GPIO_AFRH_AFR11;
+//	GPIOC->AFR[1] |= (0x1 << (4*3)) | (0x1 << (4*2));		//AF1 for PC10&11
 	RCC->APB1ENR |= RCC_APB1ENR_USART3EN;
     USART3->CR1 &= ~(USART_CR1_UE);
     USART3->CR1 &= ~(USART_CR1_M|(USART_CR1_M<<16)|USART_CR1_PCE|USART_CR1_OVER8);
@@ -61,9 +63,18 @@ void setUpSampling(USART_TypeDef * u){
 }
 
 void USART3_4_5_6_7_8_IRQHandler(){
-	if(USART3->ISR & USART_ISR_RXNE ){
+	if((USART3->ISR & USART_ISR_RXNE) ==  USART_ISR_RXNE){
 		data = usart_get(USART3);
-		printf("%c", data);
+		printf("Data recv: %c\n", data);
+//		printf("res/n");
+		if ( data == 'S'){
+			printf("Move servo\n");
+			Servo_control(2, 12);
+
+		}
+		else if ( data == 'T'){
+			Servo_control(2, 2);
+		}
 	}
 	else if (USART3->ISR & USART_ISR_ORE){
 		//if overrun, ignore

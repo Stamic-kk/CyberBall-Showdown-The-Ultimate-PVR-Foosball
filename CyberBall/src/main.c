@@ -48,11 +48,11 @@
 //    	USART3->TDR = 'C';
 //    	nano_wait(1000000);
 //    }
-////    while (!((USART3->ISR & USART_ISR_RXNE) == USART_ISR_RXNE)){}
-////    char c = usart_get(USART3);
-////    printf("%c", c);
-////    asm("wfi");
-////    printf("asdasd");
+//    while (!((USART3->ISR & USART_ISR_RXNE) == USART_ISR_RXNE)){}
+//    char c = usart_get(USART3);
+//    printf("%c", c);
+//    asm("wfi");
+//    printf("asdasd");
 //
 //
 //
@@ -170,6 +170,10 @@
 #include "spi.h"
 #include "GPIO_INIT.h"
 #include "EXTI.h"
+#include "tim1.h"
+#include "tim2.h"
+#include "tim7.h"
+#include "servo.h"
 
 
 #include "fifo.h"
@@ -185,7 +189,14 @@
 
 int main(void)
 {
+//
+	init_GPIO_C();
+	init_GPIO_A();
+	init_GPIO_B();
+////
 	init_usart5();
+	init_usart3();
+	setUpSampling(USART3);
 	setbuf(stdin,0);
 	setbuf(stdout,0);
 	setbuf(stderr,0);
@@ -193,15 +204,32 @@ int main(void)
 	printf("b");
 	printf("c\n");
 //
-	init_GPIO_C();
-	init_GPIO_A();
-	init_GPIO_B();
-//
 	init_spi2_for_LCD();
 	spi2_init_oled();
 	spi2_display1("Hello!");
 //
 	init_exti();
+	USART3->TDR = 'c';
+//	while(1){
+//		while (!((USART3->ISR & USART_ISR_RXNE) == USART_ISR_RXNE)){}
+//		char c = usart_get(USART3);
+//		printf("%c", c);
+//	}
+
+    init_tim1();
+//    init_tim7();
+
+//    Servo_control(2, 12);
+//    nano_wait(2000000000);
+//
+//    Servo_control(2, 2);
+//    nano_wait(2000000000);
+//
+//    Servo_control(2, 12);
+//    nano_wait(2000000000);
+//
+//    Servo_control(2, 5);
+//    nano_wait(2000000000);
 
 	for(;;);
 }

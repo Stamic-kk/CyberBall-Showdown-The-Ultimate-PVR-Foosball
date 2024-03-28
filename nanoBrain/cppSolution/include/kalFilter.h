@@ -56,4 +56,5 @@ void update_filter(pair<int, int> loc);
 void kalmanCapture(pair<float, float> loc);
 void print_mat(Matrix_t *mat);
 void add_lines(cv::Mat background);
+void get_intercepts(int *intercepts);
 #endif

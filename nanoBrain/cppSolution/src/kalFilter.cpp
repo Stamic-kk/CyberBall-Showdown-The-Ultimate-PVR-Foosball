@@ -30,6 +30,10 @@ Matrix_t H;
 Matrix_t fx;
 Matrix_t hx;
 
+int line_A = 70;
+int line_B = 190;
+int line_C = CAPTURE_WIDTH - 5;
+
 
 int counter = 0;
 
@@ -250,6 +254,26 @@ void kalmanCapture(pair<float, float> loc){
         ukal_update(&kFilter, &y);
 }
 
+void get_intercepts(int *intercepts){
+    //current position
+    Matrix_t x = kFilter.x;
+    float x_coord = x.entry[0][0];
+    float y_coord = x.entry[1][0];
+    //velocity
+    float v = x.entry[2][0];
+    float theta = x.entry[3][0];
+    float slope = tan(theta / M_PI * 180);
+    int arr[] = {line_A, line_B, line_C};
+    for(int i = 0 ;i < 3;i++){
+        float defense_x = arr[i];
+        float dx = defense_x - x_coord;
+        intercepts[i] = max(min((int)(y_coord - slope * dx), CAPTURE_HEIGHT), 0);
+    }
+    std::cout<<std::endl;
+}
+
+
+
 
 bool read_sim_data(string path, vector<pair<float, float>> &data){
     // std::ifstream file(path);
@@ -311,9 +335,7 @@ void print_mat(Matrix_t *mat){
 
 
 void add_lines(cv::Mat background){
-    int line_A = 70;
-    int line_B = 190;
-    int line_C = CAPTURE_WIDTH - 5;
+
     cv::line(background, cv::Point(line_A, 0), cv::Point(line_A, CAPTURE_HEIGHT), cv::Scalar(255, 255, 255), 1, 4, 0);
     cv::line(background, cv::Point(line_B, 0), cv::Point(line_B, CAPTURE_HEIGHT), cv::Scalar(255, 255, 255), 1, 4, 0);    
     cv::line(background, cv::Point(line_C, 0), cv::Point(line_C, CAPTURE_HEIGHT), cv::Scalar(255, 255, 255), 1, 4, 0);    

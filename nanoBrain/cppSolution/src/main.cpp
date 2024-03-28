@@ -36,6 +36,8 @@ int main(){
     std::chrono::steady_clock::time_point current;
     int runs = 0;
     int diff;
+    int *intercepts = new int[3];
+    Uart uart;
     init_Matrices();
     if(get_image(cap, img) == false){
         std::cout<<"Capture read error"<<std::endl;
@@ -78,27 +80,33 @@ int main(){
         cv::absdiff(img, cv::Scalar(TARGET_B, TARGET_G, TARGET_R), copy);
         current = std::chrono::steady_clock::now();
         curr_location =  getLocation(copy);
-        if(curr_location.first != -1){
         
-        diff = get_different(curr_location, last_location);
-        kalmanCapture(curr_location);
-        visualize(kFilter.x, copy, is_static());
-        add_lines(copy);
         // Get variance first before setup the filter
         /*if(cal_variance(curr_location)){
         //    break;
         }
         */
+        if(curr_location.first != -1){
+            diff = get_different(curr_location, last_location);
+            kalmanCapture(curr_location);
+            if(! is_static()){
+                get_intercepts(intercepts);
+                // std::cout<<"At line A"<<intercepts[0]<<std::endl;
+                // std::cout<<"At line B"<<intercepts[1]<<std::endl;
+                // std::cout<<"At line C"<<intercepts[2]<<std::endl;
+                char data = (intercepts[0]/240*20);
+                uart.send(&data, 1);
+            }
         }
         #ifdef SHOW_IMAGE
+        visualize(kFilter.x, copy, is_static());
+        add_lines(copy);
         if(curr_location.first != -1)
             draw_detected(copy, curr_location);
         cv::imshow("camera",copy);
         int keycode = cv::waitKey(1) & 0xff ; 
              if (keycode == 27) break;
         #endif
-
-
 
         current = std::chrono::steady_clock::now();
         //std::cout<<"Time esplised "<<std::chrono::duration_cast<std::chrono::milliseconds>(current-begin).count()<<std::endl;
@@ -115,6 +123,7 @@ int main(){
         locations.push_front(last_location);
         
     }
+    delete[] intercepts;
     tearDownVpi();
     cap.release();
     cv::destroyAllWindows();

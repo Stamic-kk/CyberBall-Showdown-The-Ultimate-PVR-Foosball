@@ -69,7 +69,16 @@ int main(){
     ukal_model_predict(&kFilter);
     get_hx(&hx, &kFilter.x);
     print_mat(&kFilter.x);
+    //int i = 0;
+    //while(true){
+    //    char c = i%2? 2: 6;
+    //    uart.send(&c, 1);
+    //    usleep(10000);
+    //    i++;
+    // }
 
+    
+    // return 0;
     while (/* condition */true)
     {
         /* code */
@@ -82,27 +91,46 @@ int main(){
         curr_location =  getLocation(copy);
         
         // Get variance first before setup the filter
-        /*if(cal_variance(curr_location)){
+        if(cal_variance(curr_location)){
         //    break;
         }
-        */
+        
         if(curr_location.first != -1){
             diff = get_different(curr_location, last_location);
             kalmanCapture(curr_location);
+
+
+
+
+
+
             if(! is_static()){
                 get_intercepts(intercepts);
+                
+                for(int i = 0; i < 3; i++){
+                    float intercept = intercepts[i];
+                    if(intercept != -1){ 
+                        char data = packByte(i, intercept);
+                        uart.send(&data, 1);
+                    }
+            
+                }
                 // std::cout<<"At line A"<<intercepts[0]<<std::endl;
                 // std::cout<<"At line B"<<intercepts[1]<<std::endl;
                 // std::cout<<"At line C"<<intercepts[2]<<std::endl;
-                char data = (intercepts[0]/240*20);
-                uart.send(&data, 1);
+                //if(intercepts[2] == -1){
+                    // pass
+                //}else{
+                //    char data = ((float)intercepts[2]/240*20);
+                //    uart.send(&data,1);
+                //}
             }
         }
         #ifdef SHOW_IMAGE
         visualize(kFilter.x, copy, is_static());
         add_lines(copy);
         if(curr_location.first != -1)
-            draw_detected(copy, curr_location);
+           draw_detected(copy, curr_location);
         cv::imshow("camera",copy);
         int keycode = cv::waitKey(1) & 0xff ; 
              if (keycode == 27) break;

@@ -6,13 +6,18 @@ Filter_t kFilter;
 const Index_t n_states = 4;
 const Index_t n_measurements = 2;
 const MatrixEntry_t dt = SAMPLE_RATE;
-const MatrixEntry_t stdx = 1.87285;      //change this
-const MatrixEntry_t stdy = 2.01378;        //change this
+// const MatrixEntry_t stdx = 1.87285;      //change this
+// const MatrixEntry_t stdy = 2.01378;        //change this
 
+const MatrixEntry_t stdx = 2.3;      //change this
+const MatrixEntry_t stdy = 2.3;        //change this
 const MatrixEntry_t varx =  (stdx*stdx);
 const MatrixEntry_t vary = (stdy * stdy);
 const MatrixEntry_t varv = 2*sqrt(2)*(varx / (dt * dt));
-const MatrixEntry_t vartheta = M_PI;
+// const MatrixEntry_t vartheta = M_PI;
+const MatrixEntry_t vartheta = sqrt(11);
+
+
 
 
 vector<int> x_arr;
@@ -267,9 +272,12 @@ void get_intercepts(int *intercepts){
     for(int i = 0 ;i < 3;i++){
         float defense_x = arr[i];
         float dx = defense_x - x_coord;
-        intercepts[i] = max(min((int)(y_coord - slope * dx), CAPTURE_HEIGHT), 0);
+    
+        // intercepts[i] = max(min((int)(y_coord - slope * dx), CAPTURE_HEIGHT), 0);
+        float y_hat = (y_coord - slope * dx);
+        intercepts[i] = y_hat <= 0 || y_hat>= CAPTURE_HEIGHT ? -1 : y_hat;
     }
-    std::cout<<std::endl;
+
 }
 
 

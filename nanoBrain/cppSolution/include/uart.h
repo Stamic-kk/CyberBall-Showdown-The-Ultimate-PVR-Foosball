@@ -5,12 +5,13 @@
 class Uart
 {
 private:
-    int id;
-    unsigned char buffer[20];
+    int handle;
+    unsigned char buffer;
 public:
     Uart(/* args */);
     ~Uart();
     void send(char *msg, int numBytes);
+    char recevie();
     
 };
 

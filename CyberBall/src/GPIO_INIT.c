@@ -3,7 +3,7 @@
 void init_GPIO_C(void){
 	// PC 0-12
 	RCC->AHBENR  |= RCC_AHBENR_GPIOCEN;
-	GPIOC->MODER &= 0xfc000000; // clean PC 12-0
+	GPIOC->MODER &= 0xf0000000; // clean PC 13-0
 
 	//set PC 0-9 to input mode, PC 10 - 12 to Alternate function mode
 	GPIOC->MODER |= 0x02A00000;
@@ -15,8 +15,8 @@ void init_GPIO_C(void){
 	GPIOC->AFR[1] |= 0x00021100;
 
 	//PC 0-9 to PULL_UP
-	GPIOC->PUPDR &= 0xfff00000;
-	GPIOC->PUPDR |= 0x00055555;
+	GPIOC->PUPDR &= 0xf3f00000;
+	GPIOC->PUPDR |= 0x04055555;
 }
 
 void init_GPIO_A(void){
@@ -34,7 +34,7 @@ void init_GPIO_A(void){
 	GPIOA->AFR[1] &= 0xffff0000;
 	GPIOA->AFR[1] |= 0x00002222;
 
-	//PA 0-7, 12, 15 to PULL_UP
+	//PA 0-7, 12, 15 to PULL_down
 	GPIOA->PUPDR &= 0x3cff0000;
 	GPIOA->PUPDR |= 0x41005555;
 
@@ -53,7 +53,7 @@ void init_GPIO_B(void){
 	//PB15 SPI2_MOSI alt func 0
 	GPIOB->AFR[1] &= 0x0f00ffff;
 
-	//PB 0-9, 10,11, 14 to PULL_UP
+	//PB 0-9, 10,11, 14 to PULL_down
 	GPIOB->PUPDR &= 0xcf000000;
 	GPIOB->PUPDR |= 0x10555555;
 

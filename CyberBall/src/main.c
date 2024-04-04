@@ -7,66 +7,68 @@
 //  * @brief   Default main function.
 //  ******************************************************************************
 //*/
-//
-//#include "stm32f0xx.h"
-//#include "usart.h"
-//#include <stdint.h>
-//#include "adc.h"
-//#include "tim2.h"
-//#include "spi.h"
-//
-//
-//#include "fifo.h"
-//#include "tty.h"
-//#include <stdio.h>
-//#include <string.h> // for memmove()
-//#include <stdlib.h>
-//// PD2 use for USART RX
-//// PC12 use for USART TX
-//
-//
-//
-//
-//int main(void)
-//{
-//
-//    init_usart5();
-//	init_usart3();
-//    setbuf(stdin,0);
-//    setbuf(stdout,0);
-//    setbuf(stderr,0);
-//    printf("a");
-//    printf("b");
-//    printf("c");
-////    while(!(USART5->ISR & USART_ISR_TXE)){}
-////    while(!(USART3->ISR & USART_ISR_TXE));
-////    USART3->TDR = 'R';
-////    printf("12345");
-//    setUpSampling(USART3);
+
+/*#include "stm32f0xx.h"
+#include "usart.h"
+#include <stdint.h>
+#include "adc.h"
+#include "tim2.h"
+#include "spi.h"
+
+
+#include "fifo.h"
+#include "tty.h"
+#include <stdio.h>
+#include <string.h> // for memmove()
+#include <stdlib.h>
+// PD2 use for USART RX
+// PC12 use for USART TX
+
+
+
+
+int main(void)
+{
+
+    init_usart5();
+	init_usart3();
+    setbuf(stdin,0);
+    setbuf(stdout,0);
+    setbuf(stderr,0);
+    printf("a");
+    printf("b");
+    printf("c");
+//    while(!(USART5->ISR & USART_ISR_TXE)){}
+//    while(!(USART3->ISR & USART_ISR_TXE));
+//    USART3->TDR = 'R';
+//    printf("12345");
+    setUpSampling(USART3);
 //    while(1){
 //    	while(!(USART5->ISR & USART_ISR_TXE)){}
 //    	USART3->TDR = 'C';
 //    	nano_wait(1000000);
 //    }
-//    while (!((USART3->ISR & USART_ISR_RXNE) == USART_ISR_RXNE)){}
-//    char c = usart_get(USART3);
-//    printf("%c", c);
-//    asm("wfi");
-//    printf("asdasd");
+    while(1){
+		while (!((USART3->ISR & USART_ISR_RXNE) == USART_ISR_RXNE)){}
+		char c = usart_get(USART3);
+		printf("%c", c);
+		asm("wfi");
+    }
+    printf("asdasd");
+
+
+
+//    setup_adc();
+    //init_spi1_for_stm32_stm32();
+//    init_spi1_for_LCD();
+//    spi1_init_oled();
+//    spi1_display1("Ult foosball");
 //
+//    init_tim2();
 //
-//
-////    setup_adc();
-//    //init_spi1_for_stm32_stm32();
-////    init_spi1_for_LCD();
-////    spi1_init_oled();
-////    spi1_display1("Ult foosball");
-////
-////    init_tim2();
-////
-//
-//	for(;;);
-//}
+
+	for(;;);
+}*/
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -151,16 +153,16 @@
 ////    }
 //}
 
-//////////////////////////////////////////////////////////////////////////////////////////
-/**
-  ******************************************************************************
-  * @file    main.c
-  * @author  Ac6
-  * @version V1.0
-  * @date    01-December-2013
-  * @brief   Default main function.
-  ******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////////////////
+///**
+//  ******************************************************************************
+//  * @file    main.c
+//  * @author  Ac6
+//  * @version V1.0
+//  * @date    01-December-2013
+//  * @brief   Default main function.
+//  ******************************************************************************
+//*/
 
 #include "stm32f0xx.h"
 #include "usart.h"
@@ -210,15 +212,21 @@ int main(void)
 //
 	init_exti();
 	USART3->TDR = 'c';
-//	while(1){
-//		while (!((USART3->ISR & USART_ISR_RXNE) == USART_ISR_RXNE)){}
-//		char c = usart_get(USART3);
-//		printf("%c", c);
-//	}
 
     init_tim1();
-//    init_tim7();
+    init_tim7();
+    init_tim2();
+//    Servo_control(0, 7.1);
+//    Servo_control(1, 7.1);
+//    Servo_control(2, 2);
+//    float move = 2;
+//    while(1){
+//    	Servo_control(0, move);
+//    	move += 0.27;
+//    	if(move >= 6) move = 2;
+//    }
 
+//
 //    Servo_control(2, 12);
 //    nano_wait(2000000000);
 //

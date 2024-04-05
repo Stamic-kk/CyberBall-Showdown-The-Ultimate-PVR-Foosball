@@ -63,10 +63,13 @@ void TIM2_IRQHandler(){
     char upper_data;
     char lower_data;
 
-    values[0] = ~(GPIOA->IDR);
-    values[1] = ~((GPIOB->IDR) | 0b1111110000000000);
-    values[2] = ~(GPIOC->IDR);
-
+//    values[0] = ~(GPIOA->IDR);
+//    values[1] = ~((GPIOB->IDR) | 0b1111110000000000);
+//    values[2] = ~(GPIOC->IDR);
+    values[0] = ~(GPIOA->IDR) & 0xFF;	//PA0 to PA7
+    values[0] |= (~(GPIOA->IDR) & 0x1000) >> 4;
+    values[0] |= (~(GPIOA->IDR) & 0x8000) >> 6;
+    values[1] = ~(GPIOB->IDR) & 0x3F;
 //    printf("Sensor: %d\n", values[1]);
 
     // GPIOA inputs

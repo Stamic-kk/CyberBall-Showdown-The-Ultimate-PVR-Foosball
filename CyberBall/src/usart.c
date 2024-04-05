@@ -73,8 +73,8 @@ void USART3_4_5_6_7_8_IRQHandler(){
 		int relative_pos = pos % 21;
 		float dutyCycle = pixelToDutyCycle(relative_pos);
 		//data_float = ((float)(data_int) / 2) + 2;
-		printf("Duty Cycle: %f \n\r", dutyCycle);
-		printf("Control rod %d: move to %d\n\r", rod_id, relative_pos);
+//		printf("Duty Cycle: %f \n\r", dutyCycle);
+//		printf("Control rod %d: move to %d\n\r", rod_id, relative_pos);
 		Servo_control(rod_id, dutyCycle);
 //		Servo_control(1, 7.5);
 	}

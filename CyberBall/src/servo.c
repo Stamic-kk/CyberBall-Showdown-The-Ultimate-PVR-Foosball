@@ -3,7 +3,7 @@
 void Servo_control(int channel, float duty_cycle)
 {
 	if(duty_cycle < MIN_Y || duty_cycle > MAX_Y){
-		printf("Error: Duty Cycle out of bounds");
+//		printf("Error: Duty Cycle out of bounds");
 //		printf(" Got %f \n\r", duty_cycle);
 		return;
 	}

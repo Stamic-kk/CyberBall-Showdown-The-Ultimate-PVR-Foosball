@@ -216,6 +216,8 @@ int main(void)
     init_tim1();
     init_tim7();
     init_tim2();
+    int k = 0x6FFF;
+    int j = 0;
 //    Servo_control(0, 7.1);
 //    Servo_control(1, 7.1);
 //    Servo_control(2, 2);

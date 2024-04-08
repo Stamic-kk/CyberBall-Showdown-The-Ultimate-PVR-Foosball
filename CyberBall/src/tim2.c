@@ -2,6 +2,7 @@
 #include "servo.h"
 
 uint16_t values[3];
+uint16_t pos[3];
 extern int goal_num = 0;
 
 void init_tim2(void) {
@@ -69,7 +70,17 @@ void TIM2_IRQHandler(){
     values[0] = ~(GPIOA->IDR) & 0xFF;	//PA0 to PA7
     values[0] |= (~(GPIOA->IDR) & 0x1000) >> 4;
     values[0] |= (~(GPIOA->IDR) & 0x8000) >> 6;
-    values[1] = ~(GPIOB->IDR) & 0x3F;
+    values[1] = ~(GPIOB->IDR) & 0x3FF;
+    values[2] = ~(GPIOC->IDR) & 0x3FF;
+    // Assume at most two elements can be 0.
+    for(int i = 0; i < 10; i++){
+    	for(int j = 0; j < 3; j++){
+    		if(values[j] == 0) pos[j] = i;
+    	}
+    	// Add a break if.
+    }
+
+
 //    printf("Sensor: %d\n", values[1]);
 
     // GPIOA inputs

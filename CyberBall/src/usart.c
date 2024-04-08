@@ -70,13 +70,30 @@ void USART3_4_5_6_7_8_IRQHandler(){
 		int rod_id = data_int & 0b11000000;
 		int pos = data_int - rod_id;
 		rod_id = rod_id >> 6;
-		int relative_pos = pos % 21;
+		//int relative_pos = pos % 21;
+		//Find which player is the closest
+		float first_player_at_rod = pos[rod_id] / 10.0 * 21.0;
+		int closest_idx = 0;
+		float move_to_pos = first_player_at_rod;
+		float shortest_distance = 64;
+		for(int i = 0; i < 3; i++){
+			float distance = pos - move_to_pos;
+			if(abs(distance) < abs(shortest_distance)){
+				shortest_distance = distance;
+				closest_idx = i;
+			}
+			move_to_pos += 21;
+		}
+		float relative_pos = first_player_at_rod + shortest_distance;
+		//27 	5	26	47
+		// 22
+		//
+
+
 		float dutyCycle = pixelToDutyCycle(relative_pos);
-		//data_float = ((float)(data_int) / 2) + 2;
 //		printf("Duty Cycle: %f \n\r", dutyCycle);
 //		printf("Control rod %d: move to %d\n\r", rod_id, relative_pos);
 		Servo_control(rod_id, dutyCycle);
-//		Servo_control(1, 7.5);
 	}
 	else if (USART3->ISR & USART_ISR_ORE){
 		//if overrun, ignore

@@ -1,5 +1,6 @@
 #include "usart.h"
 #include "servo.h"
+#include "tim2.h"
 #include "spi.h"
 
 char data;
@@ -68,25 +69,28 @@ void USART3_4_5_6_7_8_IRQHandler(){
 	if((USART3->ISR & USART_ISR_RXNE) ==  USART_ISR_RXNE){
 		data_int = usart_get(USART3);
 		int rod_id = data_int & 0b11000000;
-		int pos = data_int - rod_id;
+		int pos_hat = data_int - rod_id;
 		rod_id = rod_id >> 6;
-		//int relative_pos = pos % 21;
+		int relative_pos = pos_hat % 21;
 		//Find which player is the closest
-		float first_player_at_rod = pos[rod_id] / 10.0 * 21.0;
-		int closest_idx = 0;
-		float move_to_pos = first_player_at_rod;
-		float shortest_distance = 64;
-		for(int i = 0; i < 3; i++){
-			float distance = pos - move_to_pos;
-			if(abs(distance) < abs(shortest_distance)){
-				shortest_distance = distance;
-				closest_idx = i;
+		if (0)
+		{
+			float first_player_at_rod = pos[rod_id] / 10.0 * 21.0;
+			int closest_idx = 0;
+			float move_to_pos = first_player_at_rod;
+			float shortest_distance = 64;
+			for(int i = 0; i < 3; i++){
+				float distance = pos_hat - move_to_pos;
+				if(abs(distance) < abs(shortest_distance)){
+					shortest_distance = distance;
+					closest_idx = i;
+				}
+				move_to_pos += 21;
 			}
-			move_to_pos += 21;
+			float relative_pos = first_player_at_rod + shortest_distance;
 		}
-		float relative_pos = first_player_at_rod + shortest_distance;
 		//27 	5	26	47
-		// 22
+		//		22  1 	-20
 		//
 
 

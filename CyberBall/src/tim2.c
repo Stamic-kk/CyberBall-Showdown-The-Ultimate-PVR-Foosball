@@ -73,9 +73,24 @@ void TIM2_IRQHandler(){
     values[1] = ~(GPIOB->IDR) & 0x3FF;
     values[2] = ~(GPIOC->IDR) & 0x3FF;
     // Assume at most two elements can be 0.
+//    int temp = values[1];
+//    for(int i  = 0; i < 10; i++){
+//    	printf("%d", temp & 1);
+//    	temp = temp >> 1;
+//    }
+//    printf("%n");
+    for(int i = 0; i < 3; i++){
+    	pos[i] = 0;
+    }
+
     for(int i = 0; i < 10; i++){
     	for(int j = 0; j < 3; j++){
-    		if(values[j] == 0) pos[j] = i;
+    		if(values[j] == 0){
+    			if(pos[j] == 0)
+    				pos[j] = i;
+    			else
+    				pos[j] = (pos[j] + i)/2.0;
+    		}
     	}
     	// Add a break if.
     }
@@ -147,89 +162,89 @@ void TIM2_IRQHandler(){
 
 
     // GPIOB inputs
-    if(values[1] == 0x0000){
-//    	usart_send(USART3, 0x00 | (0x01 << 6) );
-//    	printf("state0\n");
-//    	Servo_control(2, 2);
-    }
-    else if(values[1] == 0x0001){
-//    	usart_send(USART3, 0x01 | (0x01 << 6) );
-//    	printf("state1\n");
-    	Servo_control(2, 2.5);
-    }
-    else if(values[1] == 0x0003){
-//        usart_send(USART3, 0x02 | (0x01 << 6) );
-//    	printf("state2\n");
-        Servo_control(2, 3);
-    }
-    else if(values[1] == 0x0002){
-//        usart_send(USART3, 0x03 | (0x01 << 6) );
-        Servo_control(2, 3.5);
-    }
-    else if(values[1] == 0x0006){
-//        usart_send(USART3, 0x04 | (0x01 << 6) );
-        Servo_control(2, 4);
-    }
-    else if(values[1] == 0x0004){
-//        usart_send(USART3, 0x05 | (0x01 << 6) );
-        Servo_control(2, 4.5);
-    }
-    else if(values[1] == 0x000c){
-//        usart_send(USART3, 0x06 | (0x01 << 6) );
-        Servo_control(2, 5);
-    }
-    else if(values[1] == 0x0008){
-//        usart_send(USART3, 0x07 | (0x01 << 6) );
-        Servo_control(2, 5.5);
-    }
-    else if(values[1] == 0x0018){
-//        usart_send(USART3, 0x08 | (0x01 << 6) );
-        Servo_control(2, 6);
-    }
-    else if(values[1] == 0x0010){
-//		usart_send(USART3, 0x09 | (0x01 << 6) );
-		Servo_control(2, 6.5);
-    }
-    else if(values[1] == 0x0030){
-//		usart_send(USART3, 0x0a | (0x01 << 6) );
-		Servo_control(2, 7);
-    }
-    else if(values[1] == 0x0020){
-//		usart_send(USART3, 0x0b | (0x01 << 6) );
-		Servo_control(2, 7.5);
-    }
-    else if(values[1] == 0x0060){
-//		usart_send(USART3, 0x0c | (0x01 << 6) );
-		Servo_control(2, 8);
-    }
-    else if(values[1] == 0x0040){
-//		usart_send(USART3, 0x0d | (0x01 << 6) );
-		Servo_control(2, 8.5);
-    }
-    else if(values[1] == 0x00c0){
-//		usart_send(USART3, 0x0e | (0x01 << 6) );
-		Servo_control(2, 9);
-    }
-    else if(values[1] == 0x0080){
-//		usart_send(USART3, 0x0f | (0x01 << 6) );
-		Servo_control(2, 9.5);
-    }
-    else if(values[1] == 0x0180){
-//    	usart_send(USART3, 0x10 | (0x01 << 6) );
-    	Servo_control(2, 10);
-    }
-    else if(values[1] == 0x0100){
-//        usart_send(USART3, 0x11 | (0x01 << 6) );
-        Servo_control(2, 10.5);
-    }
-    else if(values[1] == 0x0300){
-//        usart_send(USART3, 0x12 | (0x01 << 6) );
-        Servo_control(2, 11);
-    }
-    else if(values[1] == 0x0200){
-//        usart_send(USART3, 0x13 | (0x01 << 6) );
-        Servo_control(2,11.5);
-    }
+//    if(values[1] == 0x0000){
+////    	usart_send(USART3, 0x00 | (0x01 << 6) );
+////    	printf("state0\n");
+////    	Servo_control(2, 2);
+//    }
+//    else if(values[1] == 0x0001){
+////    	usart_send(USART3, 0x01 | (0x01 << 6) );
+////    	printf("state1\n");
+//    	Servo_control(2, 2.5);
+//    }
+//    else if(values[1] == 0x0003){
+////        usart_send(USART3, 0x02 | (0x01 << 6) );
+////    	printf("state2\n");
+//        Servo_control(2, 3);
+//    }
+//    else if(values[1] == 0x0002){
+////        usart_send(USART3, 0x03 | (0x01 << 6) );
+//        Servo_control(2, 3.5);
+//    }
+//    else if(values[1] == 0x0006){
+////        usart_send(USART3, 0x04 | (0x01 << 6) );
+//        Servo_control(2, 4);
+//    }
+//    else if(values[1] == 0x0004){
+////        usart_send(USART3, 0x05 | (0x01 << 6) );
+//        Servo_control(2, 4.5);
+//    }
+//    else if(values[1] == 0x000c){
+////        usart_send(USART3, 0x06 | (0x01 << 6) );
+//        Servo_control(2, 5);
+//    }
+//    else if(values[1] == 0x0008){
+////        usart_send(USART3, 0x07 | (0x01 << 6) );
+//        Servo_control(2, 5.5);
+//    }
+//    else if(values[1] == 0x0018){
+////        usart_send(USART3, 0x08 | (0x01 << 6) );
+//        Servo_control(2, 6);
+//    }
+//    else if(values[1] == 0x0010){
+////		usart_send(USART3, 0x09 | (0x01 << 6) );
+//		Servo_control(2, 6.5);
+//    }
+//    else if(values[1] == 0x0030){
+////		usart_send(USART3, 0x0a | (0x01 << 6) );
+//		Servo_control(2, 7);
+//    }
+//    else if(values[1] == 0x0020){
+////		usart_send(USART3, 0x0b | (0x01 << 6) );
+//		Servo_control(2, 7.5);
+//    }
+//    else if(values[1] == 0x0060){
+////		usart_send(USART3, 0x0c | (0x01 << 6) );
+//		Servo_control(2, 8);
+//    }
+//    else if(values[1] == 0x0040){
+////		usart_send(USART3, 0x0d | (0x01 << 6) );
+//		Servo_control(2, 8.5);
+//    }
+//    else if(values[1] == 0x00c0){
+////		usart_send(USART3, 0x0e | (0x01 << 6) );
+//		Servo_control(2, 9);
+//    }
+//    else if(values[1] == 0x0080){
+////		usart_send(USART3, 0x0f | (0x01 << 6) );
+//		Servo_control(2, 9.5);
+//    }
+//    else if(values[1] == 0x0180){
+////    	usart_send(USART3, 0x10 | (0x01 << 6) );
+//    	Servo_control(2, 10);
+//    }
+//    else if(values[1] == 0x0100){
+////        usart_send(USART3, 0x11 | (0x01 << 6) );
+//        Servo_control(2, 10.5);
+//    }
+//    else if(values[1] == 0x0300){
+////        usart_send(USART3, 0x12 | (0x01 << 6) );
+//        Servo_control(2, 11);
+//    }
+//    else if(values[1] == 0x0200){
+////        usart_send(USART3, 0x13 | (0x01 << 6) );
+//        Servo_control(2,11.5);
+//    }
 
 
     // GPIOC inputs

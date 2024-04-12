@@ -2,7 +2,10 @@
 #include "spi.h"
 #include "usart.h"
 
-extern int number_goal = 0;
+int number_goal = 0;
+
+int in_game = 0;
+
 
 void init_exti(){
 	RCC->APB2ENR |= RCC_APB2ENR_SYSCFGCOMPEN;
@@ -31,6 +34,7 @@ void EXTI4_15_IRQHandler(){
     	nano_wait(2000000);   // wait for the screen to be cleaned
     	spi2_display1("Hello");// display
     	usart_send(USART3, 'S');
+    	number_goal = 0;			//reset goal
 		printf("Rest game\n");
 	}
 	else if( (EXTI->PR & EXTI_PR_PR11) == EXTI_PR_PR11){
@@ -38,6 +42,7 @@ void EXTI4_15_IRQHandler(){
     	spi_cmd(0x01);        // clear the screen
     	nano_wait(2000000);   // wait for the screen to be cleaned
     	spi2_display1("Start game");// display
+    	in_game = 1;
     	usart_send(USART3, 'T');
 		printf("Start\n");
 	}
@@ -45,6 +50,7 @@ void EXTI4_15_IRQHandler(){
 		EXTI->PR |= EXTI_PR_PR14;
     	spi_cmd(0x01);        // clear the screen
     	nano_wait(2000000);   // wait for the screen to be cleaned
+    	in_game = 0;
     	spi2_display1("End");// display
 		printf("Stop\n");
 	}
@@ -59,6 +65,7 @@ void EXTI4_15_IRQHandler(){
 		spi_cmd(0x01);        // clear the screen
 		nano_wait(2000000);   // wait for the screen to be cleaned
 		spi2_display1("GOAL!!!");// display goal! to screen
+		printf("GOAL!!!!!!!!!!!!!!!!!!!!!!!!\n");
 		for (int i = 0; i < 500; i++){
 			nano_wait(2000000);
 		}

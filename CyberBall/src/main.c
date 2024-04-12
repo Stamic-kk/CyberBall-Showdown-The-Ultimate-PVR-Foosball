@@ -216,14 +216,15 @@ int main(void)
     init_tim1();
     init_tim7();
     init_tim2();
-//    Servo_control(0, 7.1);
-//    Servo_control(1, 7.1);
-//    Servo_control(2, 2);
+//    Servo_control(0, 7);
+//    Servo_control(1, 7);
+//    Servo_control(2, 7);
 //    float move = 2;
 //    while(1){
 //    	Servo_control(0, move);
 //    	move += 0.27;
 //    	if(move >= 6) move = 2;
+//    	nano_wait(100000);
 //    }
 
 //

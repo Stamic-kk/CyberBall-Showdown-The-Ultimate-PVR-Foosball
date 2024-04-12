@@ -86,12 +86,3 @@ array<pair<float, float>,2> predictRange (){
         x_pre_last + BALL_RADIUS, y_pre_last - BALL_RADIUS);
     return array<pair<float, float>,2>{bound1, bound2};
 }
-
-bool touchTopBottom(int next_x, int next_y){
-    pair<float, float> bounds = linear_predict();
-    if(next_y < bounds.first * next_x + bounds.second){
-        return true;
-    }
-
-}
-

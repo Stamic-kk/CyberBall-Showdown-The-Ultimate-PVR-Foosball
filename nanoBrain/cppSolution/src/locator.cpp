@@ -99,12 +99,13 @@ pair<int, int> getLocation (cv::Mat cvImage){
     vpiArrayDestroy(maxCoords);
     vpiImageDestroy(input);
     vpiImageDestroy(inputBGR);
-    if(min_value > 5){
+    if(min_value > 10){
         // std::cout<<(int)min_value<<std::endl;
         return std::make_pair(-1, -1);
     }
     //std::cout << "Time taken VPI task is : " << double(clock() - start) / double(CLOCKS_PER_SEC) << " seconds" << std::endl;
-    return std::make_pair(min_i, min_j);
+    // reverse i,j consistent with opencv.
+    return std::make_pair(min_j, min_i);
 }
 
 void test_locator(string path){
@@ -120,7 +121,7 @@ void test_locator(string path){
 }
 
 void draw_detected(cv::Mat &img, std::pair<int, int> location){
-    cv::circle(img, cv::Point(location.second, location.first), 2, cv::Scalar(0, 0, 255), 3);
+    cv::circle(img, cv::Point(location.first, location.second), 2, cv::Scalar(0, 0, 255), 3);
 }
 
 int get_different(std::pair<int, int> curr, std::pair<int,int> last){

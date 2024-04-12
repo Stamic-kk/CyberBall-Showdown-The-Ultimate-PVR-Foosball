@@ -13,13 +13,15 @@ extern "C"{
 #include <algorithm>
 #include <numeric>
 #include <functional>
+#include <cmath>
 using namespace cv;
 using std::vector;
 using std::pair;
 using std::string;
 #define VISUAL_EXAG_FACTOR 20  
+#define ACTIVATION_DISTANCE 100
 extern Filter_t kFilter;
-
+extern int activation[3];
 extern Matrix_t y; 
 extern Matrix_t x;
 extern Matrix_t Phi;
@@ -31,7 +33,8 @@ extern Matrix_t H;
 extern Matrix_t fx;
 extern Matrix_t hx;
 extern const MatrixEntry_t dt;
-
+extern bool attack;
+extern const int lines[3];
 
 
 MatrixError_t setup(Matrix_t y1);
@@ -57,4 +60,6 @@ void kalmanCapture(pair<float, float> loc);
 void print_mat(Matrix_t *mat);
 void add_lines(cv::Mat background);
 void get_intercepts(int *intercepts);
+int mapping(int rod_id, int pixel_pos);
+void draw_intercepts(cv::Mat background, int rod_id, int y);
 #endif

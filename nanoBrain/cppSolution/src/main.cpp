@@ -4,29 +4,17 @@
 #include "kalFilter.h"
 #include "uart.h"
 #include <unistd.h>
-#define SHOW_IMAGE
+
+bool show_image = false;
 
 
-
-
-
-int main(){
+int main(int argc, char const *argv[]){
     // camera_test();
-    // return 0;
-    // Uart uart;
-    // usleep(1000);
-    // char pack = packByte(0, 18);
-    // char c = (char)84;
-    // std::cout<<(int)c<<std::endl;
-    //  while(true){
-    //     uart.send(&c,1);
-    //     usleep(100000);
-    //  }
-    // return 0;
-
-
-    // test_filter("../inputs/traj.txt");
-    // return 0;
+    if(argc >= 2){
+        if(strcmp(argv[1], "graph") == 0){
+           show_image = true;
+        }
+    }
     setUpVpi();
     cv::VideoCapture cap = get_camera();
     if(!cap.isOpened()) throw std::runtime_error("Failed to open camera");
@@ -69,16 +57,6 @@ int main(){
     ukal_model_predict(&kFilter);
     get_hx(&hx, &kFilter.x);
     print_mat(&kFilter.x);
-    //int i = 0;
-    //while(true){
-    //    char c = i%2? 2: 6;
-    //    uart.send(&c, 1);
-    //    usleep(10000);
-    //    i++;
-    // }
-
-    
-    // return 0;
     while (/* condition */true)
     {
         /* code */
@@ -98,43 +76,54 @@ int main(){
         if(curr_location.first != -1){
             diff = get_different(curr_location, last_location);
             kalmanCapture(curr_location);
-
-
-
-
-
+            Matrix_t tmp;
+            ulapack_init(&tmp, 4,1);
+            ulapack_edit_entry(&tmp, 0, 0, 100);
+            ulapack_edit_entry(&tmp, 1, 0, 100);
+            ulapack_edit_entry(&tmp, 2, 0, 10);
+            ulapack_edit_entry(&tmp, 3, 0, 1);
+            std::cout<<cos(tmp.entry[3][0]/3.14*180)<<std::endl;
+            //delete from here
+            // visualize(tmp, copy, false);
+            // add_lines(copy);
+            // if(curr_location.first != -1)
+            // draw_detected(copy, curr_location);
+            // cv::imshow("camera",copy);
+            // int keycode = cv::waitKey(1) & 0xff ; 
+            //     if (keycode == 27) break;
 
             if(! is_static()){
                 get_intercepts(intercepts);
                 
                 for(int i = 0; i < 3; i++){
                     float intercept = intercepts[i];
-                    if(intercept != -1){ 
-                        char data = packByte(i, intercept);
-                        uart.send(&data, 1);
+                    //if(intercept != -1 && curr_location.second <= activation[i]){ 
+                    if(intercept != -1 && !attack ){          // TODO: Check if attack is correct 
+                        // char data = packByte(i, (int)(intercept/3.75));
+                        // char data = packByte(i, curr_location.second/3.75);
+                        char data = packByte(i, mapping(i, intercept));
+                        // char data = packByte(i, mapping(i, curr_location.second));
+                        if(show_image){
+                            draw_intercepts(copy, i, intercept);
+                            // cv::line(copy, cv::Point(kFilter.x.entry[0][0], kFilter.x.entry[0][1]), cv::Point(lines[i], intercept), cv::Scalar(255, 255  , 255), 1, 4, 0);
+                        }
+                        uart.send(&data, 1);    
+            
                     }
             
                 }
-                // std::cout<<"At line A"<<intercepts[0]<<std::endl;
-                // std::cout<<"At line B"<<intercepts[1]<<std::endl;
-                // std::cout<<"At line C"<<intercepts[2]<<std::endl;
-                //if(intercepts[2] == -1){
-                    // pass
-                //}else{
-                //    char data = ((float)intercepts[2]/240*20);
-                //    uart.send(&data,1);
-                //}
             }
         }
-        #ifdef SHOW_IMAGE
-        visualize(kFilter.x, copy, is_static());
-        add_lines(copy);
-        if(curr_location.first != -1)
-           draw_detected(copy, curr_location);
-        cv::imshow("camera",copy);
-        int keycode = cv::waitKey(1) & 0xff ; 
-             if (keycode == 27) break;
-        #endif
+        if(show_image){
+            visualize(kFilter.x, copy, is_static());
+            add_lines(copy);
+            if(curr_location.first != -1)
+            draw_detected(copy, curr_location);
+            //cv::circle(copy, cv::Point(0, 0), 100, cv::Scalar(0, 255, 0), 8);
+            cv::imshow("camera",copy);
+            int keycode = cv::waitKey(1) & 0xff ; 
+                if (keycode == 27) break;
+        }
 
         current = std::chrono::steady_clock::now();
         //std::cout<<"Time esplised "<<std::chrono::duration_cast<std::chrono::milliseconds>(current-begin).count()<<std::endl;

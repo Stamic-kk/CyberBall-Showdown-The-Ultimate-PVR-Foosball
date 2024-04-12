@@ -15,11 +15,10 @@ const MatrixEntry_t varx =  (stdx*stdx);
 const MatrixEntry_t vary = (stdy * stdy);
 const MatrixEntry_t varv = 2*sqrt(2)*(varx / (dt * dt));
 // const MatrixEntry_t vartheta = M_PI;
-const MatrixEntry_t vartheta = sqrt(11);
+const MatrixEntry_t vartheta = M_PI;
 
-
-
-
+float record[10];
+std::list<float> thetas;
 vector<int> x_arr;
 vector<int> y_arr;
 vector<Matrix_t> stateArr; 
@@ -35,12 +34,19 @@ Matrix_t H;
 Matrix_t fx;
 Matrix_t hx;
 
-int line_A = 70;
-int line_B = 190;
-int line_C = CAPTURE_WIDTH - 5;
+int line_A = 35;
+int line_B = 130;
+int line_C = CAPTURE_WIDTH - 70;
 
-
+int ACT_A = line_A + ACTIVATION_DISTANCE;
+int ACT_B = line_B + ACTIVATION_DISTANCE;
+int ACT_C = min(line_C + ACTIVATION_DISTANCE, CAPTURE_WIDTH - 1);
+int activation[3] = {ACT_A, ACT_C, ACT_B};
+const int lines[3] = {line_A, line_B, line_C};
+int lower[3] = {40,35,35};
+int upper[3] = {CAPTURE_HEIGHT - 30, CAPTURE_HEIGHT - 20, CAPTURE_HEIGHT - 20};
 int counter = 0;
+bool attack = false;
 
 
 
@@ -119,8 +125,12 @@ MatrixError_t setup(Matrix_t y1){
     ulapack_edit_entry(&gam, 3, 1, 1.0);
     
     ulapack_set(&Q, 0.0);
+    // ulapack_edit_entry(&Q, 0, 0, 5*5*dt);
+    // ulapack_edit_entry(&Q, 1, 1, .5*.5*dt);
+
     ulapack_edit_entry(&Q, 0, 0, 5*5*dt);
-    ulapack_edit_entry(&Q, 1, 1, .5*.5*dt);
+    ulapack_edit_entry(&Q, 1, 1, M_PI * dt);
+
 
     ulapack_edit_entry(&P, 0, 0, varx);
     ulapack_edit_entry(&P, 1, 1, vary);
@@ -142,8 +152,10 @@ MatrixError_t setup(Matrix_t y1){
     ulapack_edit_entry(&H, 1, 1, 1.0);
 
     ulapack_set(&R, 0.0);
-    ulapack_edit_entry(&R, 0, 0, (stdx*stdx) / 3);
-    ulapack_edit_entry(&R, 1, 1, (stdy*stdy) / 3);
+    ulapack_edit_entry(&R, 0, 0, (stdx*stdx));
+    ulapack_edit_entry(&R, 1, 1, (stdy*stdy) );
+    // ulapack_edit_entry(&R, 0, 0, (stdx*stdx) / 3);
+    // ulapack_edit_entry(&R, 1, 1, (stdy*stdy) / 3);
 
     get_hx(&hx, &x);
     return ulapack_success;
@@ -169,7 +181,6 @@ MatrixError_t put_data (Matrix_t *y, float x_coord, float y_coord){
     return ulapack_success;
     
 }
-
 void visualize(Matrix_t x, Mat &background, bool is_static=false){
     float x_coord = x.entry[0][0];
     float y_coord = x.entry[1][0];
@@ -177,13 +188,56 @@ void visualize(Matrix_t x, Mat &background, bool is_static=false){
     float theta = x.entry[3][0];
     float x_end = x_coord + v * cos(theta) * VISUAL_EXAG_FACTOR;
     float y_end = y_coord + v * sin(theta) * VISUAL_EXAG_FACTOR;
-    cv::Point center = cv::Point(y_coord, x_coord);
-    cv::Point to_dot = cv::Point(y_end, x_end);
+    cv::Point center = cv::Point(x_coord, y_coord);
+    cv::Point to_dot = cv::Point(x_end, y_end);
     if(!is_static)
         cv::line(background, center, to_dot, cv::Scalar(0, 255  , 255), 1, 4, 0);
     cv::circle(background, center, 2, cv::Scalar(255, 0, 255), 2, 8, 0);
 
 }
+void get_intercepts(int *intercepts){
+    //current position
+    Matrix_t x = kFilter.x;
+    float x_coord = x.entry[0][0];
+    float y_coord = x.entry[1][0];
+    float v = x.entry[2][0];
+    float theta = x.entry[3][0];
+    // std::cout<<theta<<std::endl;
+    
+    thetas.push_front(theta);
+    float theta_avg = std::accumulate(thetas.begin(), thetas.end(), 0)/thetas.size();
+    while(thetas.size() >= 5){
+        thetas.pop_back();
+    }
+    attack = cos(theta) > 0;
+    if(attack)
+        std::cout<<cos(theta)<<std::endl;
+    
+    
+    float slope = tan(theta);
+
+    for(int i = 0 ;i < 3;i++){
+        float defense_x = lines[i];
+        float dx = defense_x - x_coord;
+        float y_hat = (y_coord + slope * dx);
+        intercepts[i] = y_hat <= lower[i] || y_hat>= upper[i] ? -1 : y_hat;
+    }
+
+    
+
+    // for(int i = 0 ;i < 3;i++){
+    //     float defense_x = arr[i];
+    //     float dx = defense_x - x_coord;
+    
+    //     // intercepts[i] = max(min((int)(y_coord - slope * dx), CAPTURE_HEIGHT), 0);
+    //     float y_hat = (y_coord - slope * dx);
+    //     intercepts[i] = y_hat <= 0 || y_hat>= CAPTURE_HEIGHT ? -1 : y_hat;
+    // }
+
+    // for()
+
+}
+
 
 void test_filter(std::string path=""){
     Mat backgrounhd = Mat::zeros(CAPTURE_HEIGHT, CAPTURE_WIDTH * 2, CV_8UC3);
@@ -228,15 +282,6 @@ void test_filter(std::string path=""){
     // set_filter();
 
     for(int i = 1;i < data.size();i++){
-        // get_fx(&fx, &kFilter.x, dt);
-        // ukal_set_fx(&kFilter, &fx);
-        // get_phi(&Phi, &kFilter.x, dt);
-        // ukal_set_phi(&kFilter, &Phi);
-        // ukal_model_predict(&kFilter);
-        // put_data(&y, data[i].first, data[i].second);
-        // get_hx(&hx, &kFilter.x);
-        // ukal_set_hx(&kFilter, &hx);
-        // ukal_update(&kFilter, &y);
         kalmanCapture(data[i]);
         visualize(kFilter.x, backgrounhd);
     }
@@ -257,29 +302,9 @@ void kalmanCapture(pair<float, float> loc){
         get_hx(&hx, &kFilter.x);
         ukal_set_hx(&kFilter, &hx);
         ukal_update(&kFilter, &y);
-}
-
-void get_intercepts(int *intercepts){
-    //current position
-    Matrix_t x = kFilter.x;
-    float x_coord = x.entry[0][0];
-    float y_coord = x.entry[1][0];
-    //velocity
-    float v = x.entry[2][0];
-    float theta = x.entry[3][0];
-    float slope = tan(theta / M_PI * 180);
-    int arr[] = {line_A, line_B, line_C};
-    for(int i = 0 ;i < 3;i++){
-        float defense_x = arr[i];
-        float dx = defense_x - x_coord;
-    
-        // intercepts[i] = max(min((int)(y_coord - slope * dx), CAPTURE_HEIGHT), 0);
-        float y_hat = (y_coord - slope * dx);
-        intercepts[i] = y_hat <= 0 || y_hat>= CAPTURE_HEIGHT ? -1 : y_hat;
-    }
+        float theta = kFilter.x.entry[3][0];
 
 }
-
 
 
 
@@ -344,7 +369,30 @@ void print_mat(Matrix_t *mat){
 
 void add_lines(cv::Mat background){
 
-    cv::line(background, cv::Point(line_A, 0), cv::Point(line_A, CAPTURE_HEIGHT), cv::Scalar(255, 255, 255), 1, 4, 0);
-    cv::line(background, cv::Point(line_B, 0), cv::Point(line_B, CAPTURE_HEIGHT), cv::Scalar(255, 255, 255), 1, 4, 0);    
-    cv::line(background, cv::Point(line_C, 0), cv::Point(line_C, CAPTURE_HEIGHT), cv::Scalar(255, 255, 255), 1, 4, 0);    
+    cv::line(background, cv::Point(line_A, 0), cv::Point(line_A, CAPTURE_HEIGHT), cv::Scalar(0, 0, 255), 1, 4, 0);
+    cv::line(background, cv::Point(line_B, 0), cv::Point(line_B, CAPTURE_HEIGHT), cv::Scalar(0, 255, 0), 1, 4, 0);    
+    cv::line(background, cv::Point(line_C, 0), cv::Point(line_C, CAPTURE_HEIGHT), cv::Scalar(255, 255, 255), 1, 4, 0);
+    
+    for(int i =0; i< 3; i++){
+        cv::line(background, cv::Point(lines[i]-20, upper[i]), cv::Point(lines[i]+20, upper[i]), cv::Scalar(0, 0, 0), 1,4,0);
+        cv::line(background, cv::Point(lines[i]-20, lower[i]), cv::Point(lines[i]+20, lower[i]), cv::Scalar(0, 0, 0), 1,4,0);
+    }
+
+    // cv::line(background, cv::Point(ACT_A, 0), cv::Point(ACT_A, CAPTURE_HEIGHT), cv::Scalar(0, 0, 255), 1, 4, 0);
+    // cv::line(background, cv::Point(ACT_B, 0), cv::Point(ACT_B, CAPTURE_HEIGHT), cv::Scalar(0, 255, 0), 1, 4, 0);    
+    // cv::line(background, cv::Point(ACT_C, 0), cv::Point(ACT_C, CAPTURE_HEIGHT), cv::Scalar(255, 255, 255), 1, 4, 0);    
+}
+
+void draw_intercepts(cv::Mat background, int rod_id, int y){
+     cv::circle(background, cv::Point(lines[rod_id], y), 2, cv::Scalar(255, 255, 255), 3);
+}
+// this may be wrong
+int mapping(int rod_id, int pixel_pos){
+
+    int lb = lower[rod_id];
+    int ub = upper[rod_id];
+    if(pixel_pos < lb) return 0;
+    else if (pixel_pos > ub) return 64;
+    // map lb to ub onto 0 to 64
+    return (int)(64 * (pixel_pos - lb) / (ub - lb));
 }

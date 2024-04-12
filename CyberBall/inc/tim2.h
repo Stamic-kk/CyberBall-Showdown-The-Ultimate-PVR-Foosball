@@ -8,4 +8,5 @@
 #include "usart.h"
 
 void init_tim2();
+extern uint16_t pos[3];
 #endif

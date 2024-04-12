@@ -1,8 +1,11 @@
 #include "usart.h"
 #include "servo.h"
+#include "tim2.h"
 #include "spi.h"
 
 char data;
+uint8_t data_int;
+float data_float;
 
 void init_usart5() {
     RCC->AHBENR |= RCC_AHBENR_GPIOCEN|RCC_AHBENR_GPIODEN;
@@ -64,17 +67,37 @@ void setUpSampling(USART_TypeDef * u){
 
 void USART3_4_5_6_7_8_IRQHandler(){
 	if((USART3->ISR & USART_ISR_RXNE) ==  USART_ISR_RXNE){
-		data = usart_get(USART3);
-		printf("Data recv: %c\n", data);
-//		printf("res/n");
-		if ( data == 'S'){
-			printf("Move servo\n");
-			Servo_control(2, 12);
+		data_int = usart_get(USART3);
+		int rod_id = data_int & 0b11000000;
+		int pos_hat = data_int - rod_id;
+		rod_id = rod_id >> 6;
+		int relative_pos = pos_hat % 21;
+		//Find which player is the closest
+		if (0)
+		{
+			float first_player_at_rod = pos[rod_id] / 10.0 * 21.0;
+			int closest_idx = 0;
+			float move_to_pos = first_player_at_rod;
+			float shortest_distance = 64;
+			for(int i = 0; i < 3; i++){
+				float distance = pos_hat - move_to_pos;
+				if(abs(distance) < abs(shortest_distance)){
+					shortest_distance = distance;
+					closest_idx = i;
+				}
+				move_to_pos += 21;
+			}
+			float relative_pos = first_player_at_rod + shortest_distance;
+		}
+		//27 	5	26	47
+		//		22  1 	-20
+		//
 
-		}
-		else if ( data == 'T'){
-			Servo_control(2, 2);
-		}
+
+		float dutyCycle = pixelToDutyCycle(relative_pos);
+//		printf("Duty Cycle: %f \n\r", dutyCycle);
+//		printf("Control rod %d: move to %d\n\r", rod_id, relative_pos);
+		Servo_control(rod_id, dutyCycle);
 	}
 	else if (USART3->ISR & USART_ISR_ORE){
 		//if overrun, ignore

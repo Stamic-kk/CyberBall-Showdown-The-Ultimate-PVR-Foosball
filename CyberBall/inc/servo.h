@@ -5,6 +5,11 @@
 #include "stm32f0xx.h"
 #include <stdio.h>
 
-void Servo_control(int channel, float duty_cycle);
+#define MAX_Y 7.1
+#define MIN_Y 2
 
+
+
+void Servo_control(int channel, float duty_cycle);
+float pixelToDutyCycle(int pixelPos);
 #endif

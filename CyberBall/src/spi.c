@@ -8,12 +8,27 @@ void nano_wait(unsigned int n) {
             "        bgt repeat\n" : : "r"(n) : "r0", "cc");
 }
 
-void init_spi1_for_stm32_stm32() {
-    // PA5  SPI1_SCK
-    // PA6  SPI1_MISO
-    // PA7  SPI1_MOSI
-    // PA15 SPI1_NSS
-
+//void init_spi1_for_stm32_stm32() {
+//    // PA5  SPI1_SCK
+//    // PA6  SPI1_MISO
+//    // PA7  SPI1_MOSI
+//    // PA15 SPI1_NSS
+//
+////    RCC->APB2ENR|= RCC_APB2ENR_SPI1EN;
+////    RCC->AHBENR |= RCC_AHBENR_GPIOAEN;
+////    GPIOA->MODER &=~(0x3f<<10);
+////    GPIOA->MODER |= (0x2A<<10);
+////    GPIOA->MODER &=~(0x3<<30);
+////    GPIOA->MODER |=(0x2<<30);
+////    GPIOA->AFR[0]&=~(0xfff<<(5*4));
+////    GPIOA->AFR[1]&=~(0xf<<((15-8)*4));
+////    SPI1->CR1 &= ~(SPI_CR1_SPE);
+////    SPI1->CR1 |= SPI_CR1_MSTR|SPI_CR1_BR;
+////    SPI1->CR2 |= SPI_CR2_DS_0|SPI_CR2_DS_3|SPI_CR2_SSOE|SPI_CR2_TXDMAEN|SPI_CR2_NSSP;
+////    SPI1->CR2 &= ~(SPI_CR2_DS_1|SPI_CR2_DS_2);
+////    SPI1->CR1 |= SPI_CR1_SPE;
+//
+//	// set up for com between STM32 and STM32
 //    RCC->APB2ENR|= RCC_APB2ENR_SPI1EN;
 //    RCC->AHBENR |= RCC_AHBENR_GPIOAEN;
 //    GPIOA->MODER &=~(0x3f<<10);
@@ -23,27 +38,12 @@ void init_spi1_for_stm32_stm32() {
 //    GPIOA->AFR[0]&=~(0xfff<<(5*4));
 //    GPIOA->AFR[1]&=~(0xf<<((15-8)*4));
 //    SPI1->CR1 &= ~(SPI_CR1_SPE);
-//    SPI1->CR1 |= SPI_CR1_MSTR|SPI_CR1_BR;
-//    SPI1->CR2 |= SPI_CR2_DS_0|SPI_CR2_DS_3|SPI_CR2_SSOE|SPI_CR2_TXDMAEN|SPI_CR2_NSSP;
-//    SPI1->CR2 &= ~(SPI_CR2_DS_1|SPI_CR2_DS_2);
+//    SPI1->CR1 |= SPI_CR1_MSTR;
+//    //SPI1->CR1 |= SPI_CR1_LSBFIRST;
+//    SPI1->CR2 |= SPI_CR2_DS_0|SPI_CR2_DS_1|SPI_CR2_DS_2|SPI_CR2_DS_3|SPI_CR2_SSOE|SPI_CR2_TXDMAEN|SPI_CR2_NSSP;
+//    //SPI1->CR2 &= ~(SPI_CR2_DS_3);
 //    SPI1->CR1 |= SPI_CR1_SPE;
-
-	// set up for com between STM32 and STM32
-    RCC->APB2ENR|= RCC_APB2ENR_SPI1EN;
-    RCC->AHBENR |= RCC_AHBENR_GPIOAEN;
-    GPIOA->MODER &=~(0x3f<<10);
-    GPIOA->MODER |= (0x2A<<10);
-    GPIOA->MODER &=~(0x3<<30);
-    GPIOA->MODER |=(0x2<<30);
-    GPIOA->AFR[0]&=~(0xfff<<(5*4));
-    GPIOA->AFR[1]&=~(0xf<<((15-8)*4));
-    SPI1->CR1 &= ~(SPI_CR1_SPE);
-    SPI1->CR1 |= SPI_CR1_MSTR;
-    //SPI1->CR1 |= SPI_CR1_LSBFIRST;
-    SPI1->CR2 |= SPI_CR2_DS_0|SPI_CR2_DS_1|SPI_CR2_DS_2|SPI_CR2_DS_3|SPI_CR2_SSOE|SPI_CR2_TXDMAEN|SPI_CR2_NSSP;
-    //SPI1->CR2 &= ~(SPI_CR2_DS_3);
-    SPI1->CR1 |= SPI_CR1_SPE;
-}
+//}
 
 void init_spi2_for_LCD(){
     RCC->APB1ENR|= RCC_APB1ENR_SPI2EN;

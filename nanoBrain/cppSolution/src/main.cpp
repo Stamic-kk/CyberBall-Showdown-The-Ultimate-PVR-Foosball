@@ -82,8 +82,8 @@ int main(int argc, char const *argv[]){
             ulapack_edit_entry(&tmp, 1, 0, 100);
             ulapack_edit_entry(&tmp, 2, 0, 10);
             ulapack_edit_entry(&tmp, 3, 0, 1);
-            std::cout<<cos(tmp.entry[3][0]/3.14*180)<<std::endl;
-            //delete from here
+            // std::cout<<cos(tmp.entry[3][0]/3.14*180)<<std::endl;
+            // delete from here
             // visualize(tmp, copy, false);
             // add_lines(copy);
             // if(curr_location.first != -1)
@@ -92,16 +92,17 @@ int main(int argc, char const *argv[]){
             // int keycode = cv::waitKey(1) & 0xff ; 
             //     if (keycode == 27) break;
 
-            if(! is_static()){
+            if(0){
                 get_intercepts(intercepts);
                 
                 for(int i = 0; i < 3; i++){
                     float intercept = intercepts[i];
                     //if(intercept != -1 && curr_location.second <= activation[i]){ 
-                    if(intercept != -1 && !attack ){          // TODO: Check if attack is correct 
-                        // char data = packByte(i, (int)(intercept/3.75));
-                        // char data = packByte(i, curr_location.second/3.75);
-                        char data = packByte(i, mapping(i, intercept));
+                    if(intercept != -1 ){          // TODO: Check if attack is correct 
+                        // char data = packByte(i, mapping(i, intercept));
+                        int scale = mapping(i, intercept);
+                        char data = packByte(i, scale);
+                        // std::cout<<(int)data<<std::endl;
                         // char data = packByte(i, mapping(i, curr_location.second));
                         if(show_image){
                             draw_intercepts(copy, i, intercept);
@@ -111,6 +112,12 @@ int main(int argc, char const *argv[]){
             
                     }
             
+                }
+            }
+            else{
+                for(int i = 0; i< 3; i++){
+                    char data = packByte(i, mapping(i, curr_location.second));
+                    uart.send(&data, 1);
                 }
             }
         }

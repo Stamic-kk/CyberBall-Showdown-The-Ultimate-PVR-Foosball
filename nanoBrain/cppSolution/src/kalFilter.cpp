@@ -209,9 +209,9 @@ void get_intercepts(int *intercepts){
     while(thetas.size() >= 5){
         thetas.pop_back();
     }
-    attack = cos(theta) > 0;
-    if(attack)
-        std::cout<<cos(theta)<<std::endl;
+    attack = cos(theta) < 0;
+    // if(attack)
+    //     std::cout<<cos(theta)<<std::endl;
     
     
     float slope = tan(theta);
@@ -220,7 +220,9 @@ void get_intercepts(int *intercepts){
         float defense_x = lines[i];
         float dx = defense_x - x_coord;
         float y_hat = (y_coord + slope * dx);
-        intercepts[i] = y_hat <= lower[i] || y_hat>= upper[i] ? -1 : y_hat;
+        // intercepts[i] = y_hat <= lower[i] ? lower[i] : (y_hat >= upper[i]? upper[i]: y_hat);
+        intercepts[i] = y_hat;
+
     }
 
     
@@ -392,7 +394,7 @@ int mapping(int rod_id, int pixel_pos){
     int lb = lower[rod_id];
     int ub = upper[rod_id];
     if(pixel_pos < lb) return 0;
-    else if (pixel_pos > ub) return 64;
+    else if (pixel_pos > ub) return 63;
     // map lb to ub onto 0 to 64
-    return (int)(64 * (pixel_pos - lb) / (ub - lb));
+    return (int)(63 * (pixel_pos - lb) / (ub - lb));
 }

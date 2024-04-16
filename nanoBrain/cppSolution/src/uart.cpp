@@ -73,5 +73,6 @@ char Uart::recevie(){
 
 
 char packByte(int rod, int value){
-    return (char)((rod << 6) | (value & 0x1F))&0xFF;
+    // std::cout<<"Rod "<<rod<<"value "<<value<<std::endl;
+    return (char)((rod << 6) | (value & 0x3F))&0xFF;
 }

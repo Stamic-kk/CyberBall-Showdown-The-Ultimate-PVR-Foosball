@@ -3,7 +3,6 @@
 extern "C"{
 #include "ukal.h"
 }
-#include "predictor.h"
 #include "camera.h"
 #include <math.h>
 #include <iostream>
@@ -20,6 +19,7 @@ using std::pair;
 using std::string;
 #define VISUAL_EXAG_FACTOR 20  
 #define ACTIVATION_DISTANCE 160
+#define SAMPLE_RATE 1/FRAME_RATE
 extern Filter_t kFilter;
 extern int activation[3];
 extern Matrix_t y; 

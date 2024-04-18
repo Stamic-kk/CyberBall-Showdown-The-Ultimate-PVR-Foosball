@@ -30,7 +30,9 @@
 #define TARGET_G 255
 #define TARGET_R 255
 #define TARGET_GREY (TARGET_B + TARGET_G + TARGET_R) / 3
-  
+
+#define GOAL_MSG 0xFF
+
 typedef unsigned char Pixel;
 typedef unsigned char Byte;
 
@@ -49,4 +51,5 @@ void setUpVpi();
 void tearDownVpi();
 int get_different(pair<int,int> curr, pair<int,int> last);
 bool is_static();
+bool goal();
 #endif

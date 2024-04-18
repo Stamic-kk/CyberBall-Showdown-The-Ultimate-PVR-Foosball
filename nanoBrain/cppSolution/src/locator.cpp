@@ -105,7 +105,9 @@ pair<int, int> getLocation (cv::Mat cvImage){
     }
     //std::cout << "Time taken VPI task is : " << double(clock() - start) / double(CLOCKS_PER_SEC) << " seconds" << std::endl;
     // reverse i,j consistent with opencv.
-    return std::make_pair(min_j, min_i);
+    last_location = curr_location;
+    curr_location = std::make_pair(min_j, min_i);
+    return curr_location;
 }
 
 void test_locator(string path){
@@ -135,4 +137,10 @@ bool is_static(){
             return false;
     }
     return true;
+}
+
+bool goal(){
+    if(last_location.first <= 10){
+        return curr_location.first == -1 && curr_location.second == -1;
+    }
 }

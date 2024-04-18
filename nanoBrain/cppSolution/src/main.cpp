@@ -1,4 +1,3 @@
-#include "predictor.h"
 #include "locator.h"
 #include "camera.h"
 #include "kalFilter.h"
@@ -67,19 +66,19 @@ int main(int argc, char const *argv[]){
         cv::absdiff(img, cv::Scalar(TARGET_B, TARGET_G, TARGET_R), copy);
         current = std::chrono::steady_clock::now();
         curr_location =  getLocation(copy);
-        
         // Get variance first before setup the filter
         if(cal_variance(curr_location)){
         //    break;
         }
-        
-        if(curr_location.first != -1){
+        if(goal()){
+            char data = (char) GOAL_MSG;
+            uart.send(&data, 1);
+        }
+        else if(curr_location.first != -1){
             diff = get_different(curr_location, last_location);
             kalmanCapture(curr_location);
-
             if(!is_static()){
                 get_intercepts(intercepts);
-                
                 for(int i = 0; i < 3; i++){
                     float intercept = intercepts[i];
                     if(abs(curr_location.second-lines[i]) <= 50 ){
@@ -110,14 +109,12 @@ int main(int argc, char const *argv[]){
             add_lines(copy);
             if(curr_location.first != -1)
             draw_detected(copy, curr_location);
-            //cv::circle(copy, cv::Point(0, 0), 100, cv::Scalar(0, 255, 0), 8);
             cv::imshow("camera",copy);
             int keycode = cv::waitKey(1) & 0xff ; 
                 if (keycode == 27) break;
         }
 
         current = std::chrono::steady_clock::now();
-        //std::cout<<"Time esplised "<<std::chrono::duration_cast<std::chrono::milliseconds>(current-begin).count()<<std::endl;
         if(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - begin).count() >= 1000){
             std::cout<<"FPS: "<<runs<<std::endl;   
             runs = 0;

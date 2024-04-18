@@ -257,33 +257,6 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/predictor.o: src/predictor.cpp.o
-
-.PHONY : src/predictor.o
-
-# target to build an object file
-src/predictor.cpp.o:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/predictor.cpp.o
-.PHONY : src/predictor.cpp.o
-
-src/predictor.i: src/predictor.cpp.i
-
-.PHONY : src/predictor.i
-
-# target to preprocess a source file
-src/predictor.cpp.i:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/predictor.cpp.i
-.PHONY : src/predictor.cpp.i
-
-src/predictor.s: src/predictor.cpp.s
-
-.PHONY : src/predictor.s
-
-# target to generate assembly for a file
-src/predictor.cpp.s:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/predictor.cpp.s
-.PHONY : src/predictor.cpp.s
-
 src/uart.o: src/uart.cpp.o
 
 .PHONY : src/uart.o
@@ -334,9 +307,6 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/predictor.o"
-	@echo "... src/predictor.i"
-	@echo "... src/predictor.s"
 	@echo "... src/uart.o"
 	@echo "... src/uart.i"
 	@echo "... src/uart.s"

@@ -17,7 +17,8 @@
             "intelliSenseMode": "linux-gcc-arm64",
             "compilerArgs": [
                 "std:c++17"
-            ]
+            ],
+            "compileCommands": "${workspaceFolder}/nanoBrain/build/compile_commands.json"
         }
     ],
     "version": 4

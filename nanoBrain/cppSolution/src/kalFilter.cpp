@@ -206,9 +206,10 @@ void get_intercepts(int *intercepts){
     
     thetas.push_front(theta);
     float theta_avg = std::accumulate(thetas.begin(), thetas.end(), 0)/thetas.size();
-    while(thetas.size() >= 5){
-        thetas.pop_back();
-    }
+    // while(theta > M_PI){
+    //     theta -= M_PI;
+    // }
+    // std::cout<<theta<<std::endl;
     attack = cos(theta) < 0;
     // if(attack)
     //     std::cout<<cos(theta)<<std::endl;

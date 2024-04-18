@@ -19,7 +19,7 @@ using std::vector;
 using std::pair;
 using std::string;
 #define VISUAL_EXAG_FACTOR 20  
-#define ACTIVATION_DISTANCE 100
+#define ACTIVATION_DISTANCE 160
 extern Filter_t kFilter;
 extern int activation[3];
 extern Matrix_t y; 

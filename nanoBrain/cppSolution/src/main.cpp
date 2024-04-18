@@ -76,40 +76,24 @@ int main(int argc, char const *argv[]){
         if(curr_location.first != -1){
             diff = get_different(curr_location, last_location);
             kalmanCapture(curr_location);
-            Matrix_t tmp;
-            ulapack_init(&tmp, 4,1);
-            ulapack_edit_entry(&tmp, 0, 0, 100);
-            ulapack_edit_entry(&tmp, 1, 0, 100);
-            ulapack_edit_entry(&tmp, 2, 0, 10);
-            ulapack_edit_entry(&tmp, 3, 0, 1);
-            // std::cout<<cos(tmp.entry[3][0]/3.14*180)<<std::endl;
-            // delete from here
-            // visualize(tmp, copy, false);
-            // add_lines(copy);
-            // if(curr_location.first != -1)
-            // draw_detected(copy, curr_location);
-            // cv::imshow("camera",copy);
-            // int keycode = cv::waitKey(1) & 0xff ; 
-            //     if (keycode == 27) break;
 
-            if(0){
+            if(!is_static()){
                 get_intercepts(intercepts);
                 
                 for(int i = 0; i < 3; i++){
                     float intercept = intercepts[i];
-                    //if(intercept != -1 && curr_location.second <= activation[i]){ 
-                    if(intercept != -1 ){          // TODO: Check if attack is correct 
-                        // char data = packByte(i, mapping(i, intercept));
+                    if(abs(curr_location.second-lines[i]) <= 50 ){
+                        char data = packByte(i, mapping(i, curr_location.second));
+                        uart.send(&data, 1);   
+                    }
+                    else if(intercept != -1 && curr_location.first >= lines[i] ){ 
                         int scale = mapping(i, intercept);
                         char data = packByte(i, scale);
-                        // std::cout<<(int)data<<std::endl;
-                        // char data = packByte(i, mapping(i, curr_location.second));
                         if(show_image){
                             draw_intercepts(copy, i, intercept);
                             // cv::line(copy, cv::Point(kFilter.x.entry[0][0], kFilter.x.entry[0][1]), cv::Point(lines[i], intercept), cv::Scalar(255, 255  , 255), 1, 4, 0);
                         }
                         uart.send(&data, 1);    
-            
                     }
             
                 }

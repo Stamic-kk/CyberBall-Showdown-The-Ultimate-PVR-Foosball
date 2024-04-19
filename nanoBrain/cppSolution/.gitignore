@@ -54,7 +54,7 @@ dkms.conf
 
 # meta
 .metadata
-
+.DS_Store
 
 # binary
 build/

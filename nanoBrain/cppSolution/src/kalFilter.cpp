@@ -6,6 +6,7 @@ Filter_t kFilter;
 const Index_t n_states = 4;
 const Index_t n_measurements = 2;
 const MatrixEntry_t dt = 1.0 / FRAME_RATE;
+MatrixEntry_t t_escliped = 0;
 // const MatrixEntry_t stdx = 1.87285;      //change this
 // const MatrixEntry_t stdy = 2.01378;        //change this
 

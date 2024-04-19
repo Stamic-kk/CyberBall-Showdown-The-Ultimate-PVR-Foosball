@@ -66,7 +66,7 @@ int main(int argc, char const *argv[]){
         }
         cv::absdiff(img, cv::Scalar(TARGET_B, TARGET_G, TARGET_R), copy);
         current = std::chrono::steady_clock::now();
-        curr_location =  getLocation(copy);
+        getLocation(copy);
         // Get variance first before setup the filter
         if(cal_variance(curr_location)){
         //    break;
@@ -105,6 +105,12 @@ int main(int argc, char const *argv[]){
                 }
             }
         }
+        else{
+            std::cout<<"Last location: "<<last_location.first<<", "<<last_location.second<<std::endl;
+            std::cout<<"current location: "<<curr_location.first<<", "<<curr_location.second<<std::endl;
+        }
+
+
         if(show_image){
             visualize(copy, false);
             add_lines(copy);

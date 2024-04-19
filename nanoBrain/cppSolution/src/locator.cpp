@@ -100,13 +100,12 @@ pair<int, int> getLocation (cv::Mat cvImage){
     vpiImageDestroy(input);
     vpiImageDestroy(inputBGR);
     if(min_value > 10){
-        // std::cout<<(int)min_value<<std::endl;
-        return std::make_pair(-1, -1);
+        curr_location = std::make_pair(-1, -1);
     }
-    //std::cout << "Time taken VPI task is : " << double(clock() - start) / double(CLOCKS_PER_SEC) << " seconds" << std::endl;
-    // reverse i,j consistent with opencv.
-    // last_location = curr_location;
-    curr_location = std::make_pair(min_j, min_i);
+    else{
+        // reverse i,j consistent with opencv.
+        curr_location = std::make_pair(min_j, min_i);
+    }
     return curr_location;
 }
 

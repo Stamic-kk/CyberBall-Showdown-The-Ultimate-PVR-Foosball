@@ -19,7 +19,6 @@ using std::pair;
 using std::string;
 #define VISUAL_EXAG_FACTOR 20  
 #define ACTIVATION_DISTANCE 160
-#define SAMPLE_RATE 1/FRAME_RATE
 extern Filter_t kFilter;
 extern int activation[3];
 extern Matrix_t y; 
@@ -50,7 +49,7 @@ MatrixError_t init_Matrices();
 MatrixError_t setup(Matrix_t y1);
 MatrixError_t set_filter();
 MatrixError_t put_data (Matrix_t *y, float x_coord, float y_coord);
-void visualize(Matrix_t x, Mat &background, bool is_static);
+void visualize(Mat &background, bool is_static = false);
 void test_filter(std::string path);
 bool read_sim_data(string path, vector<pair<float, float>> &data);
 bool cal_variance(std::pair<int, int> loc);

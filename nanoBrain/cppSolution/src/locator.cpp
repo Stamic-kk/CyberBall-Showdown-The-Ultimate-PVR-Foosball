@@ -105,7 +105,7 @@ pair<int, int> getLocation (cv::Mat cvImage){
     }
     //std::cout << "Time taken VPI task is : " << double(clock() - start) / double(CLOCKS_PER_SEC) << " seconds" << std::endl;
     // reverse i,j consistent with opencv.
-    last_location = curr_location;
+    // last_location = curr_location;
     curr_location = std::make_pair(min_j, min_i);
     return curr_location;
 }

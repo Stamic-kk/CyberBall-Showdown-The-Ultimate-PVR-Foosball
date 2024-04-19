@@ -5,7 +5,7 @@ Filter_t kFilter;
 
 const Index_t n_states = 4;
 const Index_t n_measurements = 2;
-const MatrixEntry_t dt = SAMPLE_RATE;
+const MatrixEntry_t dt = 1.0 / FRAME_RATE;
 // const MatrixEntry_t stdx = 1.87285;      //change this
 // const MatrixEntry_t stdy = 2.01378;        //change this
 
@@ -181,7 +181,8 @@ MatrixError_t put_data (Matrix_t *y, float x_coord, float y_coord){
     return ulapack_success;
     
 }
-void visualize(Matrix_t x, Mat &background, bool is_static=false){
+void visualize( Mat &background, bool is_static){
+    Matrix_t x = kFilter.x;
     float x_coord = x.entry[0][0];
     float y_coord = x.entry[1][0];
     float v = x.entry[2][0];
@@ -190,13 +191,14 @@ void visualize(Matrix_t x, Mat &background, bool is_static=false){
     float y_end = y_coord + v * sin(theta) * VISUAL_EXAG_FACTOR;
     cv::Point center = cv::Point(x_coord, y_coord);
     cv::Point to_dot = cv::Point(x_end, y_end);
-    if(!is_static)
-        cv::line(background, center, to_dot, cv::Scalar(0, 255  , 255), 1, 4, 0);
+    // if(!is_static)
+    cv::line(background, center, to_dot, cv::Scalar(0, 255  , 255), 1, 4, 0);
     cv::circle(background, center, 2, cv::Scalar(255, 0, 255), 2, 8, 0);
 
 }
 void get_intercepts(int *intercepts){
     //current position
+    // print_mat(&kFilter.x);
     Matrix_t x = kFilter.x;
     float x_coord = x.entry[0][0];
     float y_coord = x.entry[1][0];
@@ -265,7 +267,7 @@ void test_filter(std::string path=""){
 
     for(int i = 1;i < data.size();i++){
         kalmanCapture(data[i]);
-        visualize(kFilter.x, backgrounhd);
+        visualize( backgrounhd);
     }
     cv::imshow("Trajectory", backgrounhd);
     while(true){

@@ -38,9 +38,10 @@ int main(int argc, char const *argv[]){
         std::cout<<"Capture read error"<<std::endl;
         return EXIT_FAILURE;
     }
+
+    // print_mat(&y1);
     cv::absdiff(img, cv::Scalar(TARGET_B, TARGET_G, TARGET_R), copy);
     pair<int, int> y_loc = getLocation(copy);
-
     std::cout<<"y1 "<<y1_loc.first<<", "<<y1_loc.second<<std::endl;
     std::cout<<"y "<<y_loc.first<<", "<<y_loc.second<<std::endl;
     put_data(&y, y_loc.first, y_loc.second);
@@ -105,7 +106,7 @@ int main(int argc, char const *argv[]){
             }
         }
         if(show_image){
-            visualize(kFilter.x, copy);
+            visualize(copy, false);
             add_lines(copy);
             if(curr_location.first != -1)
             draw_detected(copy, curr_location);

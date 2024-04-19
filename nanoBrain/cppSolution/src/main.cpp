@@ -70,11 +70,11 @@ int main(int argc, char const *argv[]){
         if(cal_variance(curr_location)){
         //    break;
         }
-        if(goal()){
-            char data = (char) GOAL_MSG;
-            uart.send(&data, 1);
-        }
-        else if(curr_location.first != -1){
+        //if(goal()){
+        //    char data = (char) GOAL_MSG;
+        //    uart.send(&data, 1);
+       // }
+     if(curr_location.first != -1){
             diff = get_different(curr_location, last_location);
             kalmanCapture(curr_location);
             if(!is_static()){
@@ -85,7 +85,7 @@ int main(int argc, char const *argv[]){
                         char data = packByte(i, mapping(i, curr_location.second));
                         uart.send(&data, 1);   
                     }
-                    else if(intercept != -1 && curr_location.first >= lines[i] ){ 
+                    else if(intercept != -1 && curr_location.first >= lines[i] - 20){ 
                         int scale = mapping(i, intercept);
                         char data = packByte(i, scale);
                         if(show_image){
@@ -105,7 +105,7 @@ int main(int argc, char const *argv[]){
             }
         }
         if(show_image){
-            visualize(kFilter.x, copy, is_static());
+            visualize(kFilter.x, copy);
             add_lines(copy);
             if(curr_location.first != -1)
             draw_detected(copy, curr_location);

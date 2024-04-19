@@ -202,18 +202,10 @@ void get_intercepts(int *intercepts){
     float y_coord = x.entry[1][0];
     float v = x.entry[2][0];
     float theta = x.entry[3][0];
-    // std::cout<<theta<<std::endl;
-    
+
     thetas.push_front(theta);
     float theta_avg = std::accumulate(thetas.begin(), thetas.end(), 0)/thetas.size();
-    // while(theta > M_PI){
-    //     theta -= M_PI;
-    // }
-    // std::cout<<theta<<std::endl;
     attack = cos(theta) < 0;
-    // if(attack)
-    //     std::cout<<cos(theta)<<std::endl;
-    
     
     float slope = tan(theta);
 
@@ -225,19 +217,6 @@ void get_intercepts(int *intercepts){
         intercepts[i] = y_hat;
 
     }
-
-    
-
-    // for(int i = 0 ;i < 3;i++){
-    //     float defense_x = arr[i];
-    //     float dx = defense_x - x_coord;
-    
-    //     // intercepts[i] = max(min((int)(y_coord - slope * dx), CAPTURE_HEIGHT), 0);
-    //     float y_hat = (y_coord - slope * dx);
-    //     intercepts[i] = y_hat <= 0 || y_hat>= CAPTURE_HEIGHT ? -1 : y_hat;
-    // }
-
-    // for()
 
 }
 

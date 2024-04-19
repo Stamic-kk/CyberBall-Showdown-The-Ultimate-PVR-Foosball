@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named max_min_loc_example.out
+# Target rules for targets named CyberBall.out
 
 # Build rule for target.
-max_min_loc_example.out: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 max_min_loc_example.out
-.PHONY : max_min_loc_example.out
+CyberBall.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 CyberBall.out
+.PHONY : CyberBall.out
 
 # fast build rule for target.
-max_min_loc_example.out/fast:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/build
-.PHONY : max_min_loc_example.out/fast
+CyberBall.out/fast:
+	$(MAKE) -f CMakeFiles/CyberBall.out.dir/build.make CMakeFiles/CyberBall.out.dir/build
+.PHONY : CyberBall.out/fast
 
 #=============================================================================
 # Target rules for targets named uKal
@@ -155,7 +155,7 @@ src/camera.o: src/camera.cpp.o
 
 # target to build an object file
 src/camera.cpp.o:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/camera.cpp.o
+	$(MAKE) -f CMakeFiles/CyberBall.out.dir/build.make CMakeFiles/CyberBall.out.dir/src/camera.cpp.o
 .PHONY : src/camera.cpp.o
 
 src/camera.i: src/camera.cpp.i
@@ -164,7 +164,7 @@ src/camera.i: src/camera.cpp.i
 
 # target to preprocess a source file
 src/camera.cpp.i:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/camera.cpp.i
+	$(MAKE) -f CMakeFiles/CyberBall.out.dir/build.make CMakeFiles/CyberBall.out.dir/src/camera.cpp.i
 .PHONY : src/camera.cpp.i
 
 src/camera.s: src/camera.cpp.s
@@ -173,7 +173,7 @@ src/camera.s: src/camera.cpp.s
 
 # target to generate assembly for a file
 src/camera.cpp.s:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/camera.cpp.s
+	$(MAKE) -f CMakeFiles/CyberBall.out.dir/build.make CMakeFiles/CyberBall.out.dir/src/camera.cpp.s
 .PHONY : src/camera.cpp.s
 
 src/kalFilter.o: src/kalFilter.cpp.o
@@ -182,7 +182,7 @@ src/kalFilter.o: src/kalFilter.cpp.o
 
 # target to build an object file
 src/kalFilter.cpp.o:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/kalFilter.cpp.o
+	$(MAKE) -f CMakeFiles/CyberBall.out.dir/build.make CMakeFiles/CyberBall.out.dir/src/kalFilter.cpp.o
 .PHONY : src/kalFilter.cpp.o
 
 src/kalFilter.i: src/kalFilter.cpp.i
@@ -191,7 +191,7 @@ src/kalFilter.i: src/kalFilter.cpp.i
 
 # target to preprocess a source file
 src/kalFilter.cpp.i:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/kalFilter.cpp.i
+	$(MAKE) -f CMakeFiles/CyberBall.out.dir/build.make CMakeFiles/CyberBall.out.dir/src/kalFilter.cpp.i
 .PHONY : src/kalFilter.cpp.i
 
 src/kalFilter.s: src/kalFilter.cpp.s
@@ -200,7 +200,7 @@ src/kalFilter.s: src/kalFilter.cpp.s
 
 # target to generate assembly for a file
 src/kalFilter.cpp.s:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/kalFilter.cpp.s
+	$(MAKE) -f CMakeFiles/CyberBall.out.dir/build.make CMakeFiles/CyberBall.out.dir/src/kalFilter.cpp.s
 .PHONY : src/kalFilter.cpp.s
 
 src/locator.o: src/locator.cpp.o
@@ -209,7 +209,7 @@ src/locator.o: src/locator.cpp.o
 
 # target to build an object file
 src/locator.cpp.o:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/locator.cpp.o
+	$(MAKE) -f CMakeFiles/CyberBall.out.dir/build.make CMakeFiles/CyberBall.out.dir/src/locator.cpp.o
 .PHONY : src/locator.cpp.o
 
 src/locator.i: src/locator.cpp.i
@@ -218,7 +218,7 @@ src/locator.i: src/locator.cpp.i
 
 # target to preprocess a source file
 src/locator.cpp.i:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/locator.cpp.i
+	$(MAKE) -f CMakeFiles/CyberBall.out.dir/build.make CMakeFiles/CyberBall.out.dir/src/locator.cpp.i
 .PHONY : src/locator.cpp.i
 
 src/locator.s: src/locator.cpp.s
@@ -227,7 +227,7 @@ src/locator.s: src/locator.cpp.s
 
 # target to generate assembly for a file
 src/locator.cpp.s:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/locator.cpp.s
+	$(MAKE) -f CMakeFiles/CyberBall.out.dir/build.make CMakeFiles/CyberBall.out.dir/src/locator.cpp.s
 .PHONY : src/locator.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -236,7 +236,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/main.cpp.o
+	$(MAKE) -f CMakeFiles/CyberBall.out.dir/build.make CMakeFiles/CyberBall.out.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -245,7 +245,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/main.cpp.i
+	$(MAKE) -f CMakeFiles/CyberBall.out.dir/build.make CMakeFiles/CyberBall.out.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -254,7 +254,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/main.cpp.s
+	$(MAKE) -f CMakeFiles/CyberBall.out.dir/build.make CMakeFiles/CyberBall.out.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 src/uart.o: src/uart.cpp.o
@@ -263,7 +263,7 @@ src/uart.o: src/uart.cpp.o
 
 # target to build an object file
 src/uart.cpp.o:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/uart.cpp.o
+	$(MAKE) -f CMakeFiles/CyberBall.out.dir/build.make CMakeFiles/CyberBall.out.dir/src/uart.cpp.o
 .PHONY : src/uart.cpp.o
 
 src/uart.i: src/uart.cpp.i
@@ -272,7 +272,7 @@ src/uart.i: src/uart.cpp.i
 
 # target to preprocess a source file
 src/uart.cpp.i:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/uart.cpp.i
+	$(MAKE) -f CMakeFiles/CyberBall.out.dir/build.make CMakeFiles/CyberBall.out.dir/src/uart.cpp.i
 .PHONY : src/uart.cpp.i
 
 src/uart.s: src/uart.cpp.s
@@ -281,7 +281,7 @@ src/uart.s: src/uart.cpp.s
 
 # target to generate assembly for a file
 src/uart.cpp.s:
-	$(MAKE) -f CMakeFiles/max_min_loc_example.out.dir/build.make CMakeFiles/max_min_loc_example.out.dir/src/uart.cpp.s
+	$(MAKE) -f CMakeFiles/CyberBall.out.dir/build.make CMakeFiles/CyberBall.out.dir/src/uart.cpp.s
 .PHONY : src/uart.cpp.s
 
 # Help Target
@@ -291,7 +291,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... max_min_loc_example.out"
+	@echo "... CyberBall.out"
 	@echo "... edit_cache"
 	@echo "... uKal"
 	@echo "... uLAPack"

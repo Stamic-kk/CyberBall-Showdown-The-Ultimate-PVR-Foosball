@@ -10,10 +10,10 @@ MatrixEntry_t t_escliped = 0;
 // const MatrixEntry_t stdx = 1.87285;      //change this
 // const MatrixEntry_t stdy = 2.01378;        //change this
 
-const MatrixEntry_t stdx = 2.3;      //change this
-const MatrixEntry_t stdy = 2.3;        //change this
-const MatrixEntry_t varx =  (stdx*stdx);
-const MatrixEntry_t vary = (stdy * stdy);
+const MatrixEntry_t stdx = 1.8;      //change this
+const MatrixEntry_t stdy = 1.8;        //change this
+const MatrixEntry_t varx =  (stdx*stdx)/3;
+const MatrixEntry_t vary = (stdy * stdy)/3;
 const MatrixEntry_t varv = 2*sqrt(2)*(varx / (dt * dt));
 // const MatrixEntry_t vartheta = M_PI;
 const MatrixEntry_t vartheta = M_PI;
@@ -35,8 +35,9 @@ Matrix_t H;
 Matrix_t fx;
 Matrix_t hx;
 
+
 int line_A = 35;
-int line_B = 130;
+int line_B = 135;
 int line_C = CAPTURE_WIDTH - 70;
 
 int ACT_A = line_A + ACTIVATION_DISTANCE;
@@ -206,18 +207,21 @@ void get_intercepts(int *intercepts){
     float v = x.entry[2][0];
     float theta = x.entry[3][0];
 
-    thetas.push_front(theta);
-    float theta_avg = std::accumulate(thetas.begin(), thetas.end(), 0)/thetas.size();
-    attack = cos(theta) < 0;
+    // thetas.push_front(theta);
+    // float theta_avg = std::accumulate(thetas.begin(), thetas.end(), 0)/thetas.size();
     
     float slope = tan(theta);
 
     for(int i = 0 ;i < 3;i++){
+        if(lines[i] > x_coord){
+            intercepts[i] = -1;
+            continue;
+        }
         float defense_x = lines[i];
         float dx = defense_x - x_coord;
         float y_hat = (y_coord + slope * dx);
         // intercepts[i] = y_hat <= lower[i] ? lower[i] : (y_hat >= upper[i]? upper[i]: y_hat);
-        intercepts[i] = y_hat;
+        intercepts[i] =  y_hat;
 
     }
 
@@ -288,6 +292,8 @@ void kalmanCapture(pair<float, float> loc){
         ukal_set_hx(&kFilter, &hx);
         ukal_update(&kFilter, &y);
         float theta = kFilter.x.entry[3][0];
+        // std::cout<< cos(theta)<<std::endl;
+        attack = cos(theta) < 0;
 
 }
 
@@ -371,7 +377,7 @@ void add_lines(cv::Mat background){
 void draw_intercepts(cv::Mat background, int rod_id, int y){
      cv::circle(background, cv::Point(lines[rod_id], y), 2, cv::Scalar(255, 255, 255), 3);
 }
-// this may be wrong
+
 int mapping(int rod_id, int pixel_pos){
 
     int lb = lower[rod_id];

@@ -10,6 +10,7 @@ bool in_mid = true;
 int ct = 0;
 int mid_pos = 10;
 int disp_ct = 0;
+bool resetStage = 0;
 int main(int argc, char const *argv[])
 {
     // camera_test();
@@ -95,7 +96,7 @@ int main(int argc, char const *argv[])
                     // std::cout<<attack<<std::endl;
                     bool kick = false;
                     if(curr_location.first > lines[1])
-                        kick =true;
+                        continue;
                     else if(!attack && curr_location.first - lines[0] < 70 && curr_location.first - lines[0] > 5)
                         kick =true;
                     for (int i = 0; i < 3; i++)
@@ -121,7 +122,7 @@ int main(int argc, char const *argv[])
                         //     if(devil_mod_pos > 21)
                         //         devil_mod_pos = 0;  
                         // }
-                        else if ( i == 0 ){
+                        else if (i == 0){
                             // data = packByte(i, mapping(i, curr_location.second));
                             if(curr_location.second < CAPTURE_HEIGHT/3){
                                 data = packByte(i, 0);
@@ -160,15 +161,13 @@ int main(int argc, char const *argv[])
                                 }
                             }
                         }
-                        else if( is_static()){
-                            // if(was_static)
-                            //     data = packByte(i, mapping(i, curr_location.second + 2));
-                            // else
-                                data = packByte(i, mapping(i, curr_location.second));
-                            kick = true;
+                        else if(is_static()){
+                            // resetFilter(resetStage, curr_location);
+                            data = packByte(i, mapping(i, curr_location.second));
+                            kick = false;
 
                         }
-                        else if(! is_static()){
+                        else if(!is_static()){
                             data = packByte(i, mapping(i, intercept));
                         }
                         uart.send(&data, 1);
@@ -177,23 +176,27 @@ int main(int argc, char const *argv[])
                         char kick_command = (char) 0xFF;
                         uart.send(&kick_command, 1);
                     }
+                    // else{
+                    //     char data = packByte(3, 1);
+                    //     uart.send(&data,1);
+                    // }
 
-        }
-        else
-        {
-            char data = packByte(0, 10);
-            uart.send(&data,1); 
-            disp_ct++;
-            if(disp_ct >=5){
-                data = packByte(3, 1);
-                uart.send(&data, 1);
-            }
         }
         // else
         // {
-        //     char kick_command = (char) 0xFF;
-        //     uart.send(&kick_command, 1);
+        //     char data = packByte(0, 10);
+        //     uart.send(&data,1); 
+        //     disp_ct++;
+        //     if(disp_ct >=20){
+        //         data = packByte(3, 1);
+        //         uart.send(&data, 1);
+        //     }
         // }
+        else
+        {
+            char kick_command = (char) 0xFF;
+            uart.send(&kick_command, 1);
+        }
 
         if (show_image)
         {

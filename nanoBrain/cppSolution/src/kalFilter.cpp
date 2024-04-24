@@ -387,3 +387,22 @@ int mapping(int rod_id, int pixel_pos){
     // map lb to ub onto 0 to 64
     return (int)(63 * (pixel_pos - lb) / (ub - lb));
 }
+
+Matrix_t temp;
+void resetFilter(bool &stage, std::pair<int, int> loc){
+    if(!stage){
+        put_data(&temp, loc.first, loc.second);
+    }
+    else{
+        put_data(&y, loc.first, loc.second);
+        setup(temp);
+        set_filter();
+        get_fx(&fx, &kFilter.x, dt);
+        ukal_set_fx(&kFilter, &fx);
+        get_phi(&Phi, &kFilter.x, dt);
+        ukal_set_phi(&kFilter, &Phi);
+        ukal_model_predict(&kFilter);
+        get_hx(&hx, &kFilter.x);
+        stage = false;
+    }
+}

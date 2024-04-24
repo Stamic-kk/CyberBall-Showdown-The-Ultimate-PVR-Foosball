@@ -63,4 +63,5 @@ void add_lines(cv::Mat background);
 void get_intercepts(int *intercepts);
 int mapping(int rod_id, int pixel_pos);
 void draw_intercepts(cv::Mat background, int rod_id, int y);
+void resetFilter(bool &stage, std::pair<int, int> loc);
 #endif

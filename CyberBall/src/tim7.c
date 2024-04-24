@@ -1,7 +1,8 @@
 #include "tim2.h"
 #include "servo.h"
 
-extern int servo_swing = 0;  //used for TIM7 ISR handler, control servo swinging
+int servo_swing = 0;  //used for TIM7 ISR handler, control servo swinging
+
 
 void init_tim7(void) {
    // causes the Timer 7 ISR to be invoked at a rate of 2 Hz.
@@ -25,12 +26,17 @@ void TIM7_IRQHandler()
 {
     // Remember to acknowledge the interrupt here!
     TIM7->SR &= ~TIM_SR_UIF;
-    if (!servo_swing) {
-        Servo_control(3, 4);  //Set channel 3 PWM to 12%
-        servo_swing = 1;
-    }
-    else{
-        Servo_control(3, 3);
-        servo_swing = 0;
+    if(swing_control > 0){
+		if (!servo_swing) {
+			Servo_control(3, 4);  //Set channel 3 PWM to 12%
+			servo_swing = 1;
+		}
+		else{
+			Servo_control(3, 2.5);
+			servo_swing = 0;
+		}
+//		swing_control++;
+//		if(swing_control > 3)
+		swing_control = 0;
     }
 }

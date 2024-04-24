@@ -32,27 +32,30 @@ void EXTI4_15_IRQHandler(){
 		EXTI->PR |= (EXTI_PR_PR10);
     	spi_cmd(0x01);        // clear the screen
     	nano_wait(2000000);   // wait for the screen to be cleaned
-    	spi2_display1("Hello");// display
+//    	spi2_display2("Another challenger?");
+    	spi2_display1("Score: 0");// display
     	usart_send(USART3, 'S');
     	number_goal = 0;			//reset goal
-		printf("Rest game\n");
+//		printf("Rest game\n");
 	}
 	else if( (EXTI->PR & EXTI_PR_PR11) == EXTI_PR_PR11){
 		EXTI->PR |= EXTI_PR_PR11;
     	spi_cmd(0x01);        // clear the screen
     	nano_wait(2000000);   // wait for the screen to be cleaned
-    	spi2_display1("Start game");// display
+    	spi2_display1("Welcome");
+    	spi2_display2("Challenager");// display
     	in_game = 1;
     	usart_send(USART3, 'T');
-		printf("Start\n");
+//		printf("Start\n");
 	}
 	else if( (EXTI->PR & EXTI_PR_PR14) == EXTI_PR_PR14){
 		EXTI->PR |= EXTI_PR_PR14;
     	spi_cmd(0x01);        // clear the screen
     	nano_wait(2000000);   // wait for the screen to be cleaned
     	in_game = 0;
+    	spi2_display2("Nice play!");
     	spi2_display1("End");// display
-		printf("Stop\n");
+//		printf("Stop\n");
 	}
 	else if( (EXTI->PR & EXTI_PR_PR13) == EXTI_PR_PR13){
 		char str[12];
@@ -65,7 +68,8 @@ void EXTI4_15_IRQHandler(){
 		spi_cmd(0x01);        // clear the screen
 		nano_wait(2000000);   // wait for the screen to be cleaned
 		spi2_display1("GOAL!!!");// display goal! to screen
-		printf("GOAL!!!!!!!!!!!!!!!!!!!!!!!!\n");
+//		spi2_display2("I didn't play serisouly");
+//		printf("GOAL!!!!!!!!!!!!!!!!!!!!!!!!\n");
 		for (int i = 0; i < 500; i++){
 			nano_wait(2000000);
 		}

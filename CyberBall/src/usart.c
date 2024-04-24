@@ -6,6 +6,7 @@
 char data;
 uint8_t data_int;
 float data_float;
+extern int number_goal;
 
 void init_usart5() {
     RCC->AHBENR |= RCC_AHBENR_GPIOCEN|RCC_AHBENR_GPIODEN;
@@ -67,11 +68,40 @@ void setUpSampling(USART_TypeDef * u){
 
 void USART3_4_5_6_7_8_IRQHandler(){
 	if((USART3->ISR & USART_ISR_RXNE) ==  USART_ISR_RXNE){
+
 		data_int = usart_get(USART3);
+//		if(data_int == 0xFF){
+//			char str[12];
+//			number_goal = number_goal + 1;
+//			sprintf(str, "%d", number_goal);
+//			spi_cmd(0x01);        // clear the screen
+//			nano_wait(2000000);   // wait for the screen to be cleaned
+//			spi2_display1("GOAL!!!");// display goal! to screen
+////			printf("GOAL!!!!!!!!!!!!!!!!!!!!!!!!\n");
+//			for (int i = 0; i < 500; i++){
+//				nano_wait(2000000);
+//			}
+//
+//			spi_cmd(0x01);
+//			nano_wait(2000000);
+//			spi2_display1("Score: ");   //the next goal can only be detected after 4 secs. (dumb way to debounce)
+//			spi2_display2(str);
+//		}
+		if(data_int == 0xFF){
+			// command for kicking the ball
+			swing_control = 1;
+			return;
+		}
+
+
 		int rod_id = data_int & 0b11000000;
 		int pos_hat = data_int - rod_id;
+//		if(rod_id == 3){
+//			if(pos_hat == 1) Servo_control(3, 2);
+//		}
 		rod_id = rod_id >> 6;
 		int relative_pos = pos_hat % 21;
+//		printf("Rod %d Receive %d    Translated to: %d \n", rod_id, pos_hat, relative_pos);
 		//Find which player is the closest
 		if (0)
 		{
@@ -97,6 +127,8 @@ void USART3_4_5_6_7_8_IRQHandler(){
 		float dutyCycle = pixelToDutyCycle(relative_pos);
 //		printf("Duty Cycle: %f \n\r", dutyCycle);
 //		printf("Control rod %d: move to %d\n\r", rod_id, relative_pos);
+		if(rod_id==1) dutyCycle+= 0.2;
+//		if(rod_id == 0) dutyCycle += 0.1;
 		Servo_control(rod_id, dutyCycle);
 	}
 	else if (USART3->ISR & USART_ISR_ORE){

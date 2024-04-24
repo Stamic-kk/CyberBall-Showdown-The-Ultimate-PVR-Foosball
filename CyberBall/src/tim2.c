@@ -2,8 +2,7 @@
 #include "servo.h"
 
 uint16_t values[3];
-uint16_t pos[3];
-extern int goal_num = 0;
+int pos[3];
 
 void init_tim2(void) {
     RCC -> APB1ENR |= RCC_APB1ENR_TIM2EN;
@@ -94,6 +93,7 @@ void TIM2_IRQHandler(){
     	}
     	// Add a break if.
     }
+//    printf("Positio of rods %d, %d, %d\n", values[0], values[1], values[2]);
 
 
 //    printf("Sensor: %d\n", values[1]);

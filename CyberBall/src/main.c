@@ -202,10 +202,10 @@ int main(void)
 	setbuf(stdin,0);
 	setbuf(stdout,0);
 	setbuf(stderr,0);
-	printf("a");
-	printf("b");
-	printf("c\n");
-//
+//	printf("a");
+//	printf("b");
+//	printf("c\n");
+////
 	init_spi2_for_LCD();
 	spi2_init_oled();
 	spi2_display1("Hello!");

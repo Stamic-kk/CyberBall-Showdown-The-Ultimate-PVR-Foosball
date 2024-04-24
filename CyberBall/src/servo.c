@@ -1,15 +1,18 @@
 #include "servo.h"
 #include "EXTI.h"
+
+int swing_control = 0;
 void Servo_control(int channel, float duty_cycle)
 {
 	int k = 2;
-	if(duty_cycle < MIN_Y || duty_cycle > MAX_Y){
-		printf("Error: Duty Cycle out of bounds");
-//		printf(" Got %f \n\r", duty_cycle);
-		return;
-	}
-
-	else if (in_game == 0){
+//	if(duty_cycle < MIN_Y  || duty_cycle > MAX_Y){
+//		printf("Error: Duty Cycle out of bounds");
+////		printf(" Got %f \n\r", duty_cycle);
+//		return;
+//	}
+	if(duty_cycle < MIN_Y) duty_cycle = MIN_Y;
+	else if ( duty_cycle > MAX_Y + 0.1) duty_cycle = MAX_Y + 0.1;
+	if (in_game == 0){
 		TIM1->CCR1 = k *240;
 		TIM1->CCR2 = k *240;
 
@@ -20,13 +23,13 @@ void Servo_control(int channel, float duty_cycle)
 		switch (channel)
 		{
 		case 0: TIM1->CCR1 = duty_cycle *240;       //TIM1 CH1: PA8
-				printf("Rod 0\n\r");
+//				printf("Rod 0\n\r");
 				break;
 		case 1: TIM1->CCR2 = duty_cycle *240;       //TIM1 CH2: PA9
-				printf("Rod 1\n\r");
+//				printf("Rod 1\n\r");
 				break;
 		case 3: TIM1->CCR4 = duty_cycle *240;       //TIM1 CH4: PA10
-				printf("Rod 2\n\r");
+//				printf("Rod 2\n\r");
 				break;
 		case 2: TIM1->CCR3 = duty_cycle *240;       //TIM1 CH3: PA11
 				break;

@@ -5,7 +5,11 @@
 #include <unistd.h>
 
 bool show_image = false;
-
+float devil_mod_pos = 0;
+bool in_mid = true;
+int ct = 0;
+int mid_pos = 10;
+int disp_ct = 0;
 int main(int argc, char const *argv[])
 {
     // camera_test();
@@ -84,18 +88,25 @@ int main(int argc, char const *argv[])
         // }
         if (curr_location.first != -1)
         {
+            disp_ct = 0;
             diff = get_different(curr_location, last_location);
             kalmanCapture(curr_location);
                     get_intercepts(intercepts);
-                    std::cout<<attack<<std::endl;
+                    // std::cout<<attack<<std::endl;
+                    bool kick = false;
+                    if(curr_location.first > lines[1])
+                        kick =true;
+                    else if(!attack && curr_location.first - lines[0] < 70 && curr_location.first - lines[0] > 5)
+                        kick =true;
                     for (int i = 0; i < 3; i++)
                     {
                         float intercept = intercepts[i];
                         char data;
 
-                        if(attack && curr_location.first < lines[i]){
+                        if(attack && curr_location.first < lines[i]+20){
                             int avoid = mapping(i, curr_location.second);
                             data = packByte(i,  avoid < 32? avoid + 5: avoid - 5);
+                
                         }
                         else if(intercept < 0)
                             continue;  
@@ -103,26 +114,86 @@ int main(int argc, char const *argv[])
                         //     data = packByte(i, mapping(i, intercept));
                         // else 
                         //     data = packByte(i, mapping(i, curr_location.second));
-                        else if( is_static())
-                            data = packByte(i, mapping(i, curr_location.second));
-                        else if(! is_static())
+                        // else if (curr_location.first < (lines[0] + 40) && i ==0){
+                        //     // devil mode!!!!!!
+                        //     data = packByte(i, devil_mod_pos);
+                        //     devil_mod_pos += 0.3;
+                        //     if(devil_mod_pos > 21)
+                        //         devil_mod_pos = 0;  
+                        // }
+                        else if ( i == 0 ){
+                            // data = packByte(i, mapping(i, curr_location.second));
+                            if(curr_location.second < CAPTURE_HEIGHT/3){
+                                data = packByte(i, 0);
+                            }
+                            else if (curr_location.second  > (CAPTURE_HEIGHT/3)*2){
+                                data = packByte(i, 62);
+                            }
+                            else if(in_mid){
+                                data = packByte(i, mid_pos);
+                                ct++;
+                                if(ct > 12) {
+                                    ct = 0;
+                                    in_mid = false;
+                                }
+                            }
+                            else{
+                                if(curr_location.second < CAPTURE_HEIGHT/2 - 5){
+                                    // std::cout<<"shake down"<<std::endl;
+                                    mid_pos = 8;
+                                    data = packByte(i, 0);
+                                }
+                                else if(curr_location.second > CAPTURE_HEIGHT/2 - 5 && curr_location.second < CAPTURE_HEIGHT/2 + 20){
+                                    // std::cout<<"shake mid"<<std::endl;
+                                    mid_pos = 8; 
+                                    data = packByte(i, 17);
+                                }
+                                else{
+                                    // std::cout<<"shake top"<<std::endl;
+                                    mid_pos = 12;
+                                    data = packByte(i, 20);
+                                }
+                                ct++;
+                                if(ct > 10) {
+                                    ct = 0;
+                                    in_mid = true;
+                                }
+                            }
+                        }
+                        else if( is_static()){
+                            // if(was_static)
+                            //     data = packByte(i, mapping(i, curr_location.second + 2));
+                            // else
+                                data = packByte(i, mapping(i, curr_location.second));
+                            kick = true;
+
+                        }
+                        else if(! is_static()){
                             data = packByte(i, mapping(i, intercept));
+                        }
                         uart.send(&data, 1);
                     }
-                // else
-                // {
-                //     for (int i = 0; i < 3; i++)
-                //     {
-                //         char data = packByte(i, mapping(i, curr_location.second));
-                //         uart.send(&data, 1);
-                //     }
-                // }
+                    if(kick){
+                        char kick_command = (char) 0xFF;
+                        uart.send(&kick_command, 1);
+                    }
+
         }
         else
         {
-            //     std::cout<<"Last location: "<<last_location.first<<", "<<last_location.second<<std::endl;
-            //     std::cout<<"current location: "<<curr_location.first<<", "<<curr_location.second<<std::endl;
+            char data = packByte(0, 10);
+            uart.send(&data,1); 
+            disp_ct++;
+            if(disp_ct >=5){
+                data = packByte(3, 1);
+                uart.send(&data, 1);
+            }
         }
+        // else
+        // {
+        //     char kick_command = (char) 0xFF;
+        //     uart.send(&kick_command, 1);
+        // }
 
         if (show_image)
         {

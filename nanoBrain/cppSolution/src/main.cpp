@@ -96,7 +96,7 @@ int main(int argc, char const *argv[])
                     // std::cout<<attack<<std::endl;
                     bool kick = false;
                     if(curr_location.first > lines[1])
-                        continue;
+                    {}
                     else if(!attack && curr_location.first - lines[0] < 70 && curr_location.first - lines[0] > 5)
                         kick =true;
                     for (int i = 0; i < 3; i++)

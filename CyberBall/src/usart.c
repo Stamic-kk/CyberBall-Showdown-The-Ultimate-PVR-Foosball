@@ -100,7 +100,7 @@ void USART3_4_5_6_7_8_IRQHandler(){
 //			if(pos_hat == 1) Servo_control(3, 2);
 //		}
 		rod_id = rod_id >> 6;
-		int relative_pos = pos_hat % 21;
+		int relative_pos = pos_hat % 22;
 //		printf("Rod %d Receive %d    Translated to: %d \n", rod_id, pos_hat, relative_pos);
 		//Find which player is the closest
 		if (0)
